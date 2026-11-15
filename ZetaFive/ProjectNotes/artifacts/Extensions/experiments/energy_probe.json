@@ -1,0 +1,17 @@
+{
+  "6": {
+    "sampled_supremum": -6.649893880595487,
+    "location": 0.6195486754901354,
+    "C": 2.6530359903404888,
+    "energy": -2.126593445147051,
+    "candidate_real_exponent": -1.3715224040632856
+  },
+  "8": {
+    "sampled_supremum": -6.695153005853257,
+    "location": 0.7526451200255044,
+    "C": 3.649335128751707,
+    "energy": -2.126593445147051,
+    "candidate_real_exponent": -0.41708795651550545
+  },
+  "status": "Exploratory double precision; no interval proof and no global optimization claim."
+}

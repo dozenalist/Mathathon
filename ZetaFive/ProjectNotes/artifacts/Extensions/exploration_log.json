@@ -1,0 +1,32 @@
+{
+  "date_local": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "started_utc": "2026-11-14 20:34:27 UTC",
+  "research_and_verification_completed_utc": "2026-11-14 20:59:30 UTC",
+  "elapsed_seconds_at_completion": 1503,
+  "requested_minimum_seconds": 1500,
+  "source_assumption": "Fauzan's September 17, 2026 zeta(5) argument; initial workspace had no manuscript.",
+  "completed": [
+    "Equation-by-equation transfer of the opening functional, matrix, degree and positivity construction",
+    "Independent algebra, arithmetic and exact-computation reviews",
+    "Exact finite counterexample to the copied outer-prime estimate",
+    "Corrected small, inner and outer prime estimates, including favorable Bernoulli cancellation",
+    "Exact added normalization coefficient 751/768",
+    "Explicit real bound retaining U=-2733991/2000000",
+    "D_N^8 attempted repair and rational interval rejection for the original measure and specified arithmetic bound",
+    "Rational interval rejection of numerical-enclosure-only fixes for the D_N^6 transfer",
+    "Fixed rational rescaling and affine-coordinate checks",
+    "11-page report rendered and visually reviewed",
+    "Source PDF hash verified against preserved ledger and Zenodo MD5",
+    "Archive extracted and all five standard-library mathematical checks rerun with Python -S",
+    "Archive CRC and SHA256 manifest verification"
+  ],
+  "limitations": [
+    "No claim to prove zeta(7) irrational",
+    "No lower bound on the actual determinant growth from a failed upper bound",
+    "No global optimization over bases, parameters, comparison measures or coefficient-content estimates",
+    "Original Appendix A interval certificate used as an input, not independently reconstructed in full",
+    "No Lean or Isabelle build; source formalization files used only as transcription cross-checks",
+    "Appendix C irrationality-exponent result was outside the needed proof audit"
+  ]
+}

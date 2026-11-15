@@ -1,0 +1,196 @@
+ARITHMETIC AUDIT: FAUZAN'S ZETA(5) CONSTRUCTION AT ZETA(7)
+14 November 2026. Independent derivation; not a proof of irrationality.
+
+Source: Aabir Fauzan, Zeta(5) is irrational, 17 September 2026,
+https://zenodo.org/records/22826419 , 32-page original PDF.
+Local source copy: sources/Fauzan_2026_zeta5.pdf; text extraction with PAGE markers
+in sources/Fauzan_2026_zeta5.txt. All equation references below refer to this PDF.
+
+Scope of the main computation: retain K=40n, N=3n, h=37n,
+alpha=3/40, lambda=37/40, the numerator D_N^6, and the scalar S_K
+from (2.5). Replace the functional by its honest zeta(7) analogue.
+This is an audit of a specific transferred certificate. A positive final
+UPPER bound does not prove growth of the actual polynomial values.
+
+1. THE FUNCTIONAL AND SMALL EXCEPTIONS
+
+Use tau_7(P)=L(P^(5))/720 and
+tau_{7,X}(1/(x-r))=H_{d(r)}^(7)-X.
+Then mu_{7,X}(R)=tau_{7,X}(x^7 R(-x^2)).
+The polynomial moments are
+mu_7(t^e)=(-1)^e B_{2e+2} product_{j=3}^7(2e+j)/720.
+The pole values are
+mu_{7,X}(1/(t+j^2))=j^6(X-H_j^(7))-1/6+1/(2j).
+
+For large primes p>=11, the denominator 720 is a unit. The analytic
+coefficients kappa_d=d(d-1)...(d-4) B_{d-5}/720 have valuation >=-1.
+They are integral at least for d<=p+3: in that range the nonzero even
+Bernoulli index is below p-1. In particular the original sufficient
+degree bound d<=p+1 still works.
+
+For a far pole s, vp(s)<0, direct expansion gives
+tau_7^an(1/(z-s))=-(1/6) sum_{k>=0} binom(k+5,5) B_k s^(-k-6).
+Define C_{p,7}=sum_{a=1}^{p-1} tau_7^an(1/(x+a/p))
+and Y=p^7 X+C_{p,7}. For p>=11, C_{p,7} lies in p^7 Z_p.
+The k=0 term is proportional to p^6 sum a^-6, whose residue sum
+vanishes because p-1 does not divide 6. The k=1 term has at least
+seven powers of p; k>=2 has at least k+5>=7 powers.
+At p=7 the k=0 sum does NOT vanish (6 divides p-1); do not blindly
+copy the original assertion with the threshold p>=7. This causes no
+asymptotic problem because fixed small primes use the coarse bound.
+
+Bernoulli multiplication after FIVE differentiations gives
+tau_{7,X}(g)=p^-6 sum_{a=0}^{p-1} tau_{7,Y}^ext(g(a+px)).
+The original (3.7) has p^-4. This change is essential, not notation.
+Reflection is still odd and the translation difference is the sixth
+Taylor coefficient. The same pole induction establishes distribution.
+
+2. THE SMALL-PRIME ESTIMATE (SOURCE (3.8)--(3.12), PP. 8--9)
+
+The integer-valued polynomial argument itself is unchanged. Five
+derivatives cost 5 floor(log_p(d+1)), and the Bernoulli functional L
+costs one further such factor. Thus the polynomial analogue of (3.9)
+has -6 floor(log_p(d+1))-vp(720), in place of -4...-vp(24).
+The source's subtraction of principal parts costs at most two more
+logarithmic factors. Alternatively each pole term costs at most one
+from its residue and seven from H^(7). Therefore the analogue of
+Lemma 3.3 is
+v_p^G(tau_{7,X}(g)) >= -8 floor(log_p max(2K,d+1))-vp(720).
+
+The same basis f_i=(D_N/(N!)^2)^3 q_i gives the SAME scalar S_K.
+Its pullback numerator now has degree <=12N+4h+3, rather than
+12N+4h+1. For the large K in the paper this is still <5K-1.
+Consequently
+v_p^G(F_{7,K}) >= -8h floor(log_p(5K))-h vp(720).
+For p<=K/M, the K^2-scale cost is 8 lambda/M instead of
+6 lambda/M. Fixed exceptional primes and higher prime powers
+contribute o(K^2), exactly as in Proposition 5.2.
+
+3. THE INNER RANGE (SOURCE (4.1)--(4.8), PP. 9--11)
+
+Keep the original class dimensions L_a, reserve L_0=4M+10,
+b_a=3 ell_N(a), and the original T,E allocation and unimodular basis.
+The ordinary class valuation changes from
+nu_i+nu_j+6 ell_N-ell_K-4
+to
+nu_i+nu_j+6 ell_N-ell_K-6.
+At zero the valuation remains
+2nu_i(0)+2nu_j(0)+12m_N-2m_K+1,
+because x^7 supplies two additional powers of p and distribution
+loses the same additional two powers.
+
+Thus for a>0 use
+w7_{a,i}=i+b_a-(ell_K(a)+6)/2=w5_{a,i}-1.
+For the zero block replace only the ordinary thresholds in (4.7):
+w7_{0,i}=min(2i+6m_N-m_K+1/2,
+             min_c[Z_c-(ell_K(c)+6)/2]).
+The same cross-class comparison works: subtracting one from all
+ordinary half-weights leaves their comparisons identical. The zero
+source remains more than adequate. The leading numerator degree
+at an ordinary source is unchanged. At zero it is greater by two,
+bounded by 7+4L_0+12m_N <=16.9 M+47, still below p+1 because
+p>200M. Thus the original completion argument applies to the
+entire functional, including polynomial quotients.
+
+There are h-L_0 ordinary rows and only O_M(1) zero rows. Therefore
+gamma7_in=gamma5_in-2h+O_M(1).
+Since h=lambda K, the limiting functions satisfy EXACTLY
+Gamma7(x)=Gamma5(x)-2lambda x,
+R7(x)=R5(x)+2lambda x.
+The added cost over K/M<p<=K/3 is
+2lambda(1/3-1/M).
+In particular every existing finite-interval and tail estimate for R5
+can be reused by integrating this explicit extra linear term. No
+new numerical tail assertion is being assumed.
+
+4. THE OUTER POLYNOMIAL CORRECTION IMPROVES (SOURCE P. 11)
+
+The zeta(7) moment is integral for e<3p-4, whereas the zeta(5)
+threshold is e<2p-3. Indeed if p-1 divides 2e+2 below 6(p-1),
+write 2e+2=m(p-1), 1<=m<=5. Among 2e+3,...,2e+7 one
+factor is divisible by p. It cancels the Bernoulli denominator.
+
+Keep W=D_N^5 and D_tail=D_K/D_N. The polynomial quotient of
+W t^(i+j)/D_tail has degree <=i+j+6N-K. Thus the nonintegral
+correction L has entries zero when
+i+j<K-6N+3p-4.
+With h=K-N, this makes the first h-r7 rows/columns vanish, where
+r7=max(0,K+4N-3p+3).
+The original rank is r5=max(0,K+4N-2p+2).
+This is a real improvement; the arithmetic changes are not uniformly
+bad. The calculation below includes this improvement.
+
+5. OUTER POLE CLASSES AND THE NEW TABLE (SOURCE (4.11)--(4.14))
+
+Keep the original unimodular basis. Let ell=ell_K(a) and
+delta=1 if a<=N, else zero. For low indices i,j<ell-2, the
+residue valuation is >=i+j+6delta-ell-6. The harmonic term now
+loses seven powers of p instead of five. Polynomial parts after
+the correction are integral. Accordingly use
+w7_{a,i}=min(0,i+3delta-(ell+6)/2), i<ell-2;
+w7_{a,i}=0, i>=ell-2.
+
+The high-index cancellation still works. The remaining pole values
+at a and p-a are congruent modulo p, because H^(7) has the same
+odd-exponent reflection identity as H^(5). Their coefficients of X
+are a^6 and (p-a)^6, also congruent. The divided difference is
+therefore integral. This step is not being discarded.
+
+Removed classes (delta=1):
+ell                         2  3  4  5  6
+new cost -2 sum_i w7         0  3  6  9 12
+new number of zero weights  1  1  1  1  2
+old cost                    0  1  2  4  6
+old number of zero weights  1  1  2  2  3
+
+Unremoved classes cost 9(ell-2) and have two zero weights;
+the old cost was 7(ell-2). Zero-class costs remain 1 (one pole)
+and 4 (two poles), with respectively zero and one zero weights.
+
+With v=K-p floor(K/p), u=max(0,N+v-p+1), t_p=min(N,v)+u,
+the resulting determinant certificate is
+gamma7_out =
+  -9(K-p)+6t_p-1-min(r7,p-1-N),                    K<2p;
+  -9(K-p)+5+12N+6t_p-min(r7,p-N+u),               K>=2p.
+These formulas follow by summing the table and using the SAME
+rank lemma 4.2. For p>K the determinant is again integral.
+
+6. EXACT OUTER INTEGRAL AND FINAL COMPARISON
+
+Put y=p/K. At alpha=3/40, the new rank r7/K=(1+4alpha-3y)_+
+never exceeds the limiting number of zero weights, so the minimum
+does not cause a further correction. Specifically on y in (1/3,1/2)
+that number/K is y-alpha+(1+alpha-3y)_+; on (1/2,1) the rank
+is already zero.
+
+The new raw outer determinant cost is therefore
+C7(y)=9(1-y)-12alpha-6 min(alpha,1-2y)
+      -6(1+alpha-3y)_+ +(1+4alpha-3y)_+, 1/3<y<1/2;
+C7(y)=9(1-y)-6 min(alpha,1-y)-6(1+alpha-2y)_+, 1/2<y<1;
+C7(y)=0, y>1.
+
+The old cost is C5=R0-d in (5.8)--(5.9). Exact rational integration
+of piecewise affine functions (see arithmetic_costs.py) gives
+integral C5 = 23329/19200,
+integral C7 = 1261/800,
+extra outer cost = 1387/3840 = 0.3611979166666667.
+Because S_K is unchanged, its cost cancels in this comparison.
+Thus Iout7=Iout5+1387/3840=27071/16000.
+
+Adding the inner increment and the small-prime increment gives
+1387/3840 + 2lambda(1/3-1/M) + 2lambda/M
+ = 751/768 = 0.9778645833333333.
+
+If A_M denotes the source's rigorous normalization upper bound
+(5.20), then this transferred proof gives the valid bound
+A7_M = A_M + 751/768.
+The real determinant retains the original leading coefficient U
+when D_N^6 and S_K are fixed (root agent separately audits this).
+The last comparison becomes A_M+U+751/768, which is positive
+at M=200 and remains positive as M tends to infinity. Thus the
+source's conclusion of exponential decay is no longer obtained.
+
+Precise logical conclusion: this explicit certificate does not prove
+irrationality. It does not establish a lower bound on determinant
+values, does not rule out better arithmetic estimates, and does not
+rule out changing the numerator or optimizing the parameters.

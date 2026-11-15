@@ -1,0 +1,320 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\Hfive}[1]{H_{#1}^{(5)}}
+\newcommand{\source}[1]{{\small\color{blue!45!black}#1}\par}
+\pagestyle{plain}
+\begin{document}
+\begin{center}
+{\LARGE Why the determinant construction proves\\[3pt]
+$\zeta(5)$ irrational}\\[9pt]
+{\large An overview following Chun Wing Lai's exposition}\\[5pt]
+Draft \enspace$\cdot$\enspace 14 November 2026
+\end{center}
+
+The argument constructs integer polynomials whose values at $\zeta(5)$
+become extraordinarily small. Their degrees grow only linearly, while their
+values shrink exponentially in the square of the size parameter. If
+$\zeta(5)$ were rational, clearing its fixed denominator would then produce
+a positive integer tending to zero.
+
+We explain the construction and this final contradiction, taking two precise
+estimates as inputs. The analytic estimate is Lai's Proposition 11.7.
+The arithmetic estimate is Fauzan's original bound, assumed separately:
+it does not follow from Lai's sections 8--11 as literally printed.
+The source note at the end explains this qualification. Both estimates
+are stated before being used.
+
+\section*{1. What would be enough?}
+\source{Lai, section 3, Lemma 3.1.}
+Write $\xi=\zeta(5)$. Suppose that, for every sufficiently large positive
+integer $n$, we can find a polynomial $Q_n\in\Z[X]$ satisfying
+\[
+ \deg Q_n\leq37n,\qquad 0<Q_n(\xi)\leq e^{-cn^2},
+ \qquad c>0\text{ fixed}.
+\]
+The number $37$ will come from the size of a matrix. Its particular value
+does not matter to the contradiction; what matters is linear growth.
+
+Assume for a moment that $\xi=a/b$, with $a\in\Z$ and $b\in\Z_{>0}$.
+If $Q_n(X)=\sum_{j=0}^{37n}q_jX^j$, then
+\[
+ b^{37n}Q_n(a/b)=\sum_{j=0}^{37n}q_j a^j b^{37n-j}\in\Z.
+\]
+This integer is positive, but the small-value estimate gives
+\[
+ 0<b^{37n}Q_n(a/b)
+ \leq \exp\bigl(37n\log b-cn^2\bigr)\longrightarrow0.
+\]
+Eventually it would lie strictly between zero and one. That is impossible.
+
+The construction must therefore accomplish two things simultaneously.
+It must produce a polynomial with integer coefficients, and it must keep
+the value of that polynomial at $\xi$ small without letting it vanish.
+These demands pull in different directions: multiplying by a large integer
+clears denominators, but also enlarges the value we are trying to make small.
+
+A determinant gives enough room to satisfy both demands. Its entries will
+be linear expressions in $X$ with rational coefficients. At $X=\xi$, the
+same entries become moments of a positive measure. The first description
+provides arithmetic structure; the second makes nonvanishing visible and
+opens the way to an analytic estimate. The rest of the proof is the passage
+between these two descriptions.
+
+\newpage
+\section*{2. One rule connects rational coefficients and a positive integral}
+\source{Lai, section 4, Definition 4.2 and Lemmas 4.5--4.6.}
+For $j\geq1$, let
+\[
+ \Hfive{j}=\sum_{v=1}^j\frac1{v^5},\qquad \Hfive{0}=0.
+\]
+Consider rational functions $R\in\Q(t)$ with simple poles only at
+$-1^2,-2^2,-3^2,\ldots$. Partial fractions write each one uniquely as
+\[
+ R(t)=P(t)+\sum_j\frac{c_j}{t+j^2},
+\]
+where $P$ is a polynomial, all coefficients are rational, and the sum is
+finite. A linear rule on these functions is determined once we specify it
+on powers of $t$ and on the simple fractions.
+
+Use Bernoulli numbers with $B_1=-1/2$, and define
+\begin{align*}
+ \mu_X(t^e)&=\frac{(-1)^eB_{2e+2}(2e+3)(2e+4)(2e+5)}{24},
+       && e\geq0,\\
+ \mu_X\!\left(\frac1{t+j^2}\right)
+   &=j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j},
+       && j\geq1.
+\end{align*}
+Extend by linearity. Every value $\mu_X(R)$ is an affine polynomial in $X$
+with rational coefficients. The polynomial part of $R$ contributes no $X$;
+all dependence on $X$ comes from its poles. For example,
+\[
+ \mu_X(1)=\frac5{12},\qquad
+ \mu_X\!\left(\frac1{t+1}\right)=X-\frac34.
+\]
+
+The reason for these formulas is that at $X=\xi$ they describe integration:
+\[
+ \boxed{\mu_\xi(R)=\int_0^\infty R(y^2)w(y)\dd y},\qquad
+ w(y)=\frac{(2\pi)^4y^5}{12}
+       \sum_{\ell\geq1}\ell^4e^{-2\pi\ell y}>0.
+\]
+The weight is bounded near zero and decays exponentially at infinity, so
+these integrals converge. To check the identity, it is enough to check the
+same two types of building block.
+
+For powers of $t$, integrate each exponential and then use Euler's formula
+for even zeta values:
+\[
+ \int_0^\infty y^{2e}w(y)\dd y
+ =\frac{(2e+5)!}{12(2\pi)^{2e+2}}\zeta(2e+2)
+ =\mu_X(t^e).
+\]
+For a simple pole, the Hurwitz zeta integral gives
+\[
+ \int_0^\infty\frac{w(y)}{y^2+j^2}\dd y
+ =j^4\zeta(5,j)-\frac1{2j}-\frac14
+ =j^4\bigl(\xi-\Hfive{j}\bigr)-\frac14+\frac1{2j}.
+\]
+Here $\zeta(5,j)=\sum_{v=0}^\infty(j+v)^{-5}
+=\xi-\Hfive{j}+j^{-5}$. Linearity completes the check.
+
+Thus $X$ has a specific role: it stands in for the one zeta value occurring
+in the pole integrals. Keeping $X$ symbolic gives rational algebra;
+putting $X=\xi$ gives a positive integral. We will use both descriptions
+of the same rule.
+
+\newpage
+\section*{3. The determinant is a polynomial, and its value cannot vanish}
+\source{Lai, sections 5--6; especially Corollary 5.5 and Proposition 5.6.}
+For a positive integer $n$, set
+\[
+ K=40n,\qquad N=3n,\qquad h=K-N=37n,
+ \qquad D_m(t)=\prod_{j=1}^m(t+j^2).
+\]
+Introduce the rational multiplier
+\[
+ A_K(t)=\frac{D_N(t)^6}{D_K(t)}
+       =\frac{D_N(t)^5}{\displaystyle\prod_{k=N+1}^K(t+k^2)}.
+\]
+The cancellation shows that its remaining poles are simple. Also,
+$A_K(y^2)>0$ for $y>0$. These two observations let us apply both the
+algebraic and the integral descriptions of $\mu$.
+
+Build the $h$ by $h$ matrix and its determinant:
+\[
+ G_K(X)=\bigl[\mu_X(A_K(t)t^{i+j})\bigr]_{0\leq i,j<h},
+ \qquad \Delta_K(X)=\det G_K(X).
+\]
+The entries depend only on $i+j$, which is why the matrix is called
+\emph{Hankel}. Each entry is affine in $X$. Every term in the determinant
+is a product of $h$ such entries, so
+\[
+ \Delta_K\in\Q[X],\qquad \deg\Delta_K\leq h=37n.
+\]
+This elementary degree bound is all the irrationality argument needs.
+Lai proves the stronger equality using a Vandermonde determinant on the
+$h$ remaining pole locations.
+
+Now evaluate at $X=\xi$. The entries become
+\[
+ G_K(\xi)_{ij}=\int_0^\infty
+        y^{2i}y^{2j}A_K(y^2)w(y)\dd y.
+\]
+This is a \emph{Gram matrix}: it records inner products of
+$1,y^2,\ldots,y^{2h-2}$ for a positive weight. More explicitly, if
+$q(t)=\sum_{i=0}^{h-1}v_it^i$ is a nonzero real polynomial, then
+\[
+ v^{\mathsf T}G_K(\xi)v
+ =\int_0^\infty q(y^2)^2A_K(y^2)w(y)\dd y>0.
+\]
+The inequality is strict because the weight is positive and a nonzero
+polynomial has only finitely many zeros. Thus $G_K(\xi)$ is positive
+definite, and $\Delta_K(\xi)>0$. This is the key safeguard against a
+determinant that is small merely because it vanishes.
+
+The estimates we will borrow are written for an explicitly rescaled
+determinant:
+\[
+ F_K(X)=S_K\Delta_K(X),\qquad
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+ {(N!)^{12h}\displaystyle\prod_{i=1}^{h-1}((2i)!)^2}>0.
+\]
+Since $S_K$ is a positive rational number independent of $X$, we still have
+$F_K\in\Q[X]$, $\deg F_K\leq37n$, and $F_K(\xi)>0$.
+The factorial expression puts the arithmetic and analytic estimates on a
+common scale. It does not, by itself, make every coefficient integral.
+
+\newpage
+\section*{4. The two estimates we take as inputs}
+We now state the quantitative facts supplied by the arithmetic and analytic
+parts of the argument. We use slightly weaker, rounded constants so that
+the final comparison is transparent. Throughout, $K$ tends to infinity
+through positive multiples of $40$.
+
+\textbf{Arithmetic estimate.}
+For all sufficiently large $K$, there is a positive rational number $m_K$
+such that
+\[
+ \boxed{m_KF_K\in\Z[X],\qquad \log m_K\leq1.35K^2.}
+\]
+This is the normalization estimate underlying Lai's sections 8--10,
+with the cutoff fixed at $M=200$. We take its precise arithmetic form
+from Fauzan's Proposition 5.1 and equation (5.21); the source note explains
+why this specification matters.
+
+The content is the bound on the cost, not just the existence of a common
+denominator. For each prime, the arithmetic argument bounds its exponent
+in every coefficient. Negative exponents require clearing denominators;
+positive exponents allow common factors to be divided out. This explains
+why $m_K$ is positive and rational, but need not be an integer. Summing the
+local contributions controls $\log m_K$.
+
+Section 7 prepares that calculation by rewriting the same functional as
+$\mu_X(R)=\tau_X(x^5R(-x^2))$. The substitution replaces poles at negative
+squares by poles at integers. It makes residue classes modulo a prime
+available for the divisibility argument. For the present overview, all
+the resulting arithmetic is contained in the estimate just stated.
+
+\textbf{Analytic estimate.}
+For all sufficiently large $K$,
+\[
+ \boxed{0<F_K(\xi)\leq\exp(-1.36K^2).}
+\]
+This is a weakened form of Lai's Proposition 11.7. Its stronger statement is
+\[
+ \log F_K(\xi)\leq
+ -1.3669955K^2+24K\log K+200K.
+\]
+After division by $K^2$, the last two terms tend to zero. The strict gap
+between $1.3669955$ and $1.36$ therefore gives the displayed estimate.
+
+One identity explains why the determinant is suited to this scale of decay.
+Andr\'eief's identity, in the form needed here, states
+\[
+ \Delta_K(\xi)=\frac1{h!}\int_{(0,\infty)^h}
+ \prod_{i<j}(y_i^2-y_j^2)^2
+ \prod_{i=1}^h A_K(y_i^2)w(y_i)\dd y_1\cdots\dd y_h.
+\]
+Taking logarithms turns the pairwise factors into a sum of logarithmic
+distances. There are on the order of $h^2$ such pairs. The remaining
+weights contribute a competing penalty. Section 11 bounds this balance
+by a logarithmic-energy argument and combines it with the factorial
+rescaling $S_K$. The analytic estimate above is the output we need;
+its proof is being taken as given.
+
+\newpage
+\section*{5. The arithmetic cost is smaller than the analytic decay}
+Define
+\[
+ Q_n(X)=m_{40n}F_{40n}(X).
+\]
+The arithmetic estimate gives $Q_n\in\Z[X]$. The positive scalar $m_{40n}$
+preserves both the degree bound and positivity, so
+\[
+ \deg Q_n\leq37n,\qquad Q_n(\xi)>0.
+\]
+For sufficiently large $n$, put $K=40n$ and add the two logarithmic estimates:
+\begin{align*}
+ \log Q_n(\xi)
+ &=\log m_K+\log F_K(\xi)\\
+ &\leq1.35K^2-1.36K^2
+ =-\frac{K^2}{100}
+ =-16n^2.
+\end{align*}
+Consequently
+\[
+ \boxed{Q_n\in\Z[X],\qquad \deg Q_n\leq37n,
+        \qquad 0<Q_n(\xi)\leq e^{-16n^2}.}
+\]
+These are exactly the properties sought at the beginning. If $\xi=a/b$,
+then $b^{37n}Q_n(a/b)$ is a positive integer and
+\[
+ 0<b^{37n}Q_n(a/b)
+ \leq\exp\bigl(37n\log b-16n^2\bigr)\longrightarrow0.
+\]
+The contradiction proves that $\zeta(5)$ is irrational, subject to the two
+stated estimates.
+
+The construction works because the determinant has modest algebraic degree
+but enough analytic decay to survive integer normalization. The positive
+moment representation prevents vanishing; the arithmetic estimate keeps
+the normalization affordable. The numerical margin need only be strictly
+positive. There is no need to retain the sharper decay constant, or to
+control the polynomial near $\xi$, for this irrationality conclusion.
+
+\bigskip
+\textbf{Source note: the arithmetic input.}
+This overview follows Chun Wing Lai,
+\href{https://ai.vixra.org/pdf/2609.0080v1.pdf}{\emph{On Fauzan's Proof that
+$\zeta(5)$ is Irrational}}, v1, 29 September 2026.
+The arithmetic input used above is the statement
+\[
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+       \frac{\log m_{K,200}}{K^2}
+ \leq A_{200}=1.3495876977\ldots<1.35,
+\]
+from Aabir Fauzan's
+\href{https://zenodo.org/records/22826419}{17 September 2026 manuscript},
+equation (5.21), with the constant evaluated in Appendix B. The strict
+inequality implies the eventual bound used on the preceding page.
+
+Lai's Theorem 9.3 and equations (106)--(107) instead include an additional
+$+E_M$. His following prose treats that positive term as a subtraction.
+The two formulations cannot be used interchangeably. Keeping the printed
+correction would require a further bound
+$E_{200}<0.017407802258\ldots$ to obtain a negative total exponent and hence
+some decay constant $c>0$, not necessarily $16$.
+The original arithmetic estimate is an additional assumed input; citing it
+does not verify or repair the disputed arithmetic. With Lai's literal
+corrected statement alone, the final numerical comparison remains
+conditional on the additional bound.
+\end{document}

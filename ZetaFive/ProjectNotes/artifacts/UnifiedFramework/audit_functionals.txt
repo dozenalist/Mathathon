@@ -1,0 +1,98 @@
+Independent audit of the functional identifications
+Date: 14 November 2026
+Scope: zeta5_unified_framework.tex, Sections 2–3 and Section 5.1; original sources/Fauzan_2026_zeta5.txt, Sections 2.4 and 3.1–3.2.
+Line numbers below refer to the synthesis before any audit corrections.
+
+Verdict
+
+I found no substantive algebraic, sign, or convergence error in the stated functional formulas on their intended domains. In particular the positive-integer-pole Abel–Plana/Hermite formula, the finite-part prescription, and the factor i/pi in the cotangent density all survive independent derivation. This conclusion is limited to the identifications audited here; it does not verify the original manuscript's determinant estimates or irrationality claim.
+
+There is one minor literal precision error: lines 282–285 identify the logarithmic derivative of the normalized sine product with the cotangent kernel. The exact derivative is pi*cot(pi*x) - 1/x. Adding this explicit formula fixes the issue. It does not change any displayed density formula.
+
+The larger issue is distinguishing explanation from verification. Most of these identities organize facts already proved in the original. They do not eliminate the Hermite integral argument, the p-adic continuity/integrality conditions, or any local allocation/certificate estimate. That does not make the interpretation unhelpful: it supplies exact relations that can make the argument substantially easier to understand. What it does not establish is a stronger estimate or independent validation of the original proof.
+
+1. Euler–Maclaurin axioms: correct, with limited explanatory force
+
+At lines 83–123, let S(u)=u^4/[24(e^u-1)]. Since S is a formal power series starting in degree 3, S(d/dx) is a well-defined finite operation on each polynomial. Its coefficients give tau(P)=sum B_k P^(k+3)(0)/(24*k!). Multiplication by e^u-1 gives the translation law. Reflection follows from e^-u S(-u)=-S(u).
+
+For a_r=tau_X(1/(x-r)), the translation law at r!=0 gives a_(r-1)-a_r=-r^-5. There are initially two translation orbits, r>=0 and r<=-1, separated by the forbidden step at a pole at zero. Reflection identifies their constants. Thus one prescribed value a_0=-X fixes exactly the stated harmonic values. Polynomial differences are surjective, so no undetermined polynomial functional remains. Partial fractions then prove existence and uniqueness on Q(x) with only simple integer poles. Allowing real coefficients requires the natural scalar extension, tacitly used later.
+
+The weighted pullback and partial fraction identity at lines 129–139 also check out. They reproduce original (3.1) and (2.2)–(2.3), which are already derived in the original. The new item is an economical uniqueness characterization of those definitions, not a new route around a hard proof.
+
+The axioms do not select X=zeta(5) and do not imply the positive integral solely from formal Bernoulli coefficients. Selecting the real realization still needs the exact Hermite identity. Matching an asymptotic series alone cannot do that: exponentially small additions preserve a Poincare expansion while changing its finite values.
+
+2. Abel–Plana/Hermite formula: correct on both sides of the origin
+
+Lines 142–153 should be read as a basis-verified Hermite representation, not a direct application of an unmodified Abel–Plana theorem to functions with right-half-plane poles. The synthesis does describe the basis argument, which is sufficient. Here is the missing explicit check most useful to a skeptical reader.
+
+Let A(g) denote the right side of eq:AP and a>0. Hermite's formula gives
+  A(1/(x+a)) = -zeta(5,a).
+Replacing a by -a only in the rational function leaves the difference of fourth derivatives on the imaginary axis unchanged, while changing the boundary term by a^-5. Therefore
+  A(1/(x-a)) = -zeta(5,a)+a^-5 = -zeta(5,a+1).
+For integer a=j these are exactly H_(j-1)^(5)-zeta(5) and H_j^(5)-zeta(5). There is no missing positive-pole residue correction in the stated formula.
+
+For polynomials, even degrees >=6 give zero on both sides, degrees 3 and 4 give 1/4 and -1/2, and the higher odd degrees reduce to Euler's even-zeta formula. Near y=0 the integrand numerator is O(y), while the denominator is of order y; at infinity exponential decay dominates rational polynomial growth. Poles at x=0 are properly excluded here.
+
+For g=x^5 R(-x^2) with R in the original domain (simple poles at negative nonzero integer squares), q(y)=y^5 R(y^2)=O(y^5) at zero. In each of the four integrations by parts, q^(j) f^(3-j)=O(y), for j=0,1,2,3. The boundary terms therefore vanish. This proves the positive density representation with the stated constant. It is an elegant organization of original Proposition 2.2; it retains exactly the same Hermite/partial-fraction input.
+
+3. Phi and its finite remainder: correct
+
+Lines 173–201 correctly state the Stieltjes transform and its normalization. In particular a^4*zeta(5,a) has leading terms 1/4+1/(2a), so both subtractions are necessary. The integer recurrence produces the +1/(2j) in the sample formula. The polygamma sign is also correct: psi^(4)(a)=-24*zeta(5,a).
+
+The finite geometric identity for 1/(a^2+y^2) gives the remainder exactly as written. Since w is positive and has every polynomial moment, the remainder has sign (-1)^m and magnitude at most mu(t^m)*a^(-2m-2). No divergent series is being treated as an equality.
+
+The original Proposition 2.2 already states and proves the very same Hurwitz/Stieltjes equality for arbitrary real a>0 (original text lines 216–228). Naming it Phi exposes the sample/asymptotic relation and adding the finite remainder is useful. Neither operation supplies the local arithmetic estimates. Also, Phi directly represents mu at X=zeta(5); the entire parameter family still needs its separate linear residue correction.
+
+4. Regularized lattice formula: correct for the explicitly chosen convention
+
+At lines 203–225, if P'''(x)=sum a_k x^k, then
+  d/dz zeta(-k,z) = -B_k(z),
+including k=0. For a simple pole, its third derivative is -6/(x-r)^4, and differentiation of -6*zeta(4,z-r) gives +24*zeta(5,z-r). Thus -FP(Z'_g)/24 equals the original polynomial functional plus the required pole values.
+
+For r>=0, the Laurent constant of zeta(5,z-r) is zeta(5)-H_r^(5); at r=-j<0 it is zeta(5,j). At r=0 the singular z^-5 term has no constant contribution, leaving zeta(5). The test g=x^3 correctly illustrates why a naive regularized sum of fourth derivatives would miss 1/4.
+
+This is an exact representation, not a proof of uniqueness of a general notion of zeta regularization. The prescription is deliberately fixed by Hurwitz continuation and finite part. Calling it an explanation of the functional's origin is an interpretation, not evidence of historical derivation or a reduction in proof obligations. It packages the Bernoulli special-value and Hurwitz recurrence identities used to define the functional.
+
+5. Cotangent, Eisenstein, and product claims
+
+For Im(z)>0,
+  pi*cot(pi*z)=-pi*i*(1+2*sum_(l>=1) exp(2*pi*i*l*z)).
+Four derivatives and division by 24 yield exactly (-2*pi*i)^5/24 times the l^4 Fourier sum. Multiplying its value at z=iy by i*y^5/pi gives (2*pi)^4*y^5/12 times that sum. Both eq:cotrow and eq:rowweight are correct, including their signs.
+
+The ordinary weight-five double Eisenstein sum vanishes by opposite-vector pairing. The single lattice row is not itself a nonzero weight-five level-one modular form. The separate identity D^5 sum sigma_-5(n)q^n = sum sigma_5(n)q^n follows directly from n^5 sigma_-5(n)=sigma_5(n), and the E6 normalization is correct. Berndt–Straub Section 5 supports the stated Eichler-integral context after its polynomial constant-term primitive is added.
+
+These observations are mathematical context, not a mechanism deriving either the arithmetic bases or the potential certificate. The synthesis correctly says this in lines 267–270. The finite sine and gamma products are also correct. Only the normalized logarithmic-derivative wording mentioned in the verdict needs correction.
+
+6. Volkenborn and the p-adic realization
+
+For polynomials, the normalized finite sums converge in Q_p to B_k on x^k; hence tau(P)=I_p(P''')/24. Telescoping directly gives
+  I_p(f(x+1))-I_p(f(x))=f'(0)
+for polynomials and in the appropriate differentiable domain. The unrestricted letter f in line 410 is mildly imprecise; add 'for polynomials (or on the stated analytic domain)' to prevent an unintended assertion for arbitrary continuous functions.
+
+Splitting finite sums into residue classes gives I_p(F)=p^-1 sum_a I_p(F(a+p*x)). Applying three derivatives supplies the additional p^-3, exactly reproducing tau's p^-4 distribution. This is another proof/interpretation of the original Bernoulli multiplication step.
+
+For p>=7, von Staudt–Clausen bounds the moments below by -1 in valuation. The first possible p-denominator occurs at B_(p-1), corresponding to polynomial degree p+2; therefore integrality through degree p+1 is correct. The bounded moments define the continuous Tate-algebra functional used in the original.
+
+The far-pole expansion follows by applying -I_p((x+a)^-4)/4, expanding geometrically. Its coefficients and alternating sign agree with the displayed formula. For positive real a the same coefficients form the asymptotic expansion of -zeta(5,a). This agreement is coefficientwise; the text correctly distinguishes real asymptotics from p-adic convergence.
+
+For near poles, the prescribed principal-part values constitute an algebraic extension, not an ordinary Volkenborn integral of a function singular on Z_p. The note acknowledges this. Setting Y=p^5 X+C_p is forced by distribution at 1/x; telescoping and reflection extend it to the other integer poles. The exact original proof of Lemma 3.2 already uses this same argument (original lines 348–378).
+
+The label Volkenborn does not imply the one-power loss estimate, low-degree exception, integrality of principal parts, or unit-separated partial fractions automatically. Those proof obligations remain. In fact the original supplies C_p in p^5 Z_p by its explicit k=0 finite-field sum and higher-term valuation bounds; the synthesis properly retains that estimate as an input rather than deriving it from a label.
+
+Recommended assessment of the claimed simplification
+
+Actual benefit: one uniqueness lemma replaces a list of separately stated defining values with a common rule; a real Hermite formula makes the positivity relation more transparent; Phi organizes two kinds of data; Volkenborn gives a familiar meaning to the polynomial functional and its dilation power. These are exact links, not merely analogies or changes of vocabulary. In particular, the axioms explain why fifth harmonic increments and a single boundary constant belong with the differentiated Bernoulli moments. Phi shows why the pole samples and polynomial moments fit the same positive measure. This can make a better argument even when its technical proof obligations stay the same.
+
+Not achieved: eliminating an independent deep estimate; deriving the specific pole weight, dimensions, bases, row allocations, prime profiles, or real certificate from modular theory; making the real and p-adic completions literally one analytic function; independently validating the original proof's final sign.
+
+The strongest safe claim is 'a clearer structural explanation with exact bridges between the analytic and arithmetic definitions, while preserving the original proof obligations.' No circular proof was found: the note assumes/retains those obligations openly. The risk is a reader mistaking that explanation for independent verification. The criterion for improvement should therefore be how much the bridges clarify dependency and motivation, not whether they shorten the paper or introduce identities absent from the original.
+
+Primary/authoritative sources consulted online
+
+- NIST DLMF 25.11, especially 25.11.3, 25.11.29, and 25.11.43: https://dlmf.nist.gov/25.11
+- NIST DLMF 4.22.1 and 4.22.3: https://dlmf.nist.gov/4.22
+- Hu, Kim, and Kim, Section 2, New identities involving Bernoulli, Euler and Genocchi numbers: https://link.springer.com/article/10.1186/1687-1847-2013-74
+- Berndt and Straub, Section 5, Ramanujan's Formula for zeta(2n+1): https://arminstraub.com/downloads/pub/ramanujanzeta.pdf
+- Original Volkenborn bibliographic record: https://www.numdam.org/book-part/MSMF_1974__39-40__375_0/
+
+All displayed identity checks above were derived directly; browsing was used to verify conventions and cited primary formulas, not as a substitute for the audit.

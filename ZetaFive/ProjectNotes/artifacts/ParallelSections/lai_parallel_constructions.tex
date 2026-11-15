@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\dd}{\,d}
+\newcommand{\Bcal}{\mathcal B}
+\newcommand{\Hfive}[1]{H_{#1}^{(5)}}
+\newcommand{\source}[1]{{\small\color{blue!45!black}Lai: #1.}\par}
+\newcommand{\pagetitle}[2]{\section*{#1}\source{#2}}
+\pagestyle{plain}
+\begin{document}
+\begin{center}
+{\LARGE Parallel constructions in Lai's sections 1--7}\\[8pt]
+{\large One functional, one bilinear form, several representations}\\[6pt]
+Explanatory draft \enspace$\cdot$\enspace 14 November 2026
+\end{center}
+
+This draft accompanies sections 1--7 of Chun Wing Lai's
+\href{https://ai.vixra.org/pdf/2609.0080v1.pdf}{\emph{On Fauzan's Proof that
+$\zeta(5)$ is Irrational}}, version 1, dated 29 September 2026.
+All source equation numbers below refer to that version. The purpose is to
+explain the relationships among the constructions introduced there.
+The Stieltjes-transform and bilinear-form language supplies an organizing
+interpretation of those formulas.
+
+\pagetitle{The organizing picture}{sections 1--3; definitions in sections 4--7}
+The apparent proliferation of objects becomes easier to follow when we ask
+two questions: \emph{Which expressions describe the same functional?}
+And \emph{which matrices describe the same pairing?}
+Write
+\[
+ \xi=\zeta(5),\qquad K=40n,\qquad N=3n,\qquad h=K-N=37n,
+ \qquad n\in\Z_{\geq1},
+\]
+and put
+\[
+ D_m(t)=\prod_{j=1}^{m}(t+j^2),\qquad
+ T(t)=\frac{D_K(t)}{D_N(t)},\qquad W(t)=D_N(t)^5.
+\]
+The main relationships are
+\[
+ \boxed{\mu_X(R)=\tau_X\!\left(x^5R(-x^2)\right)},\qquad
+ \boxed{\Bcal_X(p,q)=\mu_X\!\left(\frac{Wpq}{T}\right)}.
+\]
+Here $p,q$ range over polynomials of degree less than $h$. The first identity
+relates two presentations of a functional. The second packages the matrix
+entries into one symmetric bilinear form. The parameter $X$ is separate from
+the rational-function variables $t$ and $x$.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabular}{@{}p{.38\textwidth}p{.55\textwidth}@{}}
+\toprule
+Parallel descriptions & What the relationship explains \\
+\midrule
+Bernoulli formulas / positive moments & Algebraic values become integrals at $X=\xi$. \\
+$\mu_X$ / $\tau_X$ & A weighted substitution changes square poles into integer poles. \\
+$D_N^6/D_K$ / $W/T$ & Cancellation exposes the surviving poles. \\
+Hankel / Gram / affine matrix & Index structure, positivity, and dependence on $X$ describe one matrix. \\
+Continuous / discrete pairings & Integration proves positivity; pole evaluations prove exact degree. \\
+$\Delta_K$ / $F_K$ & A positive scalar changes normalization while preserving roots and degree. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Sections 1--3 give the setting and the target: integer polynomials of degree
+$O(n)$ whose values at $\xi$ are nonzero and decay like $e^{-cn^2}$.
+The constructions below explain how the degree and nonvanishing fit together.
+Integer normalization with a sufficiently small value requires estimates
+beyond section 7; those estimates are outside this draft.
+
+\newpage
+\pagetitle{One functional: algebraic values and positive moments}
+{section 4, equations (11)--(26)}
+Let $\Hfive{j}=\sum_{v=1}^{j}v^{-5}$, with $\Hfive{0}=0$, and use
+Bernoulli numbers with $B_1=-1/2$. A rational function with only simple poles
+at negative integer squares has a unique finite decomposition
+\[
+ R(t)=P(t)+\sum_{j\geq1}\frac{c_j}{t+j^2}.
+\]
+It therefore suffices to specify a linear functional on monomials and simple
+pole terms. The definitions are
+\begin{align*}
+ \mu_X(t^e)&=\frac{(-1)^e B_{2e+2}(2e+3)(2e+4)(2e+5)}{24},\\
+ \mu_X\!\left(\frac1{t+j^2}\right)
+ &=j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j}.
+\end{align*}
+The polynomial part is independent of $X$; only the pole part varies.
+For example, $\mu_X(1)=5/12$ and $\mu_X((t+1)^{-1})=X-3/4$.
+
+At $X=\xi$, these two clauses agree with a single positive integral:
+\[
+ \mu_\xi(R)=\int_0^\infty R(y^2)w(y)\dd y,\qquad
+ w(y)=\frac{(2\pi)^4y^5}{12}\sum_{\ell\geq1}\ell^4e^{-2\pi\ell y}>0.
+\]
+The integral converges for all rational functions in the stated domain:
+they have no poles on $[0,\infty)$, the weight stays bounded near zero,
+and its exponential decay controls polynomial growth at infinity.
+For a monomial, integration term by term gives
+\[
+ \int_0^\infty y^{2e}w(y)\dd y
+ =\frac{(2e+5)!}{12(2\pi)^{2e+2}}\zeta(2e+2).
+\]
+Euler's formula for the even zeta value turns this into the Bernoulli formula.
+Thus the signs and factorials encode moments of a positive weight.
+
+The pole values have a complementary description. Define
+\[
+ \Phi(a)=\int_0^\infty\frac{w(y)}{a^2+y^2}\dd y
+ =a^4\zeta(5,a)-\frac1{2a}-\frac14,\qquad a>0.
+\]
+At $a=j$, the identity
+$\zeta(5,j)=\xi-\Hfive{j}+j^{-5}$ gives exactly
+$\Phi(j)=\mu_\xi((t+j^2)^{-1})$.
+In the variable $z=a^2$, $\Phi(\sqrt z)$ is the Stieltjes transform of
+$\dd\nu(t)=w(\sqrt t)\dd t/(2\sqrt t)$.
+
+This same transform also contains the polynomial moments. A finite geometric
+expansion, for any integer $m\geq1$, gives
+\[
+ \Phi(a)=\sum_{e=0}^{m-1}\frac{(-1)^e\mu_\xi(t^e)}{a^{2e+2}}
+ +\frac{(-1)^m}{a^{2m}}\int_0^\infty
+       \frac{y^{2m}w(y)}{a^2+y^2}\dd y.
+\]
+The remainder has absolute value at most $\mu_\xi(t^m)a^{-2m-2}$.
+The two definitions of $\mu_\xi$ are therefore linked as integer samples
+and asymptotic coefficients of one transform. This is a finite remainder
+identity, not an assertion that the resulting infinite series converges.
+
+\newpage
+\pagetitle{The Bernoulli functional and the weighted pullback}
+{section 7, equations (49)--(59), compared with section 4}
+Define $L(x^k)=B_k$ and
+\[
+ \tau(P)=\frac{L(P''')}{24},\qquad
+ \tau_X\!\left(\frac1{x-r}\right)=\Hfive{d(r)}-X,
+ \qquad
+ d(r)=\begin{cases}r,&r\geq0,\\-r-1,&r<0.\end{cases}
+\]
+Extend linearly to polynomial parts and simple integer poles. The third
+derivative is essential: it supplies three consecutive factors and lowers
+the Bernoulli index by three.
+
+To see the Bernoulli summation structure explicitly, let $\partial=d/dx$.
+For a polynomial $P$,
+\[
+ \tau(P)=\frac1{24}\sum_{k\geq0}\frac{B_k}{k!}P^{(k+3)}(0).
+\]
+This is a finite sum. Its formal symbol is
+$u^4/(24(e^u-1))$, obtained from the Bernoulli generating function
+$u/(e^u-1)$ by multiplying by $u^3/24$. The familiar Bernoulli summation
+operator thus explains the polynomial part of $\tau$ without adding a new
+functional.
+
+Now define the linear map
+\[
+ (\mathcal T R)(x)=x^5R(-x^2).
+\]
+The claim is $\mu_X=\tau_X\circ\mathcal T$. It can be checked on the two
+parts of the partial-fraction basis.
+
+For $R(t)=t^e$, the transformed expression is $(-1)^ex^{2e+5}$, so
+\[
+ \tau_X\bigl((-1)^ex^{2e+5}\bigr)
+ =\frac{(-1)^e(2e+5)(2e+4)(2e+3)B_{2e+2}}{24}
+ =\mu_X(t^e).
+\]
+For a pole, polynomial division and partial fractions give
+\[
+ \frac{x^5}{j^2-x^2}
+ =-x^3-j^2x-\frac{j^4}{2}
+       \left(\frac1{x-j}+\frac1{x+j}\right).
+\]
+Since $\tau(-x^3)=-1/4$, $\tau(-j^2x)=0$, $d(j)=j$ and $d(-j)=j-1$,
+\begin{align*}
+ \tau_X\!\left(\frac{x^5}{j^2-x^2}\right)
+ &=-\frac14-\frac{j^4}{2}
+       \left(\Hfive{j}+\Hfive{j-1}-2X\right)\\
+ &=j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j}.
+\end{align*}
+The last step uses $\Hfive{j}-\Hfive{j-1}=j^{-5}$.
+Linearity proves the identity for every admissible $R$.
+
+This is a weighted pullback: both $t=-x^2$ and the factor $x^5$ matter.
+The pole $t=-j^2$ becomes the pair $x=j,-j$. The apparent asymmetry of
+$d(r)$ supplies the harmonic increment that produces $1/(2j)$.
+The $t$-description exposes positivity on $t=y^2\geq0$; the
+$x$-description exposes integer pole locations.
+
+\newpage
+\pagetitle{One modifier and one bilinear form}
+{section 5, equations (27), (31)--(38)}
+The modifier in the matrix entries has two equal expressions:
+\[
+ A(t):=\frac{D_N(t)^6}{D_K(t)}
+       =\frac{D_N(t)^5}{T(t)}=\frac{W(t)}{T(t)},\qquad
+ T(t)=\prod_{k=N+1}^K(t+k^2).
+\]
+The first expression displays the original construction. The second makes
+cancellation explicit: poles at $-1^2,\ldots,-N^2$ disappear, leaving exactly
+$K-N=h$ simple poles. The zeros at the canceled locations have order five.
+
+For $E=\Q[t]_{<h}$ define
+\[
+ \Bcal_X(p,q)=\mu_X\bigl(A(t)p(t)q(t)\bigr),\qquad p,q\in E.
+\]
+The rational function inside $\mu_X$ has only the allowed simple poles.
+This form is symmetric and bilinear. In the basis $1,t,\ldots,t^{h-1}$,
+its matrix is
+\[
+ G_K(X)=\bigl[\Bcal_X(t^i,t^j)\bigr]_{0\leq i,j<h}
+       =\bigl[\mu_X(A(t)t^{i+j})\bigr]_{0\leq i,j<h}.
+\]
+Three descriptions of this matrix now follow from three ways of reading
+the same formula.
+
+\textbf{Hankel structure.} The entry depends on $i+j$, so entries are constant
+along each anti-diagonal. This is a statement about the monomial coordinates.
+
+\textbf{Gram structure.} At $X=\xi$, extend the form to real polynomials.
+The integral representation gives
+\[
+ \Bcal_\xi(p,q)=\int_0^\infty p(y^2)q(y^2)A(y^2)w(y)\dd y.
+\]
+Thus $G_K(\xi)$ is the Gram matrix of $1,y^2,\ldots,y^{2h-2}$ for the
+positive measure $A(y^2)w(y)\dd y$. A nonzero polynomial has only finitely
+many zeros, so $\Bcal_\xi(p,p)>0$ for $p\ne0$. Consequently
+$G_K(\xi)$ is positive definite and $\det G_K(\xi)>0$.
+
+\textbf{Affine dependence on $X$.} Write
+\[
+ A(t)t^{i+j}=P_{ij}(t)+\sum_{k=N+1}^K\frac{c_k^{ij}}{t+k^2},
+ \qquad
+ c_k^{ij}=\frac{W(-k^2)(-k^2)^{i+j}}{T'(-k^2)}.
+\]
+The polynomial term contributes no $X$, and every pole contributes linearly.
+It follows that $G_K(X)=G_0+XG_1$. Such a family is called an affine matrix
+pencil. Here $G_0=G_K(0)$, while $(G_1)_{ij}=\sum_k c_k^{ij}k^4$.
+The polynomial part must be retained: it is zero when $i+j+6N-K<0$,
+and otherwise has degree $i+j+6N-K$.
+
+The pullback gives a further expression for this same form:
+\[
+ \Bcal_X(p,q)=\tau_X\!\left(x^5 A(-x^2)p(-x^2)q(-x^2)\right).
+\]
+No additional determinant is introduced by changing functional notation.
+
+\newpage
+\pagetitle{Continuous and discrete evaluations of the matrix}
+{sections 5--6, equations (36), (38)--(48)}
+The Gram description uses integration over $y>0$. A parallel description
+uses evaluation at the remaining poles. It describes the coefficient of
+$X$, rather than the whole positive form.
+
+For $R=P+\sum_j c_j/(t+j^2)$ put
+\[
+ \Lambda(R)=\sum_j c_jj^4.
+\]
+Then the definitions immediately give
+\[
+ \mu_X(R)=\mu_\xi(R)+(X-\xi)\Lambda(R),\qquad
+ G_K(X)=G_K(\xi)+(X-\xi)G_1.
+\]
+The single functional $\Lambda$ records all dependence on the parameter.
+It also equals the coefficient of $t^{-3}$ in the Laurent expansion of
+$R(t)$ at infinity, since
+$1/(t+j^2)=t^{-1}-j^2t^{-2}+j^4t^{-3}+\cdots$.
+
+Set $a_k=-k^2$ and
+\[
+ d_k=\frac{k^4W(a_k)}{T'(a_k)},\qquad N<k\leq K.
+\]
+The coefficient form is a finite evaluation pairing:
+\[
+ \Lambda(Apq)=\sum_{k=N+1}^K d_kp(a_k)q(a_k).
+\]
+Compare this with
+$\Bcal_\xi(p,q)=\int p(y^2)q(y^2)A(y^2)w(y)\dd y$.
+Both pairings multiply two polynomial values and then combine them with
+weights. Their supports and signs differ: the integral has positive weights
+on the positive axis, whereas the finite pairing has nonzero, generally
+signed weights at negative squares. It is not a quadrature formula for
+$\Bcal_\xi$.
+
+Let $V_{ik}=a_k^i$, with $0\leq i<h$ and $N<k\leq K$. Then
+\[
+ G_1=V\operatorname{diag}(d_k)V^{\mathsf T}.
+\]
+There are exactly $h$ distinct nodes, so $V$ is a square invertible
+Vandermonde matrix. Every $d_k$ is nonzero. Therefore $G_1$ is invertible and
+\[
+ [X^h]\det G_K(X)=\det G_1\ne0,\qquad \deg\det G_K(X)=h.
+\]
+The determinant can be evaluated explicitly. Since
+\[
+ \prod_{k=N+1}^K T'(a_k)
+ =(-1)^{h(h-1)/2}\prod_{N<k<\ell\leq K}(a_\ell-a_k)^2,
+\]
+the squared Vandermonde factors cancel, leaving
+\[
+ \boxed{\det G_1=(-1)^{h(h-1)/2}
+       \prod_{k=N+1}^K k^4D_N(-k^2)^5\in\Z\setminus\{0\}.}
+\]
+The two evaluation pictures establish different facts: continuous positivity
+gives a positive value at $\xi$; discrete nondegeneracy gives exact degree.
+The equality between matrix size and number of remaining poles is what
+makes the latter argument work so directly.
+
+\newpage
+\pagetitle{One determinant, two normalizations}
+{section 5, equations (28)--(30); section 3, Lemma 3.1}
+Define
+\[
+ \Delta_K(X)=\det G_K(X),\qquad F_K(X)=S_K\Delta_K(X),
+\]
+where
+\[
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+ {(N!)^{12h}\displaystyle\prod_{i=1}^{h-1}((2i)!)^2}>0.
+\]
+These are scalar multiples of one polynomial. Since $S_K$ is independent
+of $X$ and nonzero, $F_K$ and $\Delta_K$ have the same roots, with the
+same multiplicities, and the same degree $h$. Since $S_K>0$, both have
+positive values at $\xi$.
+
+Normalization does change the size of the coefficients and the value at
+$\xi$. In particular, the integer leading coefficient found above does not
+imply that every coefficient of $\Delta_K$ is integral. Nor does the displayed
+definition of $S_K$ alone prove $F_K\in\Z[X]$. Those are arithmetic questions
+about the full polynomial, not consequences of its degree or positivity.
+
+There is a related coordinate fact. If the basis of $E$ is changed by an
+invertible rational matrix $C$, with new basis vectors given by its columns,
+the matrix becomes $C^{\mathsf T}G_K(X)C$. Hence
+\[
+ \det\bigl(C^{\mathsf T}G_K(X)C\bigr)
+ =\det(C)^2\Delta_K(X).
+\]
+This explains why the bilinear form is the intrinsic object, while a
+determinant also records the scale of the chosen coordinates. The displayed
+$S_K$ is a specified scalar normalization; no identification of it with a
+particular change of basis is needed here.
+
+\textbf{How this meets the opening criterion.}
+The criterion in section 3 asks for $Q_n\in\Z[X]$ with degree at most $37n$
+and $0<|Q_n(\xi)|<e^{-cn^2}$ for some $c>0$. If $\xi=a/b$, then
+\[
+ 0<\bigl|b^{37n}Q_n(a/b)\bigr|
+ <\exp\bigl(37n\log b-cn^2\bigr),
+\]
+which would eventually put a nonzero integer strictly between zero and one
+in absolute value. The contradiction uses degree, integrality, nonvanishing,
+and decay together.
+
+By the end of the constructions discussed here, the form supplies
+nonvanishing, the pole evaluations supply exact degree, and the pullback
+connects the two functional languages. A further scalar multiple can always
+clear finitely many rational denominators, but its size matters: multiplying
+by a large number can destroy a small-value estimate. Controlling this cost
+together with decay is the remaining task, beyond the scope of sections 1--7.
+
+\textbf{Reading boundary.}
+The draft stops with the identities and constructions above. The continuous
+and discrete pairings are related parts of one affine family, rather than
+interchangeable positive measures. The identities organize the construction;
+they do not substitute for the later quantitative estimates.
+
+\vfill
+{\small\textbf{Source.} Chun Wing Lai, \emph{On Fauzan's Proof that
+$\zeta(5)$ is Irrational}, v1, 29 September 2026, sections 1--7,
+\href{https://ai.vixra.org/pdf/2609.0080v1.pdf}{ai.vixra.org/pdf/2609.0080v1.pdf}.
+The mathematical construction is attributed there to Aabir Fauzan.
+The transform, coefficient-functional, and coordinate explanations in this
+draft are derived reorganizations of the displayed definitions.}
+\end{document}

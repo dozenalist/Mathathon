@@ -1,0 +1,57 @@
+SECTION 7 AND APPENDIX C HANDOFF
+
+Owned outputs: 07_completion.tex, C_approximation.tex, 07_handoff.txt.
+Source coverage: all Section 7, p.21, source (7.1)-(7.2), and all
+Appendix C, pp.28-31, source (C.1)-(C.8). Source itself has only eight
+numbered C equations; our C fragment has thirteen numbered displays.
+No preamble. Section labels s7-*; Appendix C labels c-* (parent requested).
+
+Incoming definitions: K40n,N3n,h37n, alpha3/40,lambda37/40; D_N^6;
+F9,K=S_K Delta9,K; Q9,K,M=m9,K,M F9,K. Positive Gram representation.
+Integrality and normalization bound conditional on Section 5 arithmetic.
+Real bound logF9,K(xi)<=UK^2+28KlogK+200K, U=-2733991/2000000,
+cross-references s6-final and appa-measure; conditional source certificate.
+
+Section7 inputs and output:
+A9,M=A5,M+116581/57600.
+A9,*=25180312106351244019069/7535670527041937280000.
+A9,M=A9,*+7lambda/M-(2923/240-1/4)/M^2+32/M^3.
+B9,M=A9,M+U; limsup K^-2 logQ<=B9,M.
+B9,200=2.0065678921861485; B9,100000=1.9745518701599305;
+B9,*=1.9744871213528155. Correction to A*= (1554M^2-2863M+7680)/(240M^3)>0
+for M>=40. This budget cannot deliver the source negative margin.
+No irrationality or approximation conclusion claimed; hypothetical decay
+0<Q<=exp(-epsilon K^2) is stated explicitly before conditional arguments.
+
+Appendix C locally derived interfaces:
+G=G9,K(xi), MK=[X]G9,K(X), BK=G^-1/2 MK G^-1/2.
+A_K=K^(12N-2K+10), c_a=(2pi)^8 a^4/40320.
+F(a,b)=2pi sqrt b+log(1+b)-6alpha log a unchanged.
+Scaled residue rj=uj^8 product_(ell<=N)(uell^2-uj^2)^5 /
+product_(N<k<=K,k!=j)(uk^2-uj^2).
+Relative norm <=h^3/[c_a(b-a)] exp(kappa K).
+kappa=F+lambda(1-log(alpha lambda))+2lambda log R,
+Y=(2+a+b)/(b-a),R=Y+sqrt(Y^2-1).
+a1/18,b1/3 => kappa=13.86585667886529 < rho=6933/500=13.866,
+margin 0.00014332113471. Uses source elementary enclosure as named
+conditional certificate; prefactor absorbed, eventual threshold unspecified.
+
+Exact Q(xi+delta)=Q(xi)det(I+delta B). Under epsilon>0 choose
+c>lambda/epsilon, nu>rho c, K=40ceil(c logb/40); delta norm=o(1/K),
+then integer evaluation contradiction. Old epsilon79/1600,c75/4,nu260
+explicitly not imported because our B is positive.
+Height without extra decay hypothesis: logH(Q)<= (B9,M+lambda rho)K^2+o;
+lambda rho=256521/20000=12.82605. At M100000 coefficient14.80060187016.
+If negative hypothesis: replace B by -epsilon.
+Primitive PK=Delta/contQ(Delta), Q=aK,M PK with positive integer a;
+PK positive at xi and H(PK)<=H(Q). No content-size claim or new decay.
+
+Status: locally worked algebra [Derived], inherited numeric enclosure and
+arithmetic/real inputs [Conditional], missing sign [Blocked conclusion].
+No D_N^10 variant. No independent broad numerical audit. Parent handles
+assembly and render. Approximate whitespace word count1664 across fragments;
+all braces and LaTeX begin/end environment counts balance, 26 unique labels
+within the owned fragments, and exactly13 equation environments in AppC.
+One CLI numeric attempt found python absent, then
+the constants were evaluated using tool JavaScript Math; no dependencies
+installed and no files outside owned parts touched.

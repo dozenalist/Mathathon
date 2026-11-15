@@ -1,0 +1,357 @@
+FUNCTIONAL FRAMEWORK: EULER--MACLAURIN, HURWITZ ZETA, AND A RESIDUE DEFORMATION
+Research notes for the parent agent, 14 November 2026.
+
+Scope. These are exact reorganizations and derived identities for the functionals in
+Fauzan's 17 September 2026 manuscript. They do not replace the difficult arithmetic
+or potential-theoretic estimates. xi denotes zeta(5). References to the paper use
+its equation numbers. The strongest three organizing objects are:
+
+  (i) the Euler--Maclaurin symbol u^4/[24(e^u-1)];
+ (ii) its Hurwitz-zeta remainder Phi(a), a Stieltjes transform after a -> sqrt(z);
+(iii) the one-dimensional residue-at-infinity deformation that introduces X.
+
+1. THE ONE EULER--MACLAURIN FUNCTIONAL
+
+Let D=d/dx. On polynomials define
+
+  T(P) = [ D^4/(24(e^D-1)) P ](0)
+       = (1/24) [ (D/(e^D-1)) P''' ](0).
+
+Here the operator is a formal power series that terminates when applied to a
+polynomial. This is not inversion of an operator on arbitrary rational functions.
+The Bernoulli generating identity u/(e^u-1)=sum B_k u^k/k! gives
+
+  T(x^d)=d(d-1)(d-2) B_(d-3)/24   (d>=3),
+  T(1)=T(x)=T(x^2)=0.
+
+This is exactly the manuscript's tau; the Bernoulli functional L is merely the
+intermediate operator [D/(e^D-1)] at zero. Its complete exponential symbol is
+
+  T(e^(ux)) = u^4/[24(e^u-1)]  (formal generating identity).
+
+Therefore the key translation relation is structural:
+
+  T(P(x+1)-P(x)) = P^(4)(0)/24.
+
+Multiplication by e^D-1 cancels the summation denominator. This explains why the
+fourth derivative appears, and why fifth harmonic sums appear when evaluating a
+simple pole. It also explains the Bernoulli multiplication/distribution formula.
+
+The reflection relation follows from the symbol. Write A(u)=u^4/[24(e^u-1)].
+Then exp(-u) A(-u)=-A(u), hence T(P(-1-x))=-T(P(x)).
+
+2. AN AXIOMATIC DEFINITION THAT REMOVES THE DUPLICATE FORMULAS
+
+Let R_Z consist of rational functions whose polynomial part is arbitrary and whose
+poles are simple and at integers. There is exactly one Q-linear functional T_X
+with values in Q[X] satisfying:
+
+  T_X(g(x+1)-g(x)) = g^(4)(0)/24       if g is regular at zero,
+  T_X(g(-1-x)) = -T_X(g(x)),
+  T_X(1/x) = -X.
+
+Proof of uniqueness and recovery of the paper's formulas:
+
+* On polynomials, the forward-difference map is surjective. Thus the first identity
+  fixes T_X(P) for every polynomial P; the Euler--Maclaurin operator above provides
+  the solution.
+* Put a_r=T_X(1/(x-r)). For r!=0, apply the difference relation to 1/(x-r):
+      a_(r-1)-a_r = -r^(-5).
+  For positive r this gives a_r=-X+H_r^(5).
+* Reflection gives a_(-r-1)=a_r. Thus for negative r,
+      a_r=H_(-r-1)^(5)-X.
+
+Consequently the paper's polynomial and pole definitions are forced by a single
+Euler summation rule and one boundary constant X. Conversely those formulas satisfy
+all three axioms, so existence is immediate by partial fractions. The restriction
+"g regular at zero" matters: otherwise the derivative defect is undefined and the
+two half-lattices would be improperly joined across the pole.
+
+This is an accurate sense in which X is the single free constant in the singular
+extension of the Euler--Maclaurin functional. It is not a claim that the formal
+infinite differential operator converges on every rational function.
+
+3. THE REAL REALIZATION IS AN ABEL--PLANA BOUNDARY FUNCTIONAL
+
+Let f(y)=1/(e^(2*pi*y)-1). For a real rational function g, polynomial part allowed,
+with simple nonzero integer poles (so g is regular at zero), define
+
+  A(g) = [g'''(0)-g''''(0)/2]/24
+         - (i/24) integral_0^infinity
+           [g''''(iy)-g''''(-iy)] f(y) dy.
+
+This integral is absolutely convergent. Near zero the bracket is O(y), canceling
+f(y)=O(1/y); at infinity exponential decay dominates polynomial growth. It is real
+for real g. On this domain one has the exact identity
+
+  A(g)=T_xi(g), xi=zeta(5).
+
+Verification on a basis:
+
+* On polynomials, Euler's formula for the even zeta values shows
+      L(P)=P(0)-P'(0)/2
+           -i integral [P'(iy)-P'(-iy)] f(y)dy.
+  Apply this to P=g''' and divide by 24. Thus A agrees with the Bernoulli moments.
+* Hermite's Hurwitz-zeta integral gives, for j>0,
+      A(1/(x+j))=-zeta(5,j)=H_(j-1)^(5)-xi,
+      A(1/(x-j))=-zeta(5,j+1)=H_j^(5)-xi.
+  In the second identity the sign in the fourth derivative at zero changes, giving
+  the difference of 1/j^5 between the two values.
+
+No claim is made that this convergent integral evaluates 1/x: that function is
+singular at the contour endpoint. Its value -xi is the specified extension datum.
+
+Now put g(x)=x^5 R(-x^2), for R in the manuscript's rational-function domain, and
+q(y)=y^5 R(y^2). This g vanishes to order at least five at zero. Since
+
+  g''''(iy)=i q''''(y),   g''''(-iy)=-i q''''(y),
+
+the boundary terms vanish and
+
+  T_xi(x^5 R(-x^2)) = (1/12) integral q''''(y) f(y)dy
+                    = (1/12) integral q(y) f''''(y)dy
+                    = integral R(y^2) w(y)dy,
+
+where
+
+  w(y)=y^5 f''''(y)/12
+      =(2*pi)^4 y^5/12 sum_(ell>=1) ell^4 e^(-2*pi*ell*y)>0.
+
+All four integrations by parts are justified: every boundary product at zero is
+O(y), and at infinity is exponentially small. This derives the positive weight
+directly from the same Euler--Maclaurin/Abel--Plana kernel as the arithmetic
+functional. The paper's weighted pullback mu_X(R)=T_X(x^5 R(-x^2)) is the bridge.
+
+4. ONE HURWITZ-ZETA REMAINDER ENCODES BOTH KINDS OF mu VALUES
+
+Define, for a>0,
+
+  Phi(a)=a^4 zeta(5,a)-1/(2a)-1/4.
+
+Equivalently, zeta(5,a)=-psi^(4)(a)/24, so Phi is a renormalized fourth
+polygamma function. The subtraction removes the first two Euler--Maclaurin terms.
+Hermite's integral and four integrations by parts give
+
+  Phi(a)=integral_0^infinity w(y)/(a^2+y^2)dy.
+
+Thus S(z)=Phi(sqrt(z)) is a positive Stieltjes transform:
+
+  S(z)=integral_0^infinity dnu(t)/(z+t),
+  dnu(t)=w(sqrt(t))/(2*sqrt(t))dt.
+
+Its two manifestations are exactly the two clauses defining mu:
+
+* At positive integers a=j, the Hurwitz recurrence gives
+      Phi(j)=j^4(xi-H_j^(5))-1/4+1/(2j).
+  Replacing xi with X is the paper's simple-pole value.
+* Euler--Maclaurin at large a gives
+      Phi(a) ~ sum_(e>=0) (-1)^e mu(t^e) a^(-2e-2),
+  with
+      mu(t^e)=(-1)^e B_(2e+2)(2e+3)(2e+4)(2e+5)/24.
+
+The coefficients and integer samples come from ONE function. This seems the
+clearest explanation of the previously disconnected definitions.
+
+The expansion is asymptotic, generally divergent over R, not a convergent identity.
+There is a particularly transparent exact remainder from the Stieltjes formula:
+
+  Phi(a)=sum_(e=0)^(m-1) (-1)^e mu(t^e)/a^(2e+2)
+       + (-1)^m a^(-2m) integral y^(2m)w(y)/(a^2+y^2)dy.
+
+The remainder has alternating sign and absolute value at most
+mu(t^m)/a^(2m+2). This is a rigorous Euler--Maclaurin interpretation without invoking
+an infinite divergent sum as an equality.
+
+5. THE SAME FORMAL SERIES HAS A p-ADIC REALIZATION
+
+For a variable a, the manuscript's far-pole series (3.5), after s=-a, is
+
+  T^an(1/(x+a))
+    = -(1/4) sum_(k>=0) (-1)^k binom(k+3,3) B_k a^(-k-4).
+
+This is exactly the Euler--Maclaurin Laurent expansion of -zeta(5,a):
+
+  -1/(4a^4)-1/(2a^5)-(5/12)a^(-6)+(7/24)a^(-8)-...
+
+Over the reals it is an asymptotic expansion at infinity. Over Q_p it converges
+when |a|_p>1, because the Bernoulli valuations are bounded below and powers of
+a^(-1) tend to zero. Therefore the real functional and the p-adic analytic
+functional are different realizations of the same formal Euler summation data.
+They are not literally values in one common numerical field.
+
+The residue-class distribution formula is also forced by the Euler symbol:
+
+  p^(-4) sum_(a=0)^(p-1) T(e^(u(a+px)))
+  =p^(-4) [sum exp(au)] (pu)^4/[24(e^(pu)-1)]
+  =u^4/[24(e^u-1)].
+
+For singular functions the extension parameter changes to Y=p^5 X+C_p. The
+factor p^5 has two sources: the p^(-4) operator scaling and an additional p^(-1)
+from rescaling a simple pole. The additive C_p is the sum of the analytic far-pole
+contributions. This is a forced change of boundary datum, not an unrelated new
+mapping or an arbitrary adjustment.
+
+6. THE X-PARAMETER IS A RESIDUE AT INFINITY
+
+For g=P+sum c_r/(x-r), directly from the definition,
+
+  T_X(g)=T_0(g)-X sum c_r
+        =T_xi(g)-(X-xi)[x^(-1)]g.
+
+Here [x^(-1)] means the coefficient in the Laurent expansion at infinity. The
+first equality uses T_0 and rational coefficients; the second is the useful real
+interpretation. Therefore X changes one residue functional only.
+
+For R=P+sum c_j/(t+j^2),
+
+  mu_X(R)=mu_0(R)+X sum j^4 c_j
+         =mu_xi(R)+(X-xi)[t^(-3)]R.
+
+Indeed 1/(t+j^2)=t^(-1)-j^2 t^(-2)+j^4 t^(-3)-..., and polynomial parts do not
+contribute. Equivalently [t^(-3)]R=-Res_(t=infinity)(t^2 R(t)dt).
+
+This has a useful consequence for the determinant construction. Set
+
+  D=D_tail, W=D_N^5, B=t^2 W, and E=Q[t]/(D).
+
+Then the coefficient of X in the Gram bilinear form is
+
+  beta(p,q)=[t^(-1)] B(t)p(t)q(t)/D(t)
+           =sum_(D(r)=0) B(r)p(r)q(r)/D'(r).
+
+This pairing descends to E since changing p by a multiple of D adds a polynomial
+inside the coefficient extraction. It is the standard residue pairing with a
+unit multiplier B. Since D has simple roots -j^2 for N<j<=K, and B is nonzero
+at all those roots, beta is nondegenerate. In the monomial basis, its determinant
+is
+
+  (-1)^(h(h-1)/2) product_(N<j<=K) j^4 D_N(-j^2)^5.
+
+This recovers (2.9) as a residue-pairing/resultant formula. It also identifies the
+matrix M_K of Appendix C as the same pairing. This observation was sent to the
+determinant subagent for integration with the other matrix constructions.
+
+7. AN OPTIONAL SINGLE REGULARIZED HALF-LATTICE SUM
+
+There is a rigorous way to express the full real functional by one shifted zeta
+sum, including its polynomial part. This makes the relation to classical
+summation particularly explicit.
+
+For g in R_Z, define
+
+  Z_g(z)=sum_(n>=0)^(zeta-regularized) g'''(n+z).
+
+This notation has a precise definition using the unique polynomial-plus-simple-
+partial-fraction decomposition of g. Sum a monomial (n+z)^k as zeta(-k,z), and sum
+the third derivative of each proper pole term by its absolutely convergent
+Hurwitz series, continued meromorphically in z. More explicitly:
+
+  If g(x)=P(x)+sum_r c_r/(x-r), and P'''(x)=sum_k a_k x^k, then
+  Z_g(z)=sum_k a_k zeta(-k,z)-6 sum_r c_r zeta(4,z-r).
+
+Then
+
+  T_xi(g)=-(1/24) FP_(z=0) Z_g'(z).
+
+Here FP means the constant Laurent coefficient after removing polar terms.
+The verification uses only standard Hurwitz identities:
+
+* For g=x^d, d>=3,
+    Z_g=d(d-1)(d-2) zeta(3-d,z).
+  Since zeta(-k,z)=-B_(k+1)(z)/(k+1), its derivative is -B_k(z), giving exactly
+  T(x^d)=d(d-1)(d-2)B_(d-3)/24.
+* For g=1/(x-r), Z_g=-6 zeta(4,z-r), so Z_g'=24 zeta(5,z-r).
+  For r>=0,
+    zeta(5,z-r)=z^(-5)+zeta(5,z+1)+sum_(v=1)^r (z-v)^(-5),
+  with finite part xi-H_r^(5). For r=-j<0 the value is zeta(5,j).
+  Negating gives precisely H_(d(r))^(5)-xi.
+
+This prescription also handles the endpoint pole r=0, which the convergent
+Abel--Plana boundary integral in section 3 does not directly handle.
+
+On proper rational functions, it reduces to the elementary finite-part lattice
+formula
+
+  T_xi(g)=-(1/24) sum_(n>=0) FP_(x=n) g''''(x),
+
+where the finite part at each actual simple pole discards the single fifth-order
+polar term and retains contributions from all other terms of g. The sum converges.
+For a single pole at r>=0 this is the sum with n=r omitted.
+
+Crucial point: the derivative in FP Z_g'(z) is taken AFTER zeta regularization.
+For g=x^3, Z_g(z)=6 zeta(0,z)=3-6z, so T(x^3)=1/4. If one differentiated before
+regularization, one would get g''''=0 and incorrectly lose this term. Thus the
+boundary anomaly is encoded canonically by the shifted Hurwitz continuation.
+
+The manuscript's X-extension can consequently be described as replacing the one
+Hurwitz finite-part constant xi by the indeterminate X; all Bernoulli polynomial
+terms and finite harmonic sums remain rational. This regularized half-lattice
+view is exact, but it is more machinery than the elementary axiomatic definition
+in section 2. It is best used to explain the origin, not necessarily to make the
+core proof depend on regularization terminology.
+
+8. THE EXTENT AND LIMITS OF THE SIMPLIFICATION
+
+The functional family can be presented with one definition, one free constant,
+and two realizations:
+
+  Euler--Maclaurin symbol -> rational extension T_X
+     -> weighted pullback mu_X
+     -> real positive Stieltjes realization at X=xi
+     -> p-adic convergent Laurent realization and local distribution.
+
+The Bernoulli numbers, fifth harmonic sums, positive weight, and far-pole series
+are consequences of this framework. They need not appear as independent ideas.
+
+The fourth derivative and the x^5 prefactor are dictated by the desired value
+zeta(5), and the positive weight comes from four integrations by parts. Similar
+functionals exist for every odd s>=3:
+
+  T_s(P)=[D^(s-1)/((s-1)!(e^D-1)) P](0),
+  T_(s,X)(1/(x-r))=H_(d(r))^(s)-X,
+  mu_(s,X)(R)=T_(s,X)(x^s R(-x^2)),
+  w_s(y)=2 y^s f^(s-1)(y)/(s-1)! >0.
+
+This explains common odd-zeta constructions but does not make their local
+denominator bounds or final numerical inequalities identical. The fourth-order
+arithmetic cancellations in the source remain substantive.
+
+Do not present T as an ordinary real sum -sum g''''(n)/24 on the full rational
+domain. This happens to hold for decaying functions with poles only on the
+negative side, but fails already for g=x^3: the proposed sum would be zero,
+whereas T(x^3)=1/4. One must retain the Euler--Maclaurin boundary term or specify
+a suitable regularization. Similarly, the formal differential operator should
+not be treated as convergent at rational functions with nearby poles.
+
+9. PRIMARY REFERENCES CHECKED
+
+The following classical identities were checked on NIST DLMF. The organizing
+framework and residue-at-infinity observations above are deductions from those
+identities and the source manuscript, not claims quoted from DLMF.
+
+Bernoulli generating function:
+  https://dlmf.nist.gov/24.2.E1
+Bernoulli difference, reflection, multiplication:
+  https://dlmf.nist.gov/24.4.E1
+  https://dlmf.nist.gov/24.4.E3
+  https://dlmf.nist.gov/24.4.E18
+Euler--Maclaurin and Abel--Plana formulations:
+  https://dlmf.nist.gov/2.10.E1
+  https://dlmf.nist.gov/2.10.E2
+Hurwitz recurrence:
+  https://dlmf.nist.gov/25.11.E3
+Hurwitz relation to polygamma:
+  https://dlmf.nist.gov/25.11.E12
+Hurwitz values at nonpositive integers (Bernoulli polynomials):
+  https://dlmf.nist.gov/25.11.E14
+Hurwitz derivative in its second variable:
+  https://dlmf.nist.gov/25.11.E17
+Hermite integral used in manuscript Proposition 2.2:
+  https://dlmf.nist.gov/25.11.E29
+Hurwitz Euler--Maclaurin asymptotic expansion:
+  https://dlmf.nist.gov/25.11.E43
+
+Exact rational arithmetic in JavaScript BigInt independently checked the
+translation and reflection identities on all monomials of degrees 0 through 24,
+using the Bernoulli recurrence. There were no failures; the checks also give
+mu(1)=5/12 and T(x^3)=1/4. The general proofs are the operator arguments above.

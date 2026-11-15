@@ -1,0 +1,350 @@
+Independent algebra and real-analysis audit: zeta(5) to zeta(7)
+Prepared 2026-11-14. This is an exploration, not an irrationality proof.
+
+Source baseline
+---------------
+Aabir Fauzan, "zeta(5) is irrational", 17 September 2026, Zenodo v1,
+https://zenodo.org/records/22826419
+Local reference: sources/Fauzan_2026_zeta5.pdf, 32 pages.
+The PDF page numbers below are its printed page numbers, which agree with
+the PDF page count. Exact formulas were checked against the extracted text
+and the author's formulas as transcribed in:
+https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Defs.lean
+https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Functionals.lean
+https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Prop22.lean
+Those Lean files served as cross-checks, not as a new verification run.
+
+1. The first honest replacement
+------------------------------
+The original definitions are (2.2)-(2.3), p.3. Merely evaluating the old
+functional at X=zeta(7) does not produce the desired positive moment
+functional. Both its polynomial moments and its pole values must change.
+
+For any odd integer s>=3 define H_j^(s)=sum_{v=1}^j v^(-s), H_0^(s)=0.
+The following is an independently derived generalization:
+
+  mu_s(t^e) = (-1)^e B_(2e+2) (2e+3)(2e+4)...(2e+s)/(s-1)!
+  mu_(s,X)(1/(t+j^2)) = j^(s-1)(X-H_j^(s))-1/(s-1)+1/(2j).
+
+Extend by polynomial division and simple partial fractions. This is
+well-defined: the polynomial part and the residues at distinct simple
+poles are uniquely determined. Its dependence on X is affine.
+
+For s=7 this reads
+
+  mu_7(t^e) = (-1)^e B_(2e+2)
+              (2e+3)(2e+4)(2e+5)(2e+6)(2e+7)/720,
+  mu_(7,X)(1/(t+j^2)) = j^6(X-H_j^(7))-1/6+1/(2j).
+
+In particular mu_7(1)=7/12, not 7/6. This is an important factor check.
+
+2. Positivity really does survive
+--------------------------------
+The source is Proposition 2.2 and (2.10), p.5. The new positive weight is
+
+  w_s(y) = 2(2*pi)^(s-1)y^s/(s-1)! * sum_{l>=1} l^(s-1)e^(-2*pi*l*y).
+
+For s=7 its prefactor is (2*pi)^6 y^7/360. Every term is positive for y>0.
+The moment integral is
+
+  integral_0^infinity y^(2e) w_s(y)dy
+   = 2(2e+s)!/((s-1)!(2*pi)^(2e+2)) * zeta(2e+2)
+   = mu_s(t^e),
+
+using Euler's formula for the even zeta values. The first equality is a
+nonnegative sum/integral interchange followed by a gamma integral.
+
+There is a useful direct proof of the pole identity, avoiding a guess
+based on the s=5 formula. Put
+
+  Phi_s(a,c) = integral_0^infinity y^s e^(-cy)/(y^2+a^2)dy.
+
+Changing y to av shows
+
+  c^(s-1)Phi_s(a,c) = a^(s-1)Phi_s(c,a).
+
+Use this identity with a=j, c=2*pi*l in the nonnegative sum for the pole
+integral. The partial fraction expansion of coth gives
+
+  sum_{l>=1} 1/(x^2+(2*pi*l)^2)
+     = (coth(x/2)-2/x)/(4x).
+
+Consequently the pole integral equals
+
+  j^(s-1)/(2(s-1)!) * integral_0^infinity
+       x^(s-1)e^(-jx)(coth(x/2)-2/x)dx
+   = 1/(2j) + j^(s-1) sum_{n>=1}(j+n)^(-s) - 1/(s-1).
+
+In the last step use coth(x/2)=1+2 sum_{n>=1}e^(-nx) and gamma integrals.
+This is precisely the claimed mu_(s,zeta(s)) pole value. Although the
+last expression has subtractions, all individual integrals are finite
+for s>=3, so the split is legitimate. The original integral is positive.
+
+Therefore
+
+  mu_(7,zeta(7))(R) = integral_0^infinity R(y^2) w_7(y)dy
+
+for the complete rational-function domain, by linearity. The weight
+tends to 1/pi at zero and decays as a polynomial times e^(-2*pi*y) at
+infinity. In particular all polynomial moments exist.
+
+There is also a direct line-by-line transplant of the source's own
+integration-by-parts proof. Put f(y)=(e^(2*pi*y)-1)^(-1). For odd s,
+
+  w_s(y)=2 y^s f^(s-1)(y)/(s-1)!,
+  (d/dy)^(s-1)[y^s/(y^2+a^2)]
+      =(s-1)! a^(s-1) Im((a-iy)^(-s)).
+
+For the derivative identity, divide y^s by y^2+a^2. The polynomial
+quotient has degree s-2 and is annihilated. The remainder term is
+(-a^2)^((s-1)/2)y/(y^2+a^2); use y/(y^2+a^2)=Im((a-iy)^(-1)).
+The two signs from the even derivative and remainder cancel. Integrate
+by parts s-1 times. A boundary product at zero has factors O(y^(k+2))
+and O(y^(-k-1)), hence is O(y); at infinity exponential decay applies.
+Hermite's formula, cited in the source as DLMF (25.11.29), gives
+
+  integral_0^infinity w_s(y)/(y^2+a^2)dy
+      =a^(s-1)zeta(s,a)-1/(2a)-1/(s-1).
+
+At integer a=j, replace zeta(s,j) by zeta(s)-H_(j-1)^(s) to get the
+pole formula above. In particular six integrations replace four for
+zeta(7). The coth calculation provides an independent consistency check.
+
+With the original D_m(t)=product_{j=1}^m(t+j^2), N=3K/40 and h=K-N, keep
+
+  G_7,K(X)_(i,j) = mu_(7,X)(D_N(t)^6 t^(i+j)/D_K(t)).
+
+For a nonzero real polynomial q of degree below h, its quadratic form is
+
+  integral_0^infinity D_N(y^2)^6/D_K(y^2) * q(y^2)^2 * w_7(y)dy > 0.
+
+The integrand is positive except at finitely many zeros of q. Thus the
+matrix is positive definite and its determinant is strictly positive.
+There is no unwanted zeta(3) or zeta(5) in any matrix entry.
+
+3. The degree calculation also survives
+---------------------------------------
+Source: (2.9), p.4. Cancel D_N from numerator and denominator, leaving
+D_N^5/D_tail. The coefficient matrix of X is a square Vandermonde matrix,
+a nonzero diagonal matrix, and its transpose. The old diagonal factor
+j^4 becomes j^6. Hence
+
+  [X^h] det G_7,K(X)
+    = (-1)^(h(h-1)/2) product_{j=N+1}^K j^6 D_N(-j^2)^5 != 0.
+
+Thus the determinant has degree exactly h, not merely at most h.
+This statement keeps the original power D_N^6. Increasing that power to
+8 is another possible experiment, but it is not necessary for positivity
+and changes the real external field and normalization.
+
+4. A small, exact example
+-------------------------
+This is an illustrative K=2,N=0,h=2 example, outside the paper's large-K
+parameter restrictions. It checks the mechanism, not its asymptotics.
+
+  mu_(7,X)(1/(t+1)) = X-2/3,
+  mu_(7,X)(1/(t+4)) = 64X-773/12.
+
+The moment matrix is
+
+  [ -21X+85/4       85X-257/3      ]
+  [  85X-257/3     -341X+4127/12   ].
+
+Its determinant is
+
+  Delta(X) = -64X^2 + (569/6)X - 4399/144.
+
+Thus Q(X)=144Delta(X)=-9216X^2+13656X-4399 has integer coefficients,
+and Q(zeta(7)) is approximately 0.48139987525. A single small positive
+value is not an irrationality criterion: one needs a whole sequence
+whose decay beats the denominator of a hypothetical rational input.
+
+5. The transformed functional
+-----------------------------
+Sources: (3.1)-(3.7), pp.5-8. Let L(x^k)=B_k. For odd s define
+
+  tau_s(P)=L(P^(s-2))/(s-1)!,
+  tau_(s,X)(1/(x-r))=H_(d(r))^(s)-X,
+  d(r)=r if r>=0, and -r-1 otherwise.
+
+Then
+
+  mu_(s,X)(R)=tau_(s,X)(x^s R(-x^2)).
+
+For monomials this is direct differentiation. For a pole, polynomial
+division of x^s/(j^2-x^2) gives an odd polynomial whose top term is
+-x^(s-2), plus -j^(s-1)/2 times (1/(x-j)+1/(x+j)). Applying tau gives
+-1/(s-1) from the top term; the harmonic increment gives 1/(2j).
+
+Reflection remains tau(g(-1-x))=-tau(g(x)). The difference identity is
+
+  tau_(s,X)(g(x+1)-g(x))=g^(s-1)(0)/(s-1)!,
+
+for g regular at zero. For s=7, five derivatives replace three, and the
+sixth Taylor coefficient replaces the fourth. The distribution formula
+has factor p^(-6), replacing p^(-4), with Y=p^7X+C_p. This change explains
+why ordinary nonzero residue classes can lose two more powers of p.
+
+A simple example explains that loss before the determinant machinery.
+Let p>=11 be prime and j=p+1. In H_j^(s), exactly one summand has a
+denominator divisible by p: 1/p^s. Since j^(s-1) is a p-adic unit, the
+constant coefficient of mu_(s,X)(1/(t+j^2)) has valuation exactly -s.
+The change s=5 to s=7 therefore costs exactly two powers at this pole.
+At j=p, on the other hand, the factor p^(s-1) cancels all but one power
+in 1/p^s, and the remaining leading term is -1/(2p). Its valuation is
+-1 for every odd s under discussion. This is why the zero class can
+behave better than the ordinary classes.
+
+6. An actual exception at the prime 7
+------------------------------------
+The s=7 far-pole expansion is
+
+  tau_7^an(1/(z-u))
+     = -(1/6) sum_{k>=0} binom(k+5,5) B_k u^(-k-6),
+
+when v_p(u)<0. Define C_p=sum_{a=1}^{p-1}tau_7^an(1/(z+a/p)).
+For p>=11, C_p belongs to p^7 Z_p. Indeed, its k=0 term is
+
+  -(p^6/6) sum_{a=1}^{p-1}a^(-6).
+
+Since p-1 does not divide 6, the finite-field sum vanishes modulo p.
+The k=1 term has valuation at least 7; the k>=2 terms have valuation
+at least k+5>=7, by von Staudt-Clausen. These estimates also imply
+convergence.
+
+At p=7, however, the k=0 sum is -1 modulo 7. All later terms are still
+divisible by 7^7. Therefore
+
+  C_7/7^6 = 1/6 = 6 (mod 7), and v_7(C_7)=6 exactly.
+
+So the literal assertion C_p in p^7 Z_p for every p>=7 is false.
+This is a local bookkeeping exception, not the asymptotic obstruction:
+the prime 7 can be handled in the small-prime range, and C_7 is still
+integral. The large-prime argument eventually sees only p>=11.
+
+7. A favorable change in polynomial denominators
+------------------------------------------------
+Source for the s=5 comparison: pp.11-12, immediately before (4.10).
+For p>=7 the denominator 720 is a p-adic unit, and mu_7(t^e) has valuation
+at least -1. A Bernoulli denominator can occur only if p-1 divides 2e+2.
+Write 2e+2=k(p-1). For k=1,...,5 the product of five consecutive factors
+(2e+3)...(2e+7) contains kp, cancelling the Bernoulli denominator.
+
+The first uncancelled possibility is k=6, e=3p-4. Thus all polynomial
+moments with e<3p-4 are p-integral. This improves the original cutoff
+e<2p-3. With unchanged D_N^6, the polynomial correction rank is at most
+
+  max(0,K+4N-3p+3),
+
+in place of max(0,K+4N-2p+2). To check the rank, the polynomial quotient
+for entry i,j has degree at most i+j+6N-K. The correction vanishes when
+i+j<K-6N+3p-4, so its first 3p-5N-3 rows and columns vanish whenever
+that number lies between 0 and h. This gives the claimed rank bound.
+
+This improvement must not be omitted when diagnosing the arithmetic
+loss. It is not correct to assert that every part of the prime estimates
+uniformly worsens by two powers per row.
+
+8. A rigorous real-bound transplant with the same quadratic constant
+-------------------------------------------------------------------
+Sources: Section 6, especially (6.9)-(6.16), pp.19-20. Keep D_N^6,
+S_K, alpha=3/40 and lambda=37/40 exactly as in the source. Define
+F_7,K=S_K det G_7,K. The original external field is unchanged:
+
+  V(t)=2*pi*sqrt(t)+integral_0^1 log(t+u^2)du
+                      -6 integral_0^alpha log(t+u^2)du.
+
+The source's energy inequality and comparison measure therefore apply
+without alteration. What must be checked is the larger polynomial
+prefactor of w_7.
+
+For q=e^(-2*pi*y),
+
+  sum_{l>=1} l^6 q^l
+    = q(1+57q+302q^2+302q^3+57q^4+q^5)/(1-q)^7.
+
+The numerator coefficients sum to 720. Using 1-e^(-u)>=u/(1+u),
+
+  w_7(y) <= (1/pi)(1+2*pi*y)^7 e^(-2*pi*y)
+          <= 2(2*pi)^6(1+y)^7 e^(-2*pi*y)
+           < 2^19(1+y)^7 e^(-2*pi*y).
+
+The last simple bound uses pi<4. Andreief's identity remains valid,
+because exponential decay gives absolute convergence. Set y_i=K sqrt(t_i).
+Repeating (6.13), the prefactor becomes
+
+  K^[2h(h+6N-K)+18h] (2^18 e^12)^h / h!,
+
+and the remaining integral has integrand
+
+  product_(i<j)(t_i-t_j)^2
+     * product_i e^(-K V(t_i)) t_i^(-1/2)(1+sqrt(t_i))^7.
+
+The extra exponent 2h of K, compared with the original 16h, comes only
+from replacing the fifth power by the seventh power. The energy bound
+(6.9) supplies e^(-sum_i sqrt(t_i)) for integrability, and
+
+  integral_0^infinity t^(-1/2)(1+sqrt(t))^7 e^(-sqrt(t))dt
+    = 2 sum_{k=0}^7 binom(7,k) k! = 27400.
+
+The remaining linear constant is bounded by
+
+  120+sqrt(2)+12+18log(2)+log(27400) < 160.
+
+For instance sqrt(2)<1.5, log(2)<0.7 and log(27400)<10.3 suffice.
+Discarding the nonpositive term -log(h!) gives
+
+  log Delta_7,K(zeta(7))
+    <= 2h(h+6N-K)log K + (lambda M_0-I(rho))K^2
+       +20h log K+160h.
+
+Adding unchanged (6.15), the K^2 log K terms cancel. The source's
+verified potential inequality (6.4) bounds the quadratic constant by
+U=-2733991/2000000. Therefore the following transplant is rigorous:
+
+  0 < F_7,K(zeta(7)),
+  log F_7,K(zeta(7)) <= U K^2 +26K log K+200K,
+
+for K in the original positive multiples of 40. This establishes the
+same leading real decay as for zeta(5). The unresolved/failed transfer
+must therefore be sought in integrality and its normalization cost,
+not in positivity, polynomial degree, or this real decay estimate.
+
+9. Sharpening the same measure cannot close the arithmetic gap
+------------------------------------------------------------
+experiments/main_measure_certificate.py and its JSON output provide an
+additional rigorous, narrowly scoped check. At t=3/4, compute
+phi_6(t)=2U_rho(t)-V(t) for the original sixteen-component measure.
+Every admissible constant M_6 in phi_6<=M_6 satisfies M_6>=phi_6(3/4).
+Hence the certificate's real coefficient obeys
+
+  lambda M_6-I(rho)+C_6* >= lambda phi_6(3/4)-I(rho)+C_6*.
+
+Rational interval arithmetic encloses the right-hand side in
+[-1.373916736595719552, -1.373916736595719257]. The arithmetic
+coefficient can also be sharpened by exactly integrating the proposed
+piecewise affine local-cost function on [3,200], rather than using the
+source's conservative finite-interval/tail envelope. This uses 1430
+rational intervals and gives A_7,200=2.323379348180366491... .
+
+Their combined coefficient is bounded below by a number in
+[0.949462611584646939, 0.949462611584647235], and thus exceeds 9/10.
+Using the report's original A_7,200 instead gives a lower witness in
+[0.953535544479317997, 0.953535544479318293].
+
+This is not a bound on the true growth of the determinant. It shows
+that improving only these numerical enclosures, while retaining the
+same local valuation bounds, cutoff M=200, and global-potential method
+with the same comparison measure, cannot create the negative coefficient
+needed by the argument. Better valuation bounds or another measure are
+not excluded. The interval implementation reuses the separately audited
+sqrt/log/atan/Machin-pi routines in single_point_certificate.py and checks
+the interval nesting and total measure mass directly.
+
+Scope
+-----
+These notes establish successful algebraic and analytic transplants and
+identify exact changes in local bookkeeping. They do not show that every
+variant of the method fails, nor that the repaired integer polynomials
+cannot have better arithmetic than the inherited lower bounds prove.
+The parent report contains the arithmetic comparison and its limitations.
