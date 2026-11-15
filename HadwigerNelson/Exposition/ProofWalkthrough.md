@@ -725,7 +725,7 @@ So some single direction $t$ satisfies all of these at once. At that $t$, Sectio
 **What it does not change.**
 
 - **It proves the same statement.** The manuscript's theorem and the plane bound $6\le\chi(\mathbb R^2)\le7$ are unchanged. There is no global chromatic result here.
-- **It does not replace everything.** The manuscript's Lemma 6.7, the support-contact angular-step ban (`five_support_step_ban`), is still used. So is Lemma 6.3's first assertion (density one of $X$; `states_densityOne`), which the replacement does not reprove.
+- **It does not replace everything.** The manuscript's Lemma 6.7, the support-contact angular-step ban (`five_support_step_ban`), is still used; in the team's build it now has a shorter, branch-free proof under the same name (Section 35). So is Lemma 6.3's first assertion (density one of $X$; `states_densityOne`), which the replacement does not reprove.
 
 ## A fifth place to stop and respond
 
@@ -794,6 +794,7 @@ These results are ours, not the manuscript's. None of them changes the bound: **
 - **Joint-pair support theorem (the five-cycle case of Theorem 6.5, step 4).** A generic finite support theorem, and a replacement of the supplied lemma `five_support_no_sixty` with the same statement that avoids the strict-state call. Checked in Lean 4.34.1 as a standalone theorem. It is not by itself a deletion of the supplied state machinery.
 - **CC60 (about the configuration of steps 5–6; not used by the manuscript).** A local obstruction about interfaces at one common centre whose directions fit in a closed $60^\circ$ arc, for any finite number of labels. Checked in Lean 4.34.1 (Lesson 4). A 20-colour construction, proved at paper-review level, shows that the $60^\circ$ cannot be widened for arbitrary finite label sets. Six-colour sharpness is open.
 - **Common-encoding refactor (the transfer of Section 32).** A Lean simplification of the supplied spectral modules, net 126 lines shorter, checked in Lean 4.34.1. It passed a full build of the 82 affected modules, root axiom checks, and checks that the public theorem statements match the originals.
+- **Dead-code pass and branch-free step ban (S1).** It deletes 25 declarations that no root theorem uses, and proves Lemma 6.7 branch-free under its original name and statement. It is checked in Lean 4.34.1: the 27-module rebuild passes, the root theorems use only the standard axioms, and every surviving declaration keeps its statement. With the refactor and R1, the team's Lean proof is 415 lines shorter than the supplied one ([S1](../RESULTS-LEDGER.md#s1)). A further pass, S2, is still a candidate and is not counted.
 - **Finite computations.** Exact certificates about two specific unit-distance graphs derived from Heule's, and an enumeration over one finite grid of directions. They test those objects only.
 
 ## A sixth place to stop and respond
