@@ -58,7 +58,7 @@ Each main claim is marked with one of the following labels.
 \begin{itemize}
 \item \st{cited}: prior work, chiefly the supplied manuscript.
 \item \st{proved}: a paper argument that has been independently reviewed (ledger \texttt{PROVED\_\allowbreak{}PAPER\_\allowbreak{}REVIEWED}), or a short argument given in full in this report.
-\item \st{Lean 4.34.1}: checked in Lean~4.34.1 with archived logs, using only the axioms \texttt{propext}, \texttt{Classical.\allowbreak{}choice} and \texttt{Quot.sound}. The event's optional Lean track requires Lean~4.35.0. These files have \emph{not} been rebuilt under 4.35.0, so we do not call them ``Lean-verified'' in the event's sense.
+\item \st{Lean 4.34.1}: checked in Lean~4.34.1 with archived logs, using only the axioms \texttt{propext}, \texttt{Classical.\allowbreak{}choice} and \texttt{Quot.sound}. \textbf{Every Lean check in this report ran on Lean~4.34.1 with the pinned mathlib commit \texttt{d13f23b}.} The event's optional Lean track requires Lean~4.35.0. A port to 4.35.0 is in progress by a team member; until it succeeds we claim nothing beyond 4.34.1, do not claim the optional Lean-track verification, and do not call these results ``Lean-verified'' in the event's sense.
 \item \st{computation}: an exact computation over a stated finite object.
 \item \st{illustration}: a model or picture that explains a statement but is not part of any proof.
 \end{itemize}
@@ -1197,7 +1197,7 @@ The team must be able to explain every claim; the reader's question-and-answer b
 \begin{itemize}
 \item \textbf{There is no global chromatic result here.} We neither exclude six colours nor construct a six-colouring.
 \item CC60 forbids a kind of local configuration at a common centre. Nothing shows that a hypothetical six-colouring must produce it.
-\item No Lean file of ours has been built under the event's Lean~4.35.0 environment.
+\item No Lean file of ours has yet been built under the event's Lean~4.35.0 environment; a port by a team member is in progress, and nothing beyond Lean~4.34.1 is claimed.
 \item The three-centre replacement is integrated only in the team's local build R1 (Lean~4.34.1), whose contract and dependency gates pass; it has not been rebuilt under Lean~4.35.0.
 \item The exposition's referee passes are bounded checks of the explanation, not an independent verification of the supplied proof.
 \end{itemize}
