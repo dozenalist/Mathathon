@@ -19,7 +19,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | [STEPBAN-CYCLICCORE](#stepban-cycliccore) CyclicCore consumer on v2 | `LEAN_VERIFIED` (desk) | 0 realised (swap pending) | identical `#check` telescope |
 | [FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port) | `LEAN_VERIFIED` (desk) | **+61 as ported** (v1 kept); **measured +33** with v1 deleted (354→387 physical; code lines only 341→350, +9) | 30/30 signatures identical after deleting v1; structural, not a length, simplification |
 | [S1](#s1) dead-code deletion + in-place branch-free step ban (simplification desk) | `CANDIDATE`: rebuild and signature tables check out; the archived root-axiom and signature-dump logs are failed reruns | **−265 claimed and recounted** (14 files) | would make the realised total −415; not counted until the axiom print is on file |
-| [S2](#s2) S1 + 55 more unreachable declarations in the spectral, compact-factor and palette layers | `CANDIDATE`: gates not yet run (first build attempt failed and was fixed) | **−727 vs R1 claimed and recounted** (41 files; −462 beyond S1) | would make the realised total −877 (−126 −24 −727); not counted |
+| [S2](#s2) S1 + 52 more unreachable declarations in the spectral, compact-factor and palette layers | `CANDIDATE`: gates not yet run (first build attempt failed and was fixed) | **−717 vs R1 claimed and recounted** (41 files; −452 beyond S1) | would make the realised total −867 (−126 −24 −717); not counted |
 | [JOINT-SUPPORT](#joint-support) joint-pair support theorem | `LEAN_VERIFIED` (standalone) | not measured | does not by itself delete the original States development |
 | **Total realised in the integrated tree** |  | **−126 + −24 = −150 lines** (a coincidence with the rejected R4-only "−150" projection; see ENC-R4) | the step-ban swap removes a case split but adds lines; S1 (−265, CANDIDATE) would bring the total to −415 |
 
@@ -288,9 +288,9 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 ### S2
 
-**S2: S1 plus 55 more unreachable declarations deleted outside the R1 closure (−727 physical lines vs R1; gates pending)** — `CANDIDATE`
+**S2: S1 plus 52 more unreachable declarations deleted outside the R1 closure (−717 physical lines vs R1; gates pending)** — `CANDIDATE`
 
-- **Statement:** Cumulative on S1: 55 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 80 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −727 physical lines (−723 non-blank, −710 code) versus R1; −877 versus the supplied original.
+- **Statement:** Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 80 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines (−723 non-blank, −710 code) versus R1; −867 versus the supplied original.
 - **Hypotheses:** Claimed: every surviving declaration keeps its exact statement (to be checked by the signature gate).
 - **Evidence:** None yet beyond source accounting: the first 67-module rebuild attempt failed at RelativeCenters (a dangling `omit .. in` prefix left by a deletion); the deletion tool was fixed and the rebuild re-queued. No axiom-root or signature-dump log exists yet.
 - **Artifacts:**
@@ -300,9 +300,10 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json` — deleted declarations — `cd86b21d5ffbe71d…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt` — the 41 changed modules — `b536c876c4733000…`
 - **Checked by the results desk:** 2026-11-15 ~03:30Z: the 41 changed S2 sources hash to the sha256 values in MANIFEST.md; their physical lines recount to exactly −727 against the R1 tree; changed-modules.txt equals the manifest set; the other 42 S2 modules are byte-identical to R1. No compile evidence checked (none passing exists yet).
+- **Correction 2026-11-15 ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them, giving 52 deletions beyond S1 and −717 vs R1 (−867 vs the original). The −727 recount above applied to the previous version; the corrected tree has not yet been recounted by the results desk.**
 - **Provenance:** Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).
 - **Correction history:** attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/
-- **Used for:** Would bring the realised simplification to −877 lines (ENC-R4 −126, R1 −24, S2 −727 including S1).
+- **Used for:** Would bring the realised simplification to −867 lines (ENC-R4 −126, R1 −24, S2 −717 including S1).
 - **Depends on:** [S1](#s1)
 
 ### STEPBAN-V3
