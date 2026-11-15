@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T03:44Z",
+  "builtAtUtc": "2026-11-15T03:47Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -58,15 +58,15 @@
       ],
       [
         "[S1](#s1) dead-code deletion + in-place branch-free step ban (simplification desk)",
-        "`CANDIDATE`: rebuild and signature tables check out; the archived root-axiom and signature-dump logs are failed reruns",
-        "**−265 claimed and recounted** (14 files)",
-        "would make the realised total −415; not counted until the axiom print is on file"
+        "`LEAN_VERIFIED` (re-verified 03:3x–03:44Z)",
+        "**−265** (14 files; recounted)",
+        "27-module rebuild, 14 roots standard axioms, 3,094 signatures unchanged"
       ],
       [
         "[S2](#s2) S1 + 52 more unreachable declarations in the spectral, compact-factor and palette layers",
         "`CANDIDATE`: gates not yet run (first build attempt failed and was fixed)",
         "**−717 vs R1 claimed and recounted** (41 files; −452 beyond S1)",
-        "would make the realised total −867 (−126 −24 −717); not counted"
+        "would make the realised total −867 (−126 −24 −717, S2 includes S1); not counted until its gates pass"
       ],
       [
         "[JOINT-SUPPORT](#joint-support) joint-pair support theorem",
@@ -75,15 +75,15 @@
         "does not by itself delete the original States development"
       ],
       [
-        "**Total realised in the integrated tree**",
+        "**Total realised (LEAN_VERIFIED chain)**",
         "",
-        "**−126 + −24 = −150 lines** (a coincidence with the rejected R4-only \"−150\" projection; see ENC-R4)",
-        "the step-ban swap removes a case split but adds lines; S1 (−265, CANDIDATE) would bring the total to −415"
+        "**−126 + −24 + −265 = −415 lines** vs the supplied original",
+        "S2 (−717 vs R1, CANDIDATE) would make it −867"
       ]
     ],
     "strongest": [
       "[CC60](#cc60) — closed 60° cone obstruction (equality case included), Lean-verified with standard axioms; sharp for arbitrary finite palettes by the reviewed 20-colour construction [SHARPNESS-20](#sharpness-20).",
-      "[R1](#r1) and [ENC-R4](#enc-r4) — the supplied proof now compiles in the simplified form, 150 lines shorter, with the nine root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.",
+      "[ENC-R4](#enc-r4), [R1](#r1) and [S1](#s1) — the supplied proof now compiles in a simplified form 415 lines shorter, with Lemma 6.7 branch-free under its original name, every surviving statement unchanged, and the root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.",
       "A6 six-colour producer chain in Lean: [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2) (with [G1-R2](#g1-r2)), [G3-R2](#g3-r2), and [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) with the arc cover discharged; SignTable and ForcingLemma are still hypotheses there ([A6-GLUE](#a6-glue) open).",
       "[A5-FOUR-LIST](#a5-four-list) — refereed: no centre of a weak measurable 6-colouring has an actual palette containing the canonical paired palette; with the paired producer [A6-PAIRED-PRODUCER](#a6-paired-producer) (paper, its finite core Lean-verified) this excludes the paired interface configuration.",
       "[MC120-ENDPOINT](#mc120-endpoint) — refereed 19-colour counterexample: the closed-120° version of MC120 is false; [SIX-ORBIT](#six-orbit) — six direction configurations that pass every cone test are excluded by the exact relaxation.",
@@ -93,7 +93,7 @@
     "gaps": [
       "**No global chromatic result.** No reviewed proof changes any bound on χ(ℝ²) or on the measurable chromatic number.",
       "[A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.",
-      "[S1](#s1): −265 more lines on top of R1 (recounted; rebuild and signatures check out); still CANDIDATE until the root-axiom print is re-archived after a stray failed rerun overwrote it.",
+      "[S2](#s2): a further −452 lines beyond S1 (−717 vs R1, recounted), CANDIDATE until its 67-module rebuild and gates pass.",
       "[PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.",
       "[SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.",
       "[MC120-STRICT](#mc120-strict): strict MC120 is called \"accepted paper\" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.",
@@ -372,6 +372,101 @@
       ]
     },
     {
+      "id": "S1",
+      "theme": "Simplification of the supplied proof",
+      "status": "LEAN_VERIFIED",
+      "title": "S1: delete 25 unreachable declarations and make the step ban branch-free in place (−265 physical lines on top of R1)",
+      "statement": "On top of the accepted R1 tree: 25 declarations unreachable from every root are deleted (e.g. States varying_pullback_L1, near_identity_circle_in, circleEndpoint_identity_neighborhood; BoundaryTrace unit_antipodes_of_no_positive, four_split_antipodes; CyclicCore cyclicCore_closed), `five_forced_label` is replaced by `five_state_forced_label`, and `five_support_step_ban` is rewritten branch-free under its original name; empty sections removed. 14 files change: States 566→461, BoundaryTrace 367→313, CyclicCore 280→256, FiveSupport 354→337, ContinuumLimits 353→337, Interfaces 528→517, DiskExtension 611→603, AngularBoundary 503→497, FourContinuity 509→503, GraphRealization 415→410, HoleApproximation 328→323, GraphCuts 314→310, Exclusion 165→163, Sectors 453→451: net −265 physical (−255 code).",
+      "hypotheses": "Every remaining declaration keeps its exact statement (claimed and, from the signature tables, confirmed for 3,094 declarations incl. five_support_step_ban, no_proper_five_coloring, five_opposite_contacts_false).",
+      "evidence": "Re-verification (simplification desk, Lean 4.34.1 / Mathlib d13f23b): fresh 27-module closure build in s1/build-r2, logs s1/logs-r2/01–27 all exit 0; s1/logs-r2/axiomroots-s1-r2.log exit 0, 14 roots [propext, Classical.choice, Quot.sound], no sorryAx; s1/logs-r2/sigdump-s1-r2.log exit 0, writing s1/sigs-s1-r2.tsv: 3,094 common declarations unchanged vs R1, 28 removed (26 named + 2 auto equation lemmas, all absent), 1 added (five_state_forced_label). The 14 roots: the 6 spectral roots, no_proper_five_coloring, no_measurable_weak_five_coloring, no_proper_five_coloring_algebraic, properColoring_seven, weakMeasurableColoring_seven, five_support_step_ban, five_state_forced_label, five_opposite_contacts_false.",
+      "checked": "2026-11-15 ~02:50Z. PASSED: (1) the 14 S1 sources hash to the sha256 values in BANKED-S1.json and their physical line counts recount to exactly −265; the other 13 closure modules are byte-identical to R1. (2) All 27 module logs show exit 0, no error or sorry, and a logged sha256 equal to the current S1 source. (3) Comparing sigs-s1.tsv with sigs-r1.tsv myself: 3,094 common declarations identical in kind, levels, type hash, binder flags and value hash; 28 removed (26 intended + 2 auto-generated equation lemmas); 1 added (five_state_forced_label). NOT ON FILE: logs/axiomroots.log (started 02:01:31Z), logs/sigdump-s1.log (02:02:04Z) and logs/deadaudit14-s1.log all record exit 1 \"unknown module prefix OAI\", i.e. reruns after s1/build was deleted; they overwrote any passing runs. So the root-axiom print for S1 has no surviving evidence, and the provenance of sigs-s1.tsv (written 02:01:18Z) has no passing log. Requested from the simplification desk, which confirmed the incident (a surviving inner shell of a stopped chain re-ran the gates after s1/build was deleted, 02:45:47Z), downgraded S1 to CANDIDATE itself and queued s1_reverify. Status stays CANDIDATE until passing axiom-root and signature-dump logs are archived. UPGRADE ~04:00Z after the re-verification: all 27 logs in s1/logs-r2/ show exit 0, no error or sorry, and a logged sha256 equal to the current S1 source; axiomroots-s1-r2.log (started 03:41:05Z) exit 0 with 14 roots, all standard; sigdump-s1-r2.log (03:43:12Z) exit 0; my comparison of sigs-s1-r2.tsv with sigs-r1.tsv: 3,094 common, 0 differing, 28 removed, 1 added (five_state_forced_label); sigs-s1-r2.tsv is byte-identical to the earlier sigs-s1.tsv. S1 MANIFEST.md sha256 c0764686…. Status LEAN_VERIFIED.",
+      "provenance": "Simplification desk, 00:38–02:01Z (s1/, LOG.md \"S1 BANKED\" 02:01:43Z).",
+      "corrections": [
+        "CANDIDATE 02:50–04:00Z: the first passing axiom/sigdump logs were overwritten by a stray failed rerun; regenerated under new names (logs-r2) and checked"
+      ],
+      "usedFor": "Brings the realised simplification to −415 lines vs the supplied original (ENC-R4 −126, R1 −24, S1 −265); −463 code lines.",
+      "dependsOn": [
+        "R1",
+        "R1-GATES",
+        "STEPBAN-V3"
+      ],
+      "artifacts": [
+        {
+          "role": "S1 manifest (claim, per-file sha256, expected gate outputs)",
+          "workspacePath": "I/work/simplification-desk/s1/MANIFEST.md",
+          "sha256": "c076468610b1f1cf419d5cd2ef97b91c0e1781d339b9a888157eddff41496f3e",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/MANIFEST.md"
+        },
+        {
+          "role": "banked record",
+          "workspacePath": "I/work/simplification-desk/s1/BANKED-S1.json",
+          "sha256": "cb03beb06da77f378b31d856dc15a4e512e23eff65ccd71ebc5a14d8c3a184a1",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/BANKED-S1.json"
+        },
+        {
+          "role": "per-file line accounting",
+          "workspacePath": "I/work/simplification-desk/s1/line-accounting-s1.json",
+          "sha256": "79162e51db570a51e1fd1005dd800d42f7162961c28b560e56d92a1bae5d1997",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/line-accounting-s1.json"
+        },
+        {
+          "role": "deleted declarations",
+          "workspacePath": "I/work/simplification-desk/s1/dead-deletions.json",
+          "sha256": "bf403ef34c40414d3445b0d017085c13ae5c36755f1ad52b87a3aaa1c92409ce",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/dead-deletions.json"
+        },
+        {
+          "role": "first module compile log (exit 0)",
+          "workspacePath": "I/work/simplification-desk/s1/logs/01-States.log",
+          "sha256": "dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/01-States.log"
+        },
+        {
+          "role": "last module compile log (exit 0)",
+          "workspacePath": "I/work/simplification-desk/s1/logs/27-Transfer.log",
+          "sha256": "4909e50f091fccfa75eb533375c90d254c7a04e8d685e41b5f949ba64ba9e8f7",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/27-Transfer.log"
+        },
+        {
+          "role": "S1 signature table",
+          "workspacePath": "I/work/simplification-desk/s1/sigs-s1.tsv",
+          "sha256": "8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/sigs-s1.tsv"
+        },
+        {
+          "role": "root-axiom log, re-verification (exit 0, 14 roots standard)",
+          "workspacePath": "I/work/simplification-desk/s1/logs-r2/axiomroots-s1-r2.log",
+          "sha256": "02c2e87433f6b37d0b1e0a47c0f05f49e8c4304d19b15b1e83ce479d12bdb110",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs-r2/axiomroots-s1-r2.log",
+          "hashMatchesExpected": true
+        },
+        {
+          "role": "signature-dump log, re-verification (exit 0)",
+          "workspacePath": "I/work/simplification-desk/s1/logs-r2/sigdump-s1-r2.log",
+          "sha256": "5fc63e23754384e43258372768b550f73a3963567d22f785e42216a88b3d0643",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs-r2/sigdump-s1-r2.log"
+        },
+        {
+          "role": "S1 signature table (re-verification)",
+          "workspacePath": "I/work/simplification-desk/s1/sigs-s1-r2.tsv",
+          "sha256": "8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/sigs-s1-r2.tsv"
+        },
+        {
+          "role": "superseded: failed stray rerun (exit 1)",
+          "workspacePath": "I/work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log",
+          "sha256": "522675612c257677c2d5a35ba1c7e231cbe4406ee4b17f2e567e3c3911707729",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log"
+        },
+        {
+          "role": "superseded: failed stray rerun (exit 1)",
+          "workspacePath": "I/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log",
+          "sha256": "6eed4e4eafb7e29bf66a11bbc66eaec54594e9e090b339b719e8a72b5f055f0c",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log"
+        }
+      ]
+    },
+    {
       "id": "STEPBAN-CONSUMER",
       "theme": "Simplification of the supplied proof",
       "status": "LEAN_VERIFIED",
@@ -441,6 +536,23 @@
       ]
     },
     {
+      "id": "STEPBAN-SWAP",
+      "theme": "Simplification of the supplied proof",
+      "status": "LEAN_VERIFIED",
+      "title": "Branch-free step ban in the integrated tree (achieved by S1, with the v3 proof)",
+      "statement": "The integrated tree now proves Lemma 6.7 `five_support_step_ban` branch-free under its original name and statement, `five_forced_label` is gone, the downstream closure is rebuilt and the roots re-checked. This was done by S1 using the simplification desk v3 proof (shorter), not by substituting FiveSupportSwapR1 (v2, longer).",
+      "provenance": "Simplification desk S1, re-verified 03:4xZ.",
+      "checked": "See S1.",
+      "corrections": [
+        "was OPEN (planned as the FiveSupportSwapR1 substitution, +33 lines); superseded by S1 (FiveSupport 354 → 337)"
+      ],
+      "dependsOn": [
+        "S1",
+        "STEPBAN-V3"
+      ],
+      "artifacts": []
+    },
+    {
       "id": "STEPBAN-V2",
       "theme": "Simplification of the supplied proof",
       "status": "LEAN_VERIFIED",
@@ -485,6 +597,23 @@
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t222227-0.progress.json"
         }
       ]
+    },
+    {
+      "id": "STEPBAN-V3",
+      "theme": "Simplification of the supplied proof",
+      "status": "LEAN_VERIFIED",
+      "title": "Simplification desk step ban v3: branch-free, in place under the original name (now part of S1)",
+      "statement": "`five_support_step_ban` rewritten in place, branch-free, through one `decide` lemma `five_state_forced_label` (Exclusion; disjunction form `Disjoint p (fiveDiag i) ∨ Disjoint p (fiveDiag j)`) that replaces `five_forced_label`. Same statement as Lemma 6.7.",
+      "evidence": "Standalone test r3 (as five_support_step_ban_v3) passed 01:20Z, exit 0, 175.7 s, [propext, Classical.choice, Quot.sound], Expr.equal statement and binder check against five_support_step_ban passed (simplification desk LOG.md). In place, it is part of S1.",
+      "provenance": "Simplification desk, stepban/ and s1/.",
+      "checked": "The in-place version is LEAN_VERIFIED through S1: five_support_step_ban and five_state_forced_label are among the 14 roots with standard axioms in s1/logs-r2/axiomroots-s1-r2.log, and the five_support_step_ban signature row is identical to R1. The standalone r3 test log itself was not inspected.",
+      "corrections": [
+        "r1 failed (rewrite elaboration), r2 failed (Decidable synthesis), r3 passed"
+      ],
+      "dependsOn": [
+        "STEPBAN-V2"
+      ],
+      "artifacts": []
     },
     {
       "id": "THREE-CENTRE",
@@ -622,79 +751,6 @@
       ]
     },
     {
-      "id": "S1",
-      "theme": "Simplification of the supplied proof",
-      "status": "CANDIDATE",
-      "title": "S1: delete 25 unreachable declarations and make the step ban branch-free in place (−265 physical lines on top of R1)",
-      "statement": "On top of the accepted R1 tree: 25 declarations unreachable from every root are deleted (e.g. States varying_pullback_L1, near_identity_circle_in, circleEndpoint_identity_neighborhood; BoundaryTrace unit_antipodes_of_no_positive, four_split_antipodes; CyclicCore cyclicCore_closed), `five_forced_label` is replaced by `five_state_forced_label`, and `five_support_step_ban` is rewritten branch-free under its original name; empty sections removed. 14 files change: States 566→461, BoundaryTrace 367→313, CyclicCore 280→256, FiveSupport 354→337, ContinuumLimits 353→337, Interfaces 528→517, DiskExtension 611→603, AngularBoundary 503→497, FourContinuity 509→503, GraphRealization 415→410, HoleApproximation 328→323, GraphCuts 314→310, Exclusion 165→163, Sectors 453→451: net −265 physical (−255 code).",
-      "hypotheses": "Every remaining declaration keeps its exact statement (claimed and, from the signature tables, confirmed for 3,094 declarations incl. five_support_step_ban, no_proper_five_coloring, five_opposite_contacts_false).",
-      "evidence": "Simplification desk: 27-module closure rebuilt from the S1 sources, logs 01–27 exit 0; claims 14 roots on standard axioms and an identical signature dump.",
-      "checked": "2026-11-15 ~02:50Z. PASSED: (1) the 14 S1 sources hash to the sha256 values in BANKED-S1.json and their physical line counts recount to exactly −265; the other 13 closure modules are byte-identical to R1. (2) All 27 module logs show exit 0, no error or sorry, and a logged sha256 equal to the current S1 source. (3) Comparing sigs-s1.tsv with sigs-r1.tsv myself: 3,094 common declarations identical in kind, levels, type hash, binder flags and value hash; 28 removed (26 intended + 2 auto-generated equation lemmas); 1 added (five_state_forced_label). NOT ON FILE: logs/axiomroots.log (started 02:01:31Z), logs/sigdump-s1.log (02:02:04Z) and logs/deadaudit14-s1.log all record exit 1 \"unknown module prefix OAI\", i.e. reruns after s1/build was deleted; they overwrote any passing runs. So the root-axiom print for S1 has no surviving evidence, and the provenance of sigs-s1.tsv (written 02:01:18Z) has no passing log. Requested from the simplification desk, which confirmed the incident (a surviving inner shell of a stopped chain re-ran the gates after s1/build was deleted, 02:45:47Z), downgraded S1 to CANDIDATE itself and queued s1_reverify. Status stays CANDIDATE until passing axiom-root and signature-dump logs are archived. Re-verification in progress at 03:26Z: a fresh build in s1/build-r2 with logs s1/logs-r2/01–27 (18 modules done), then axiomroots-s1-r2.log and sigdump-s1-r2.log.",
-      "provenance": "Simplification desk, 00:38–02:01Z (s1/, LOG.md \"S1 BANKED\" 02:01:43Z).",
-      "usedFor": "Would bring the realised simplification to −415 lines (ENC-R4 −126, R1 −24, S1 −265).",
-      "dependsOn": [
-        "R1",
-        "R1-GATES",
-        "STEPBAN-V3"
-      ],
-      "artifacts": [
-        {
-          "role": "S1 manifest (claim, per-file sha256, expected gate outputs)",
-          "workspacePath": "I/work/simplification-desk/s1/MANIFEST.md",
-          "sha256": "0105cf6203b8a1da174e5196ab58a83df5a2b01c799085b0149840b5c58e0c57",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/MANIFEST.md"
-        },
-        {
-          "role": "banked record",
-          "workspacePath": "I/work/simplification-desk/s1/BANKED-S1.json",
-          "sha256": "e6b9527d16b371e7fb0ae8b9bac56be54c3045ac9962feb68a2f8e5bb46dacf3",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/BANKED-S1.json"
-        },
-        {
-          "role": "per-file line accounting",
-          "workspacePath": "I/work/simplification-desk/s1/line-accounting-s1.json",
-          "sha256": "79162e51db570a51e1fd1005dd800d42f7162961c28b560e56d92a1bae5d1997",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/line-accounting-s1.json"
-        },
-        {
-          "role": "deleted declarations",
-          "workspacePath": "I/work/simplification-desk/s1/dead-deletions.json",
-          "sha256": "bf403ef34c40414d3445b0d017085c13ae5c36755f1ad52b87a3aaa1c92409ce",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/dead-deletions.json"
-        },
-        {
-          "role": "first module compile log (exit 0)",
-          "workspacePath": "I/work/simplification-desk/s1/logs/01-States.log",
-          "sha256": "dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/01-States.log"
-        },
-        {
-          "role": "last module compile log (exit 0)",
-          "workspacePath": "I/work/simplification-desk/s1/logs/27-Transfer.log",
-          "sha256": "4909e50f091fccfa75eb533375c90d254c7a04e8d685e41b5f949ba64ba9e8f7",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/27-Transfer.log"
-        },
-        {
-          "role": "S1 signature table",
-          "workspacePath": "I/work/simplification-desk/s1/sigs-s1.tsv",
-          "sha256": "8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/sigs-s1.tsv"
-        },
-        {
-          "role": "root-axiom log: FAILED stray rerun (exit 1)",
-          "workspacePath": "I/work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log",
-          "sha256": "522675612c257677c2d5a35ba1c7e231cbe4406ee4b17f2e567e3c3911707729",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log"
-        },
-        {
-          "role": "signature-dump log: FAILED stray rerun (exit 1)",
-          "workspacePath": "I/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log",
-          "sha256": "6eed4e4eafb7e29bf66a11bbc66eaec54594e9e090b339b719e8a72b5f055f0c",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log"
-        }
-      ]
-    },
-    {
       "id": "S2",
       "theme": "Simplification of the supplied proof",
       "status": "CANDIDATE",
@@ -744,36 +800,6 @@
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt"
         }
       ]
-    },
-    {
-      "id": "STEPBAN-V3",
-      "theme": "Simplification of the supplied proof",
-      "status": "CANDIDATE",
-      "title": "Simplification desk step ban v3: branch-free, in place under the original name (now part of S1)",
-      "statement": "`five_support_step_ban` rewritten in place, branch-free, through one `decide` lemma `five_state_forced_label` (Exclusion; disjunction form `Disjoint p (fiveDiag i) ∨ Disjoint p (fiveDiag j)`) that replaces `five_forced_label`. Same statement as Lemma 6.7.",
-      "evidence": "Standalone test r3 (as five_support_step_ban_v3) passed 01:20Z, exit 0, 175.7 s, [propext, Classical.choice, Quot.sound], Expr.equal statement and binder check against five_support_step_ban passed (simplification desk LOG.md). In place, it is part of S1.",
-      "provenance": "Simplification desk, stepban/ and s1/.",
-      "checked": "Read the desk LOG.md line only; the standalone test log was not inspected. The in-place version is covered by the S1 checks (identical signature-table row for five_support_step_ban).",
-      "corrections": [
-        "r1 failed (rewrite elaboration), r2 failed (Decidable synthesis), r3 passed"
-      ],
-      "dependsOn": [
-        "STEPBAN-V2"
-      ],
-      "artifacts": []
-    },
-    {
-      "id": "STEPBAN-SWAP",
-      "theme": "Simplification of the supplied proof",
-      "status": "OPEN",
-      "title": "In-place swap of the step ban into the CyclicCore/FiveSupport consumer",
-      "statement": "Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Measured for FiveSupport after deleting v1: +33 physical lines (structural simplification only); deleting five_forced_label would save 3 more. The v1 deletion is verified in FiveSupportSwapR1-noV1 (30/30 signatures), but the module is not yet substituted into the tree.",
-      "provenance": "Coordinator cycles 231544, 232732 (architecture lane; hd/he capture unresolved).",
-      "dependsOn": [
-        "STEPBAN-V2",
-        "STEPBAN-CONSUMER"
-      ],
-      "artifacts": []
     },
     {
       "id": "A6-BRIDGE-R2",
@@ -1428,7 +1454,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "e3d39d833f870a3fd17e4a9d1882f1430aa9cebf0ca1886215a23352b4512f62"
+          "sha256": "6aa4b8846daaa8dd0ae42c2c4148c57126e8dbfc5bd2676a1127719bde2ae262"
         }
       ]
     },
@@ -2777,7 +2803,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "e3d39d833f870a3fd17e4a9d1882f1430aa9cebf0ca1886215a23352b4512f62"
+          "sha256": "6aa4b8846daaa8dd0ae42c2c4148c57126e8dbfc5bd2676a1127719bde2ae262"
         }
       ]
     },

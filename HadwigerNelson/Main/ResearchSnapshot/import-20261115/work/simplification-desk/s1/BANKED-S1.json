@@ -108,5 +108,10 @@
    "sha256": "7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520"
   }
  ],
- "status": "CANDIDATE: 27/27 module logs exit 0 kept; root-axiom and signature-dump logs were overwritten by a stale re-run (see LOG 02:4xZ); fresh re-verification queued (s1/logs-r2). Do not cite as LEAN_VERIFIED until those logs pass."
+ "status": "GATES PASSED (re-verification 2026-11-15 ~03:5xZ): s1/logs-r2/01..27 exit 0 sha-matched; axiomroots-s1-r2.log 14/14 standard; sigdump-s1-r2.log common 3094 changed 0 removed 28 added 1. Awaiting results-desk LEAN_VERIFIED.",
+ "gateLogs": {
+  "rebuild": "s1/logs-r2/01-27",
+  "axioms": "s1/logs-r2/axiomroots-s1-r2.log (sha256 02c2e874...)",
+  "signatures": "s1/logs-r2/sigdump-s1-r2.log (sha256 5fc63e23...), s1/sigs-s1-r2.tsv (sha256 8a93cff3...)"
+ }
 }

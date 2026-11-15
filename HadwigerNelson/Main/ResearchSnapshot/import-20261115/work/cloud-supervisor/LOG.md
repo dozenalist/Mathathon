@@ -63,3 +63,5 @@
 - 03:38Z usage: week $117.35 (23.5%), $9.11/h, projected $244.5; swarms -> 16 members / 400 steps (max).
 - 03:41Z Jarom-approved exception to freeze: S2 corrected -727 -> -717 (52 deletions; -867 vs original) in README/PROGRESS/ledger, pushed 49f745d. Freeze otherwise continues.
 - 03:42Z heartbeat: research+simplification waiting on background jobs reported <20 min ago (not pinged); results working; services alive; 1 lean.exe; coordinator cycle running.
+- 03:44Z Results batch 8 held (freeze): S2 recount confirmed -717; fixes stale IMPORT-VALIDATION hash cited on GitHub.
+- 03:46Z Jarom approved: batch 8 pushed fb0f10a. Freeze otherwise continues.

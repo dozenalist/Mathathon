@@ -35,7 +35,7 @@ Commit: [PIN: full 40-character hash of the frozen revision]}
 \maketitle
 
 \begin{abstract}
-The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that, together with a separate encoding refactor, is 150 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
+The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that, together with an encoding refactor and a dead-code and step-ban pass, is 415 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
 \end{abstract}
 
 \paragraph{How to read the status labels.}
@@ -73,7 +73,7 @@ The manuscript is accompanied by a Lean development, pinned to OpenAI commit \te
 \item \textbf{Exposition (Sections~2 and~6).} A canonical reader, \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md}. It teaches the second bridge in six lessons with checked figures, and each lesson was checked by an independent referee against the manuscript and the Lean sources.
 \item \textbf{Three-centre strict-state separation (Section~3).} A short replacement proof of the fixed-centre part of manuscript Lemma~6.3, with the identical Lean statement \st{Lean 4.34.1}.
 \item \textbf{CC60 (Section~4).} Interfaces at one common centre whose approach directions lie in a closed $60^\circ$ arc cannot leave fewer than three labels \st{Lean 4.34.1}. A 20-colour construction shows the arc cannot be widened for arbitrary palettes \st{proved}.
-\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (150 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain \st{Lean 4.34.1, conditional}: the latest bridge still assumes \texttt{SignTable} and \texttt{ForcingLemma}, and the glued statement is open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
+\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (415 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain \st{Lean 4.34.1, conditional}: the latest bridge still assumes \texttt{SignTable} and \texttt{ForcingLemma}, and the glued statement is open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
 \end{enumerate}
 [TEAM: confirm which items began before the event window; prior work ``does not count as event work''. The research records are dated 13--14 November 2026.]
 
@@ -671,8 +671,8 @@ not derived; proof-object identity is not claimed.
 % LEDGER: R1 = LEAN_VERIFIED  (mathematics reported elsewhere)
 \texttt{States} $764\to566$, \texttt{FourContinuity} $551\to509$,
 \texttt{FiveSupport} $376\to354$, \texttt{Interfaces} $527\to528$, new
-\texttt{AvoidingTrace} $+237$: net $-24$. With ENC-R4 the integrated tree is
-$-150$ lines.
+\texttt{AvoidingTrace} $+237$: net $-24$. With ENC-R4 the integrated tree was
+$-150$ lines; S1 (below) brings it to $-415$.
 % SOURCE: Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json:1 (netDelta -24; "no compile acceptance implied")
 \emph{Status:} checked in Lean~4.34.1 (archived logs): 27 modules, nine
 roots. Contract and dependency gates pass (R1-GATES, checked by computation:
@@ -681,8 +681,15 @@ declarations identical, 2 moved between modules unchanged, 8 removed (the
 strict-state branch), 6 added (the three-centre machinery)).
 % SOURCE: Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/R1-GATES.md ; RESULTS-LEDGER.md R1-GATES = TESTED_FINITE
 
-\item \textbf{Branch-free step ban (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP).}
-% LEDGER: STEPBAN-V2 = LEAN_VERIFIED ; STEPBAN-CONSUMER = LEAN_VERIFIED ; STEPBAN-CYCLICCORE = LEAN_VERIFIED ; FIVESUPPORT-SWAP = LEAN_VERIFIED ; STEPBAN-SWAP = OPEN
+\item \textbf{Dead-code pass and in-place step ban (S1, STEPBAN-V3, STEPBAN-SWAP).}
+% LEDGER: S1 = LEAN_VERIFIED ; STEPBAN-V3 = LEAN_VERIFIED ; STEPBAN-SWAP = LEAN_VERIFIED ; S2 = CANDIDATE
+On top of R1: the 25 declarations unreachable from every root are deleted; manuscript Lemma~6.7 (\texttt{five\_\allowbreak{}support\_\allowbreak{}step\_\allowbreak{}ban}) is proved branch-free in place, under its original name and statement; and \texttt{five\_\allowbreak{}forced\_\allowbreak{}label} is replaced by \texttt{five\_\allowbreak{}state\_\allowbreak{}forced\_\allowbreak{}label}. Net $-265$ physical lines (\texttt{FiveSupport} $354\to337$). The realised total against the supplied original is therefore $-126-24-265=-415$ lines. ($-463$ code lines). The deletions are sound for a mechanical reason: an audit followed every constant used in the types and proofs of the root theorems, and none of the deleted declarations occurs there. Soundness is then checked, not assumed, as follows.
+\emph{Status:} checked in Lean~4.34.1 (archived logs): the 27-module closure rebuilds with exit code~0; 14 roots, including \texttt{no\_\allowbreak{}proper\_\allowbreak{}five\_\allowbreak{}coloring}, \texttt{no\_\allowbreak{}measurable\_\allowbreak{}weak\_\allowbreak{}five\_\allowbreak{}coloring} and \texttt{five\_\allowbreak{}support\_\allowbreak{}step\_\allowbreak{}ban}, use only the standard axioms; and a signature dump against R1 finds 3,094 declarations unchanged, 28 removed (the 26 intended deletions and replacements, plus 2 auto-generated equation lemmas) and 1 added (\texttt{five\_\allowbreak{}state\_\allowbreak{}forced\_\allowbreak{}label}).
+\emph{Not shown:} S2, a further dead-code pass ($-717$ lines against R1), is a candidate whose gates are pending; it is not counted.
+% SOURCE: RESULTS-LEDGER.md S1, STEPBAN-V3, STEPBAN-SWAP (batch 9); Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/
+
+\item \textbf{Branch-free step ban, first route (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP).}
+% LEDGER: STEPBAN-V2 = LEAN_VERIFIED ; STEPBAN-CONSUMER = LEAN_VERIFIED ; STEPBAN-CYCLICCORE = LEAN_VERIFIED ; FIVESUPPORT-SWAP = LEAN_VERIFIED ; STEPBAN-SWAP = LEAN_VERIFIED (via S1)
 Let $c$ be a measurable weak 5-colouring, $x$ a five-centre, and $F_i$ the
 angular support of label~$i$. If $a\in F_i\cap F_j$ for adjacent $i,j$, then
 for almost every $t$ the angular state does not step $i\to j$ or $j\to i$
@@ -701,8 +708,8 @@ simplification: it removes a case split and one finite lemma. It does
 \emph{not} shorten the code: the port adds 61 lines, and with the old step
 ban deleted the module is still 33 lines longer ($354\to387$ physical lines;
 $+9$ code lines excluding comments). That deletion compiles with the
-remaining 30 public statements unchanged. \emph{Not shown:} adoption of the
-swap into the integrated tree with a downstream rebuild (STEPBAN-SWAP, open).
+remaining 30 public statements unchanged. This route is superseded: the
+integrated tree uses S1's shorter in-place proof (above).
 % SOURCE: RESULTS-LEDGER.md FIVESUPPORT-SWAP (FiveSupportSwapR1-noV1: exit 0; 30/30 signatures identical; 354 -> 387)
 
 \item \textbf{Joint-pair support theorem (JOINT-SUPPORT).}
@@ -1022,7 +1029,6 @@ family, canonical 3-cycle.
 % LEDGER: each item below = OPEN
 \begin{itemize}
 \item A6-GLUE: discharge \texttt{SignTable} and \texttt{ForcingLemma} inside the glued bridge (G3 is already glued in; see A6-BRIDGE-R2-G3).
-\item STEPBAN-SWAP: adopt the compiled same-name swap into the integrated tree, delete the old step ban, rebuild downstream and re-run the root axiom check (the module alone is $+33$ physical lines with the old step ban deleted: structural only).
 \item PALETTE-RIGIDITY: $|J\cup K|\ge3$ with real states on both sectors.
 \item STAIRCASE-CONVERSE: realise or classify the surviving staircases.
 \item K6-PRODUCER: two missing declarations for the $m=3$ case at $k=6$.
@@ -1065,6 +1071,7 @@ Declaration & File & Supports & Difference from prose \\
 \texttt{arcCover} & \texttt{G3-\allowbreak{}Arc\allowbreak{}Cover-\allowbreak{}r2.\allowbreak{}lean}:219 & G3-R2 & Desk compile \\
 \texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}global} & bridge \texttt{Candidate.lean}:447 & A6-BRIDGE-R2 & \texttt{SignTable}, \texttt{ForcingLemma}, \texttt{ArcCover} are hypotheses \\
 \texttt{unit\allowbreak{}Free\_\allowbreak{}pairwise\_\allowbreak{}lt}, \texttt{diam\_\allowbreak{}le\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}preconnected\_\allowbreak{}unit\allowbreak{}Free'} & \texttt{Connected\allowbreak{}Set\allowbreak{}Exclusion\allowbreak{}Minimal\allowbreak{}.\allowbreak{}lean}:62, :74 & CONNECTED-SET: connected unit-free sets have diameter $\le1$ & Sharp \\
+\texttt{five\_\allowbreak{}support\_\allowbreak{}step\_\allowbreak{}ban} (branch-free), \texttt{five\_\allowbreak{}state\_\allowbreak{}forced\_\allowbreak{}label} & S1 \texttt{FiveSupport.lean} & S1, STEPBAN-V3, STEPBAN-SWAP & Same name and statement as the supplied Lemma~6.7; the finite core is checked by \texttt{decide} \\
 \texttt{exists\_\allowbreak{}proper\allowbreak{}Coloring\_\allowbreak{}of\_\allowbreak{}compl\_\allowbreak{}null} & \texttt{KGeneric\allowbreak{}Transfer.\allowbreak{}lean}:40 & NULL-TRANSFER: proper off a null set $\Rightarrow$ some proper colouring & Need not agree with $c$ \\
 \hline
 \end{tabular}
@@ -1126,8 +1133,8 @@ No proper five-colouring of the plane; $6\le\chi(\R^2)\le7$ & \st{cited} & manus
 Three-centre proof of Lemma 6.3 (fixed centre); moving-centre four-cycle lemma; integrated build R1 & \st{proved}, \st{Lean 4.34.1} & Section 3; three-centre validation logs; R1 manifest; R1-GATES \st{computation}\\
 CC60 & \st{Lean 4.34.1} & Section 4; cone packet\\
 CC60 cannot be widened above $60^\circ$ for arbitrary finite palettes (SHARPNESS-20; 20 colours) & \st{proved} & Section 4; sharpness referee report\\
-Lean simplification of the supplied proof, 150 lines shorter (ENC-R4, R1) & \st{Lean 4.34.1} & Section 5; results ledger\\
-Branch-free step ban and its consumers (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP): structural, not shorter; adoption open & \st{Lean 4.34.1} & Section 5\\
+Lean simplification of the supplied proof, 415 lines shorter (ENC-R4, R1, S1); S2 pending & \st{Lean 4.34.1} & Section 5; results ledger\\
+Branch-free step ban (STEPBAN-V3, STEPBAN-SWAP via S1); the earlier v2 route (STEPBAN-V2, -CONSUMER, -CYCLICCORE, FIVESUPPORT-SWAP) is superseded & \st{Lean 4.34.1} & Section 5\\
 Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE) & \st{proved} & Section 5; referee reports\\
 Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
 Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\

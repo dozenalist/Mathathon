@@ -57,3 +57,5 @@
 2026-11-15T03:33:27Z answered needs_parent: 031143-0 = StepBanShort-r2 on R1, PASSED, telescopes identical; R1-4 resent verbatim; L-N4 alive (24 records)
 2026-11-15T03:37:23Z supervisor: GitHub COMMIT FREEZE (neutral inspection of c014189); research desk never pushes; continue lanes
 2026-11-15T03:38:39Z successor specs (14/350) for ended lanes: verifier (A5 caveats), graphs (exact lattice search for L-N4 target), formal (discharge bridge hyps)
+2026-11-15T03:45:37Z answered: don't stop running swarms; desk compiles contracts r2; successor specs (16/400) for architecture (pp.explicit flag contracts) and cone (hand proof of => via J-depth<=3; general (m,w) formula)
+2026-11-15T03:46:13Z referee first-pass sign-cell verdict forwarded to results desk (16/120 chambers TRUE, 62/3840 sign cells, 720 FALSE); launched independent sign-cell recount subagent; L-N4 partial: convention fix (4-sign union), no certificate yet

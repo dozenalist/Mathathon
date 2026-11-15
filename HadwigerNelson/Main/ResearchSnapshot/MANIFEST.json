@@ -92374,11 +92374,11 @@
     },
     {
       "path": "import-20261115/work/research-desk/LOG.md",
-      "bytes": 10601,
-      "sha256": "523bd6f1ea17315f142010d1dfc1e99856c6ccdd8f3f3f7206f067c4e70725eb",
+      "bytes": 11076,
+      "sha256": "05bb8ca8a9729bc8beacd71d709113dfa189f381714f793c7df44443dd83bcb0",
       "source": "research-workspace/work/research-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:38:39.559Z",
-      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+      "sourceModifiedUtc": "2026-11-15T03:46:13.664Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean",
@@ -92694,11 +92694,11 @@
     },
     {
       "path": "import-20261115/work/automation-supervisor/research-plan.json",
-      "bytes": 1235,
-      "sha256": "624ffecab16a95ef6f34f653b8c9582b788d67e01f11d18796f4f1ae17b3248b",
+      "bytes": 1065,
+      "sha256": "d577a375b8c38574241cf0deb4447bfc426ffd8f0615d614dde9b40549a2a742",
       "source": "research-workspace/work/automation-supervisor/research-plan.json",
-      "sourceModifiedUtc": "2026-11-15T03:29:09.691Z",
-      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
+      "sourceModifiedUtc": "2026-11-15T03:44:48.580Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt",
@@ -92830,18 +92830,18 @@
     },
     {
       "path": "import-20261115/work/cloud-supervisor/LOG.md",
-      "bytes": 14004,
-      "sha256": "7c2a543874fa655bc8fe50f195acf8c409bbd9db8a5b19eb9c0033dc80ebd52a",
+      "bytes": 14200,
+      "sha256": "48d5cb5db90b4811fed5fb8cd0cf86b12b787e40ddba08038b051934da36905e",
       "source": "research-workspace/work/cloud-supervisor/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:42:47.421Z",
-      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+      "sourceModifiedUtc": "2026-11-15T03:46:07.206Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 60173,
-      "sha256": "84bd2a6bad80de749fc414eaae29d1d6e7c7b6bf09aaaa21a63f7698f10abd9a",
+      "bytes": 60574,
+      "sha256": "3ce04d44dfb3df5982a117ef149f281f6569a54803d382bef1a836dd36dbf5b4",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -93693,11 +93693,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s1/BANKED-S1.json",
-      "bytes": 3753,
-      "sha256": "e6b9527d16b371e7fb0ae8b9bac56be54c3045ac9962feb68a2f8e5bb46dacf3",
+      "bytes": 3984,
+      "sha256": "cb03beb06da77f378b31d856dc15a4e512e23eff65ccd71ebc5a14d8c3a184a1",
       "source": "research-workspace/work/simplification-desk/s1/BANKED-S1.json",
-      "sourceModifiedUtc": "2026-11-15T02:46:25.449Z",
-      "capturedAtUtc": "2026-11-15T02:49:25.272Z"
+      "sourceModifiedUtc": "2026-11-15T03:45:20.792Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s1/line-accounting-s1.json",
@@ -93733,11 +93733,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/LOG.md",
-      "bytes": 8465,
-      "sha256": "c651963932eb840f9067cea7d06dd1b7af0bf08037b341d3d85553a0d6383b2a",
+      "bytes": 8735,
+      "sha256": "09363cfd71298a61c63bd6e7e0ab985f30c84deec761d6bf711c9348b6ea63c9",
       "source": "research-workspace/work/simplification-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:38:56.092Z",
-      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+      "sourceModifiedUtc": "2026-11-15T03:45:21.463Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/work/results-desk/L-R1/R1-1-followup-d.txt",
@@ -94013,11 +94013,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s1/MANIFEST.md",
-      "bytes": 4411,
-      "sha256": "0105cf6203b8a1da174e5196ab58a83df5a2b01c799085b0149840b5c58e0c57",
+      "bytes": 4714,
+      "sha256": "c076468610b1f1cf419d5cd2ef97b91c0e1781d339b9a888157eddff41496f3e",
       "source": "research-workspace/work/simplification-desk/s1/MANIFEST.md",
-      "sourceModifiedUtc": "2026-11-15T03:12:21.439Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:45:09.542Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/MANIFEST.md",
@@ -94570,6 +94570,30 @@
       "source": "research-workspace/work/simplification-desk/s1/logs-r2/axiomroots-s1-r2.log",
       "sourceModifiedUtc": "2026-11-15T03:43:11.601Z",
       "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T034153.json",
+      "bytes": 3004,
+      "sha256": "813f9a1844c95d6776a10fc74034ded3af23ff0d6b4f52227dab768cd63b7485",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T034153.json",
+      "sourceModifiedUtc": "2026-11-15T03:44:48.644Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/sigdump-s1-r2.log",
+      "bytes": 3099,
+      "sha256": "5fc63e23754384e43258372768b550f73a3963567d22f785e42216a88b3d0643",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/sigdump-s1-r2.log",
+      "sourceModifiedUtc": "2026-11-15T03:45:02.040Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/sigs-s1-r2.tsv",
+      "bytes": 426665,
+      "sha256": "8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7",
+      "source": "research-workspace/work/simplification-desk/s1/sigs-s1-r2.tsv",
+      "sourceModifiedUtc": "2026-11-15T03:45:00.858Z",
+      "capturedAtUtc": "2026-11-15T03:47:22.423Z"
     }
   ]
 }

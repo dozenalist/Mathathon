@@ -16,7 +16,7 @@ Timing: roughly 80 seconds per slide, with slides 5, 9 and 10 longer and 1, 13 a
 10. **CC60 [§4].** Read the hypotheses slowly: signed directions, a closed 60° arc, zero-area exclusions. The sets need not be connected. Point to the red overlap in the figure.
 11. **Sharpness [§4].** A 20-colour construction defeats every wider cone. Six-colour sharpness and novelty are *not* established.
 12. **Further local results [§5].** The four-list obstruction (refereed), even walks (Lean), and the producer pieces (still conditional).
-13. **Computations and corrections [§5].** Exact certificates. The 95 → 174 recount. The MC120 closed-120° claim was false, as shown by a 19-colour counterexample. Simplification: 150 lines shorter.
+13. **Computations and corrections [§5].** Exact certificates. The 95 → 174 recount. The MC120 closed-120° claim was false, as shown by a 19-colour counterexample. Simplification: 415 lines shorter (126 + 24 + 265). A further pass, S2, is still a candidate and is not counted.
 14. **Honest status [§7–10].** The Lean 4.34.1 vs 4.35.0 gap, how AI was used, and how sure we are.
 
 ## Likely questions, with short answers

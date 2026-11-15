@@ -1,6 +1,6 @@
 # S1 banking manifest (simplification desk)
 
-Generated 2026-11-15T03:12Z by `tools/make_manifest.py s1`. Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; all desk runs are local, one Lean process at a time.
+Generated 2026-11-15T03:45Z by `tools/make_manifest.py s1`. Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; all desk runs are local, one Lean process at a time.
 
 ## Claim
 
@@ -45,4 +45,6 @@ The deleted declarations are listed in `s1/dead-deletions.json` (module, start, 
 
 ## Results
 
-- Rebuild: 10/27 module logs have exit 0 with a sha256 that matches the current source (10 logs present).
+- Rebuild: 27/27 module logs have exit 0 with a sha256 that matches the current source (27 logs present).
+- Root axioms (s1/logs-r2/axiomroots-s1-r2.log): exit 0; 14/14 roots standard-only; sorryAx present: False.
+- Signature dump (s1/logs-r2/sigdump-s1-r2.log): exit 0; common 3094, changed 0, removed 28, added ['OAI.EuclideanFiveColor.five_state_forced_label']; FORBIDDEN_ABSENT 26, FORBIDDEN_PRESENT 0.
