@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T04:10Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T05:01Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -48,14 +48,14 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Simplification of the supplied proof | 13 | 1 | 1 | 1 |  |  |  |
-| New mathematics | 9 | 6 | 10 | 20 |  |  | 6 |
+| New mathematics | 9 | 8 | 10 | 18 |  |  | 6 |
 | Negative results and counterexamples | 1 | 7 | 6 | 7 |  | 8 |  |
 | Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
 
 ## Index
 
 - **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [S1](#s1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-SWAP](#stepban-swap) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [STEPBAN-V3](#stepban-v3) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `TESTED_FINITE`, [S2](#s2) `CANDIDATE`
-- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
+- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [MC120-STRICT](#mc120-strict) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
 - **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [LN2-COUNTERMODEL](#ln2-countermodel) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
 - **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
 
@@ -493,6 +493,21 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Used for:** Endpoint of the A6 paired-producer route (A6-PAIRED-PRODUCER + A5 ⇒ False).
 - **Caveats:** Finite existence only: walk coordinates and vertex count are not enumerated (see A5-ODD-WALK, A5-SLIVER). Not Lean-checked; EVENWALK-R6 now supplies the generic Lean list/parity lemmas but the A5 configuration itself is not formalised. Does not by itself exclude any interface configuration.
 
+### A6-PAIRED-PRODUCER
+
+**A6 paired producer: paired interface directions force the canonical palette (hence False with A5)** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** For measurable WeakColoring 6, one centre x and six actual `ApproachingContinuum x K_i v_i` with v0=v1=e(0), v2=v3=e(2π/3), v4=v5=e(4π/3) and exclusions E_i={i,i+1}: the OUT/IN hits and `palette_sixty_disjoint` force f=(1,5,3,1,5,3), hit sets ({3,4,5},{1,2,3},{0,1,5})×2 and second labels g=(4,2,0,4,2,0), so the canonical paired palette P ⊆ palette a.e.; with A5-FOUR-LIST this gives False. Extends to common rotations; a colour renaming transports the statement; a reflection is a rotation composed with a renaming (referee C3, C4).
+- **Hypotheses:** Actual common-interface hypotheses at one centre with the EXACT three-fold paired direction pattern (referee C1: no neighbourhood or perturbed pairing is covered; the ε > 0 failure is the witness). Hit reading Q_j ∩ T_j ≠ ∅, not containment (C5). Period 180° (C2).
+- **Evidence:** Independent adversarial referee (OMM referee lane chat-2345d7f398, swarm smwh90qeq), R1-4-REFEREE: ACCEPT WITH CORRECTIONS. The finite core and the a.e. bridge are correct; the forcing uses no palette-cardinality premise (CHECK-A6.py part F: all 64 subsets allowed, exactly one solution); composition with A5 is modus ponens. Table and forcing recomputed from cosine signs by CHECK-A6.py (sha256 821422505c8abb85863bd9f9977e936834d6df04c7943e36ce4fb178db89a972). Earlier: ASTRA-PAIRED-PRODUCER-A6 audit; parent check of the six-row table. Formal status: the finite core is LEAN_VERIFIED (A6-FORCING) and the a.e. bridge compiles conditionally (A6-BRIDGE-R2); glue open (A6-GLUE).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-1-R1-4-REFEREE.md` — independent referee verdict R1-4 (ACCEPT WITH CORRECTIONS) — `15a48005bf7f006d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-PRODUCER-A6.txt` — paper — `2a7e4aed6b6db4eb…`
+- **Checked by the results desk:** Exposition desk (ledger owner) read the referee report in full ~05:05Z; CHECK-A6.py not re-run by the desk. Referee scope: no chromatic-number claim; nothing about unpaired or nearly paired directions or other centres. A5 is taken on the parent statement (A5-FOUR-LIST), with P normalised as period 180°, A_0 on (−30°,30°).
+- **Provenance:** Astra A6 lane + parent; check-in 18:35:22Z.
+- **Correction history:** formal coordinator claimed "A6 table false" after misreading hit sets as containment; retracted (RESEARCH-STATUS); A6-CONTAINMENT formalises why containment is vacuous
+- **Depends on:** [A5-FOUR-LIST](#a5-four-list), [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2)
+
 ### AC-ALIGNED
 
 **Aligned exclusion (AC): same signed direction leaves at least three labels** — `PROVED_PAPER_REVIEWED`
@@ -505,6 +520,20 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt` — referee (ACCEPT) — `56c5d614f875471b…`
 - **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
 - **Provenance:** Astra A2 lane, 2026-11-14 ~09:02Z; check-in 16:53:26Z.
+
+### MC120-STRICT
+
+**Strict MC120: one residual label forbids a cone of aperture < 120°** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** For actual same-centre continua with support exclusions leaving ≤ 1 residual label, the directions cannot lie in a cone of aperture strictly < 120°. (Table: ≥4 excluded ⇒ ≤60° forbidden (CC60); ≥5 ⇒ <120°; 6 ⇒ <180°.)
+- **Evidence:** Independent adversarial referee (OMM referee lane chat-2345d7f398, swarm smwh90qeq), R1-3-REFEREE: ACCEPT WITH CORRECTIONS, no mathematical gap; two swarm members independently confirmed the arc lemma and the input-side/strip audit (referee checks CHECK-120.py, CHECK-ORBIT.py; member checks m2_arc_check.py, m2_threshold_check.py, m1_checks.py). Every hypothesis anchored to the supplied sources (Coloring.lean:27; AngularBoundary.lean:147, :235, :244, :259, :279, :317; Rigidity.lean:171). Earlier: ASTRA-CONTINUOUS-SIX-A4 §4–5; compactness step re-verified in MC120-ENDPOINT-CORRECTION; RESEARCH-STATUS calls it "accepted paper", but no referee verdict file exists; the Lean wrapper (StrictMC120) is uncompiled.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md` — independent referee verdict R1-3 (ACCEPT WITH CORRECTIONS) — `0b295e593daf9438…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt` — paper — `70a91bc5d72681f2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt` — parent correction note — `ce20448c29cb9091…`
+- **Checked by the results desk:** Exposition desk (ledger owner) read the referee report in full ~05:05Z; referee and member scripts were not re-run by the desk.
+- **Provenance:** Astra A4 lane; check-ins 18:15:21Z, 19:18:20Z.
+- **Caveats:** Closed 120° is false (MC120-ENDPOINT); the theorem is silent at aperture exactly 120° (referee C6). Finiteness of the family is load-bearing (C6: K_n = {0,(1/n,0)} witness). The span L is the minimal closed arc containing the directions, not the pairwise diameter (C1); the uniform strip needs a closed sub-arc and a finite subcover, since the strip width has no lower bound on the open arc (C2); the empty-residual case J = ∅ is immediate (C3). No Lean build.
 
 ### NR-TC
 
@@ -623,7 +652,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `590a49ef0f4b2a5a…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `61264ca9e5d1d53a…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -751,26 +780,12 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 **A6 corollaries: ≤3 distinct directions impossible; uniform ε₀-neighbourhood of the paired configuration** — `CANDIDATE`
 
 - **Statement:** Under the common actual hypotheses the six edge directions cannot take ≤ 3 distinct values (CC60 ⇒ matching blocks; strict MC120 ⇒ 120° spacing; A6+A5 excludes it). There is ε₀ = min(η/4, π/24) > 0 such that every independent perturbation within ε₀ of the paired configuration is impossible.
-- **Hypotheses:** Explicitly conditional on strict MC120 (MC120-STRICT), which has no referee file.
+- **Hypotheses:** Conditional on strict MC120 (MC120-STRICT, refereed ACCEPT WITH CORRECTIONS ~05:00Z) and on A6-PAIRED-PRODUCER. CAUTION: the R1-4 referee (C1) states that A6 is not stable under separating a pair and that no neighbourhood version is proved; the ε₀-neighbourhood claim here therefore needs its own referee before any upgrade.
 - **Artifacts:**
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-COROLLARIES-A6.txt` — paper ("concise independent audit", author-side) — `94a6b50a2c053055…`
 - **Provenance:** Astra A6 corollaries; check-ins 19:18:20Z, 19:41:18Z.
 - **Correction history:** adversarial coordinator withdrew its objection to the neighbourhood result (19:41:18Z)
 - **Depends on:** [A6-PAIRED-PRODUCER](#a6-paired-producer), [MC120-STRICT](#mc120-strict), [CC60](#cc60)
-
-### A6-PAIRED-PRODUCER
-
-**A6 paired producer: paired interface directions force the canonical palette (hence False with A5)** — `CANDIDATE`
-
-- **Statement:** For measurable WeakColoring 6, one centre x and six actual `ApproachingContinuum x K_i v_i` with v0=v1=e(0), v2=v3=e(2π/3), v4=v5=e(4π/3) and exclusions E_i={i,i+1}: the OUT/IN hits and `palette_sixty_disjoint` force f=(1,5,3,1,5,3), hit sets ({3,4,5},{1,2,3},{0,1,5})×2 and second labels g=(4,2,0,4,2,0), so the canonical paired palette P ⊆ palette a.e.; with A5-FOUR-LIST this gives False. Extends to common rotations, one reflection, relabelings.
-- **Hypotheses:** Actual common-interface hypotheses at one centre with the paired direction pattern.
-- **Evidence:** Paper (ASTRA-PAIRED-PRODUCER-A6 audits the parent sketch: "The parent six-shift sketch is correct"); parent independently checked the six-row label table. No independent referee file. Formal status: the finite core is LEAN_VERIFIED (A6-FORCING) and the a.e. bridge compiles conditionally (A6-BRIDGE-R2); glue open (A6-GLUE).
-- **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-PRODUCER-A6.txt` — paper — `2a7e4aed6b6db4eb…`
-- **Checked by the results desk:** Not reviewed by the desk. Status stays CANDIDATE until an independent referee artifact or the glued Lean file exists.
-- **Provenance:** Astra A6 lane + parent; check-in 18:35:22Z.
-- **Correction history:** formal coordinator claimed "A6 table false" after misreading hit sets as containment; retracted (RESEARCH-STATUS); A6-CONTAINMENT formalises why containment is vacuous
-- **Depends on:** [A5-FOUR-LIST](#a5-four-list), [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2)
 
 ### A7-PARTIAL-INDEPENDENT
 
@@ -818,9 +833,10 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 **Continuous CC60 classification of six-cycle directions (Theorems G, O, Corollary P)** — `CANDIDATE`
 
 - **Statement:** "Every closed 60° arc covers ≤ 3 labels" ⇔ circular distance > 60° for every nonadjacent edge-index pair; Theorem O: a cyclic order of six distinct directions is feasible iff it has a C6-adjacent consecutive pair (57 of 60; forbidden (0,2,4,1,5,3), (0,2,5,3,1,4), (0,3,1,5,2,4)); Corollary P: with three distinct directions the blocks are a perfect matching 120° apart (needs strict MC120); four-direction partial results.
-- **Evidence:** Paper; "independent remote review underway" (17:45Z); no verdict file found.
+- **Evidence:** Paper. Corollary P (three distinct directions ⇒ perfect-matching blocks exactly 120° apart, using CC60 and strict MC120) was refereed ACCEPT in R1-3-REFEREE §2 (~05:00Z); Theorems G and O have no referee verdict, so the entry stays CANDIDATE.
 - **Artifacts:**
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt` — paper — `70a91bc5d72681f2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md` — referee verdict covering Corollary P only — `0b295e593daf9438…`
 - **Provenance:** Astra A4 lane, 2026-11-14.
 - **Depends on:** [CC60](#cc60), [MC120-STRICT](#mc120-strict)
 
@@ -867,18 +883,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-LIST-FIELD-A4.txt` — paper — `0f22a9a734746eb1…`
 - **Provenance:** Astra A4 lane.
 - **Used for:** Explains why A5-FOUR-LIST needs the 4-list vertex z0.
-
-### MC120-STRICT
-
-**Strict MC120: one residual label forbids a cone of aperture < 120°** — `CANDIDATE`
-
-- **Statement:** For actual same-centre continua with support exclusions leaving ≤ 1 residual label, the directions cannot lie in a cone of aperture strictly < 120°. (Table: ≥4 excluded ⇒ ≤60° forbidden (CC60); ≥5 ⇒ <120°; 6 ⇒ <180°.)
-- **Evidence:** ASTRA-CONTINUOUS-SIX-A4 §4–5; compactness step re-verified in MC120-ENDPOINT-CORRECTION; RESEARCH-STATUS calls it "accepted paper", but no referee verdict file exists; the Lean wrapper (StrictMC120) is uncompiled.
-- **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt` — paper — `70a91bc5d72681f2…`
-  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt` — parent correction note — `ce20448c29cb9091…`
-- **Provenance:** Astra A4 lane; check-ins 18:15:21Z, 19:18:20Z.
-- **Caveats:** Closed 120° is false (MC120-ENDPOINT).
 
 ### Q4Q5-PINNING
 
@@ -1347,7 +1351,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `590a49ef0f4b2a5a…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `61264ca9e5d1d53a…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

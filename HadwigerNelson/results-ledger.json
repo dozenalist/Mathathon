@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T04:10Z",
+  "builtAtUtc": "2026-11-15T05:01Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -1168,6 +1168,39 @@
       ]
     },
     {
+      "id": "A6-PAIRED-PRODUCER",
+      "theme": "New mathematics",
+      "status": "PROVED_PAPER_REVIEWED",
+      "title": "A6 paired producer: paired interface directions force the canonical palette (hence False with A5)",
+      "statement": "For measurable WeakColoring 6, one centre x and six actual `ApproachingContinuum x K_i v_i` with v0=v1=e(0), v2=v3=e(2π/3), v4=v5=e(4π/3) and exclusions E_i={i,i+1}: the OUT/IN hits and `palette_sixty_disjoint` force f=(1,5,3,1,5,3), hit sets ({3,4,5},{1,2,3},{0,1,5})×2 and second labels g=(4,2,0,4,2,0), so the canonical paired palette P ⊆ palette a.e.; with A5-FOUR-LIST this gives False. Extends to common rotations; a colour renaming transports the statement; a reflection is a rotation composed with a renaming (referee C3, C4).",
+      "hypotheses": "Actual common-interface hypotheses at one centre with the EXACT three-fold paired direction pattern (referee C1: no neighbourhood or perturbed pairing is covered; the ε > 0 failure is the witness). Hit reading Q_j ∩ T_j ≠ ∅, not containment (C5). Period 180° (C2).",
+      "evidence": "Independent adversarial referee (OMM referee lane chat-2345d7f398, swarm smwh90qeq), R1-4-REFEREE: ACCEPT WITH CORRECTIONS. The finite core and the a.e. bridge are correct; the forcing uses no palette-cardinality premise (CHECK-A6.py part F: all 64 subsets allowed, exactly one solution); composition with A5 is modus ponens. Table and forcing recomputed from cosine signs by CHECK-A6.py (sha256 821422505c8abb85863bd9f9977e936834d6df04c7943e36ce4fb178db89a972). Earlier: ASTRA-PAIRED-PRODUCER-A6 audit; parent check of the six-row table. Formal status: the finite core is LEAN_VERIFIED (A6-FORCING) and the a.e. bridge compiles conditionally (A6-BRIDGE-R2); glue open (A6-GLUE).",
+      "checked": "Exposition desk (ledger owner) read the referee report in full ~05:05Z; CHECK-A6.py not re-run by the desk. Referee scope: no chromatic-number claim; nothing about unpaired or nearly paired directions or other centres. A5 is taken on the parent statement (A5-FOUR-LIST), with P normalised as period 180°, A_0 on (−30°,30°).",
+      "provenance": "Astra A6 lane + parent; check-in 18:35:22Z.",
+      "corrections": [
+        "formal coordinator claimed \"A6 table false\" after misreading hit sets as containment; retracted (RESEARCH-STATUS); A6-CONTAINMENT formalises why containment is vacuous"
+      ],
+      "dependsOn": [
+        "A5-FOUR-LIST",
+        "A6-FORCING",
+        "A6-BRIDGE-R2"
+      ],
+      "artifacts": [
+        {
+          "role": "independent referee verdict R1-4 (ACCEPT WITH CORRECTIONS)",
+          "workspacePath": "I/work/automation-supervisor/inbox/20261115T045717-download-1-R1-4-REFEREE.md",
+          "sha256": "15a48005bf7f006d6e85d886044af9f5ad62bf8b9e6f731c21c25215b1410e1a",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-1-R1-4-REFEREE.md"
+        },
+        {
+          "role": "paper",
+          "workspacePath": "I/outputs/ASTRA-PAIRED-PRODUCER-A6.txt",
+          "sha256": "2a7e4aed6b6db4ebcbff0d09e43c002ae4dae86b13bf3bf1606c19435ec9649e",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-PRODUCER-A6.txt"
+        }
+      ]
+    },
+    {
       "id": "AC-ALIGNED",
       "theme": "New mathematics",
       "status": "PROVED_PAPER_REVIEWED",
@@ -1188,6 +1221,35 @@
           "role": "referee (ACCEPT)",
           "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt",
           "sha256": "56c5d614f875471bfcd165486b4224504a204620e5da8a9c01036535de2b2183"
+        }
+      ]
+    },
+    {
+      "id": "MC120-STRICT",
+      "theme": "New mathematics",
+      "status": "PROVED_PAPER_REVIEWED",
+      "title": "Strict MC120: one residual label forbids a cone of aperture < 120°",
+      "statement": "For actual same-centre continua with support exclusions leaving ≤ 1 residual label, the directions cannot lie in a cone of aperture strictly < 120°. (Table: ≥4 excluded ⇒ ≤60° forbidden (CC60); ≥5 ⇒ <120°; 6 ⇒ <180°.)",
+      "evidence": "Independent adversarial referee (OMM referee lane chat-2345d7f398, swarm smwh90qeq), R1-3-REFEREE: ACCEPT WITH CORRECTIONS, no mathematical gap; two swarm members independently confirmed the arc lemma and the input-side/strip audit (referee checks CHECK-120.py, CHECK-ORBIT.py; member checks m2_arc_check.py, m2_threshold_check.py, m1_checks.py). Every hypothesis anchored to the supplied sources (Coloring.lean:27; AngularBoundary.lean:147, :235, :244, :259, :279, :317; Rigidity.lean:171). Earlier: ASTRA-CONTINUOUS-SIX-A4 §4–5; compactness step re-verified in MC120-ENDPOINT-CORRECTION; RESEARCH-STATUS calls it \"accepted paper\", but no referee verdict file exists; the Lean wrapper (StrictMC120) is uncompiled.",
+      "provenance": "Astra A4 lane; check-ins 18:15:21Z, 19:18:20Z.",
+      "checked": "Exposition desk (ledger owner) read the referee report in full ~05:05Z; referee and member scripts were not re-run by the desk.",
+      "caveats": "Closed 120° is false (MC120-ENDPOINT); the theorem is silent at aperture exactly 120° (referee C6). Finiteness of the family is load-bearing (C6: K_n = {0,(1/n,0)} witness). The span L is the minimal closed arc containing the directions, not the pairwise diameter (C1); the uniform strip needs a closed sub-arc and a finite subcover, since the strip width has no lower bound on the open arc (C2); the empty-residual case J = ∅ is immediate (C3). No Lean build.",
+      "artifacts": [
+        {
+          "role": "independent referee verdict R1-3 (ACCEPT WITH CORRECTIONS)",
+          "workspacePath": "I/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md",
+          "sha256": "0b295e593daf94386d86b317e4e0377f870776c6b169ebffdc1996d44bf5bd7d",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md"
+        },
+        {
+          "role": "paper",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt",
+          "sha256": "70a91bc5d72681f249d79d92f1b65d17f6522a1c327590d1d2415c6597b0401e"
+        },
+        {
+          "role": "parent correction note",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt",
+          "sha256": "ce20448c29cb9091dbb376b7127c1de21e4a3e748f3ad2d47f0053a0d667edab"
         }
       ]
     },
@@ -1454,7 +1516,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "590a49ef0f4b2a5a53b0ce87779c456445f52bfa6cf517294da0d4b817b32022"
+          "sha256": "61264ca9e5d1d53a882ac2a6a4f6525a89467db191b45a20322f980df4138e01"
         }
       ]
     },
@@ -1769,7 +1831,7 @@
       "status": "CANDIDATE",
       "title": "A6 corollaries: ≤3 distinct directions impossible; uniform ε₀-neighbourhood of the paired configuration",
       "statement": "Under the common actual hypotheses the six edge directions cannot take ≤ 3 distinct values (CC60 ⇒ matching blocks; strict MC120 ⇒ 120° spacing; A6+A5 excludes it). There is ε₀ = min(η/4, π/24) > 0 such that every independent perturbation within ε₀ of the paired configuration is impossible.",
-      "hypotheses": "Explicitly conditional on strict MC120 (MC120-STRICT), which has no referee file.",
+      "hypotheses": "Conditional on strict MC120 (MC120-STRICT, refereed ACCEPT WITH CORRECTIONS ~05:00Z) and on A6-PAIRED-PRODUCER. CAUTION: the R1-4 referee (C1) states that A6 is not stable under separating a pair and that no neighbourhood version is proved; the ε₀-neighbourhood claim here therefore needs its own referee before any upgrade.",
       "provenance": "Astra A6 corollaries; check-ins 19:18:20Z, 19:41:18Z.",
       "corrections": [
         "adversarial coordinator withdrew its objection to the neighbourhood result (19:41:18Z)"
@@ -1785,33 +1847,6 @@
           "workspacePath": "I/outputs/ASTRA-PAIRED-COROLLARIES-A6.txt",
           "sha256": "94a6b50a2c0530555f494e9ef7618e1f8afa051d559ebf03f54994639c02a03f",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-COROLLARIES-A6.txt"
-        }
-      ]
-    },
-    {
-      "id": "A6-PAIRED-PRODUCER",
-      "theme": "New mathematics",
-      "status": "CANDIDATE",
-      "title": "A6 paired producer: paired interface directions force the canonical palette (hence False with A5)",
-      "statement": "For measurable WeakColoring 6, one centre x and six actual `ApproachingContinuum x K_i v_i` with v0=v1=e(0), v2=v3=e(2π/3), v4=v5=e(4π/3) and exclusions E_i={i,i+1}: the OUT/IN hits and `palette_sixty_disjoint` force f=(1,5,3,1,5,3), hit sets ({3,4,5},{1,2,3},{0,1,5})×2 and second labels g=(4,2,0,4,2,0), so the canonical paired palette P ⊆ palette a.e.; with A5-FOUR-LIST this gives False. Extends to common rotations, one reflection, relabelings.",
-      "hypotheses": "Actual common-interface hypotheses at one centre with the paired direction pattern.",
-      "evidence": "Paper (ASTRA-PAIRED-PRODUCER-A6 audits the parent sketch: \"The parent six-shift sketch is correct\"); parent independently checked the six-row label table. No independent referee file. Formal status: the finite core is LEAN_VERIFIED (A6-FORCING) and the a.e. bridge compiles conditionally (A6-BRIDGE-R2); glue open (A6-GLUE).",
-      "checked": "Not reviewed by the desk. Status stays CANDIDATE until an independent referee artifact or the glued Lean file exists.",
-      "provenance": "Astra A6 lane + parent; check-in 18:35:22Z.",
-      "corrections": [
-        "formal coordinator claimed \"A6 table false\" after misreading hit sets as containment; retracted (RESEARCH-STATUS); A6-CONTAINMENT formalises why containment is vacuous"
-      ],
-      "dependsOn": [
-        "A5-FOUR-LIST",
-        "A6-FORCING",
-        "A6-BRIDGE-R2"
-      ],
-      "artifacts": [
-        {
-          "role": "paper",
-          "workspacePath": "I/outputs/ASTRA-PAIRED-PRODUCER-A6.txt",
-          "sha256": "2a7e4aed6b6db4ebcbff0d09e43c002ae4dae86b13bf3bf1606c19435ec9649e",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-PRODUCER-A6.txt"
         }
       ]
     },
@@ -1887,7 +1922,7 @@
       "status": "CANDIDATE",
       "title": "Continuous CC60 classification of six-cycle directions (Theorems G, O, Corollary P)",
       "statement": "\"Every closed 60° arc covers ≤ 3 labels\" ⇔ circular distance > 60° for every nonadjacent edge-index pair; Theorem O: a cyclic order of six distinct directions is feasible iff it has a C6-adjacent consecutive pair (57 of 60; forbidden (0,2,4,1,5,3), (0,2,5,3,1,4), (0,3,1,5,2,4)); Corollary P: with three distinct directions the blocks are a perfect matching 120° apart (needs strict MC120); four-direction partial results.",
-      "evidence": "Paper; \"independent remote review underway\" (17:45Z); no verdict file found.",
+      "evidence": "Paper. Corollary P (three distinct directions ⇒ perfect-matching blocks exactly 120° apart, using CC60 and strict MC120) was refereed ACCEPT in R1-3-REFEREE §2 (~05:00Z); Theorems G and O have no referee verdict, so the entry stays CANDIDATE.",
       "provenance": "Astra A4 lane, 2026-11-14.",
       "dependsOn": [
         "CC60",
@@ -1898,6 +1933,12 @@
           "role": "paper",
           "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt",
           "sha256": "70a91bc5d72681f249d79d92f1b65d17f6522a1c327590d1d2415c6597b0401e"
+        },
+        {
+          "role": "referee verdict covering Corollary P only",
+          "workspacePath": "I/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md",
+          "sha256": "0b295e593daf94386d86b317e4e0377f870776c6b169ebffdc1996d44bf5bd7d",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md"
         }
       ]
     },
@@ -1969,28 +2010,6 @@
           "role": "paper",
           "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-LIST-FIELD-A4.txt",
           "sha256": "0f22a9a734746eb1e6ab22bddbb8d6696d5ca0d1593a5f86a46837cef6103121"
-        }
-      ]
-    },
-    {
-      "id": "MC120-STRICT",
-      "theme": "New mathematics",
-      "status": "CANDIDATE",
-      "title": "Strict MC120: one residual label forbids a cone of aperture < 120°",
-      "statement": "For actual same-centre continua with support exclusions leaving ≤ 1 residual label, the directions cannot lie in a cone of aperture strictly < 120°. (Table: ≥4 excluded ⇒ ≤60° forbidden (CC60); ≥5 ⇒ <120°; 6 ⇒ <180°.)",
-      "evidence": "ASTRA-CONTINUOUS-SIX-A4 §4–5; compactness step re-verified in MC120-ENDPOINT-CORRECTION; RESEARCH-STATUS calls it \"accepted paper\", but no referee verdict file exists; the Lean wrapper (StrictMC120) is uncompiled.",
-      "provenance": "Astra A4 lane; check-ins 18:15:21Z, 19:18:20Z.",
-      "caveats": "Closed 120° is false (MC120-ENDPOINT).",
-      "artifacts": [
-        {
-          "role": "paper",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt",
-          "sha256": "70a91bc5d72681f249d79d92f1b65d17f6522a1c327590d1d2415c6597b0401e"
-        },
-        {
-          "role": "parent correction note",
-          "path": "HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt",
-          "sha256": "ce20448c29cb9091dbb376b7127c1de21e4a3e748f3ad2d47f0053a0d667edab"
         }
       ]
     },
@@ -2835,7 +2854,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "590a49ef0f4b2a5a53b0ce87779c456445f52bfa6cf517294da0d4b817b32022"
+          "sha256": "61264ca9e5d1d53a882ac2a6a4f6525a89467db191b45a20322f980df4138e01"
         }
       ]
     },

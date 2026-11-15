@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T04:04:09.516Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T05:01:11.636Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -248,7 +248,7 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
 | `work/research-desk/BANKED.md` | 7506 | `13473da020099cded9898e4389b6feb6ebe496ef2f228e457b9e7a61084b2f3a` |
-| `work/research-desk/LOG.md` | 11473 | `a9b7468ea7e2ed8915f43c7a30439a1d92aa8b9583988177ce221f55946ba72e` |
+| `work/research-desk/LOG.md` | 12779 | `5c69241d5ec43338a67bd88a44c36e1d7978f0c23a6d4a829e26b00d6b14d5e7` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -344,7 +344,11 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T032647.json` | 4159 | `c6b695dc42397184e77a3f083f17d3778af9747d9c32d189e91874ccacb04113` |
 | `work/automation-supervisor/replies/20261115T034153.json` | 3004 | `813f9a1844c95d6776a10fc74034ded3af23ff0d6b4f52227dab768cd63b7485` |
 | `work/automation-supervisor/replies/20261115T035658.json` | 2811 | `4a65efafb1ccf686a228ca1c2c551dffd71067778c9fc0fcd73be563cd7a96da` |
-| `work/automation-supervisor/research-plan.json` | 1300 | `64996dd680a54a9aa7d3f652d99b06b5acc09090a36b23e39248da1b72f0ee66` |
+| `work/automation-supervisor/replies/20261115T041204.json` | 3697 | `3363c295cba59ffced5a27559fc5bb6183c38ecf3ad2bda5d48a90385096787f` |
+| `work/automation-supervisor/replies/20261115T042709.json` | 2230 | `9ddbf46aed9ebe26863bc22370518433d1d5044bc210e75fba520630f26619c9` |
+| `work/automation-supervisor/replies/20261115T044215.json` | 3763 | `b20683bf9d6312cf416b242245da2c00357616df029c5635dcd3f1a655492820` |
+| `work/automation-supervisor/replies/20261115T045717.json` | 3039 | `e4287b444310018b5489166214bc2dfe0789b9cff810a153742c50c582cc5d93` |
+| `work/automation-supervisor/research-plan.json` | 1404 | `a5abb93f51e84e8640dcef4f53016870f27f3d3a8750ba053eb83da33c5421e8` |
 | `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
 | `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
 | `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
@@ -513,7 +517,7 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/simplification-desk/s1/dead-deletions.json` | 3027 | `bf403ef34c40414d3445b0d017085c13ae5c36755f1ad52b87a3aaa1c92409ce` |
 | `work/simplification-desk/s1/sigs-s1.tsv` | 426665 | `8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7` |
 | `work/simplification-desk/s1/AxiomRoots.lean` | 3814 | `4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5` |
-| `work/simplification-desk/LOG.md` | 8735 | `09363cfd71298a61c63bd6e7e0ab985f30c84deec761d6bf711c9348b6ea63c9` |
+| `work/simplification-desk/LOG.md` | 9349 | `93acedec76b9920aecad5028c9579b2c4da18b45d0943ae07fcdfbbca13160a9` |
 | `outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt` | 15221 | `d292fa5a44fa857d957ed8eeb4895b192d4ca505f6f872c1ba5e644b80a6b437` |
 | `outputs/ASTRA-FOUR-LIST-A5.txt` | 15053 | `799cef0737b23deb8e17d1cb5ca197b394c4e9a19e3c5a79acebed2671f3955e` |
 | `outputs/ASTRA-FOUR-LIST-REFEREE.txt` | 15430 | `29e3800ecb740d9699254787d5a5b8689372d505b69a178eb08e447eada7548f` |
@@ -530,4 +534,6 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 15439 | `de298aa8653c649092560de003e9fa85879ee7a34d45b1b12ce4e19e2e1d19b8` |
+| `work/cloud-supervisor/LOG.md` | 17403 | `fc1def8be87f075e1558e93b928a8f9774cc1dc0b908682805c0b8383001a1d3` |
+| `work/automation-supervisor/inbox/20261115T045717-download-0-R1-3-REFEREE.md` | 12541 | `0b295e593daf94386d86b317e4e0377f870776c6b169ebffdc1996d44bf5bd7d` |
+| `work/automation-supervisor/inbox/20261115T045717-download-1-R1-4-REFEREE.md` | 12256 | `15a48005bf7f006d6e85d886044af9f5ad62bf8b9e6f731c21c25215b1410e1a` |

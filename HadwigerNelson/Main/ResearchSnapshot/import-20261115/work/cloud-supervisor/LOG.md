@@ -72,3 +72,16 @@
 - 03:55Z S1 package completion (ProofWalkthrough s31/s35) pushed 4e4265f under Jarom's S1 approval.
 - 03:56Z Results batch 10 held: sign-cell count contested (referee 62 vs 16; lift test suggests artifact); waiting for recount before asking Jarom.
 - 04:01Z heartbeat: research reported 04:00, simplification S2 rebuild running (reported 03:45) - not pinged; services alive; 1 lean.exe; cycle 035859 ok.
+- 04:05Z FREEZE LIFTED: Jarom says HN selected for presentation; Andrew and Carter (from ZetaFive) join. Batch 10 pushed.
+- 04:07Z Batch 11 pushed 3ce0e8e: sign-cell settled at 16.
+- 04:08Z Jarom: skip Lean 4.35.0 port; PyMuPDF approved. Exposition told to state 4.34.1-only plainly; results desk to close LEAN-435 as not attempted.
+- 04:10Z Jarom: Lean 4.35.0 port reopened as Carter's task (results desk writing PORT-4.35.0-NOTES.md + ledger/ROADMAP); results desk merging into exposition desk (handover note, then retired). Heartbeat updated.
+- 04:12Z Results desk final batch pushed bb7610d (LEAN-435 -> Carter, PORT notes). Results desk retired; handover note in side-session-notes.
+- 04:18Z Presentation upgrade pushed c7b994e (18+6 slides, key-step, motivation, summary, chart).
+- 04:24Z heartbeat: desks waiting on recent background jobs (not pinged); no collaborator commits; services alive; 1 lean.exe; cycle 04:13Z.
+- 04:29Z Jarom plan: research narrowed to referee verdicts R1-3/R1-4, A5 caveats, A6-GLUE, plus S2; no new open-ended swarms; presentation content cutoff 12:00Z (cron set); exposition to prep swap-in edits + human study guide.
+- 04:31Z Jarom: simplification desk merged into research desk (handover HANDOVER.md, then retired). Heartbeat now covers 2 desks.
+- 04:33Z NOTE: do NOT stop/archive simplification-desk session (local_c44193da) until S2 chain prints S2-DONE; its bash (pid 35044, tools/s2_run.sh) runs S2 rebuild+gates. Research desk watching; its own compiles deferred until after S2 gates.
+- 04:38Z usage: week $124.60 (24.9%), $7.25/h, projected $218.6; swarms already at max 16/400; research deliberately narrowed, no change.
+- 04:44Z heartbeat: desks waiting (S2 rebuild running, research reported <20 min); no collaborator commits; services alive; 1 lean.exe; coordinator cycle running.
+- 04:54Z heartbeat: desks waiting on S2 (research reported ~04:50); no collaborator commits; services alive; 1 lean.exe; cycle 04:44Z.

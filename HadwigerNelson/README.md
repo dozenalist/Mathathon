@@ -17,6 +17,8 @@ Each status label comes from [RESULTS-LEDGER.md](RESULTS-LEDGER.md), which gives
   - CC60 cannot be widened for arbitrary finite palettes ([SHARPNESS-20](RESULTS-LEDGER.md#sharpness-20), a 20-colour construction).
   - In a weak measurable six-colouring, no centre carries the canonical paired palette ([A5-FOUR-LIST](RESULTS-LEDGER.md#a5-four-list)).
   - The closed-$120^\circ$ form of MC120 is false ([MC120-ENDPOINT](RESULTS-LEDGER.md#mc120-endpoint), a 19-colour counterexample).
+  - The strict form holds: if at most one label survives, the directions cannot fit in a cone narrower than $120^\circ$ ([MC120-STRICT](RESULTS-LEDGER.md#mc120-strict)).
+  - Exactly paired interface directions would force the canonical paired palette, so that configuration cannot occur in a weak measurable six-colouring ([A6-PAIRED-PRODUCER](RESULTS-LEDGER.md#a6-paired-producer)).
 - **Finite certificates** (`TESTED_FINITE`). These are exact checks of unit-distance graphs, censuses and direction grids, for example [HEULE-UNION](RESULTS-LEDGER.md#heule-union), [FIXED-PHASE-CENSUS](RESULTS-LEDGER.md#fixed-phase-census) and [DIR-FILTER](RESULTS-LEDGER.md#dir-filter). Each tests only the object it names.
 - **A six-lesson reader of the supplied proof.** An independent referee checked each lesson against the manuscript and its Lean sources, and every figure was checked by script against what it depicts.
 

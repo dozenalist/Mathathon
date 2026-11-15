@@ -45,7 +45,7 @@ The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours 
 \item \textbf{A shorter Lean proof of the supplied theorem} \st{Lean 4.34.1}: 415 lines shorter than the supplied 82-module development (encoding refactor $-126$, three-centre integration R1 $-24$, dead-code pass S1 $-265$), with the root theorems unchanged and on the standard axioms (Section~5, with a per-module chart).
 \item \textbf{A three-centre proof of strict state separation} (manuscript Lemma~6.3, fixed-centre part) \st{proved; Lean 4.34.1}: three centres on a unit triangle and a one-line counting argument replace an implicit-function argument (Section~3).
 \item \textbf{CC60, a closed $60^\circ$ cone obstruction} \st{Lean 4.34.1}: if sets through one centre approach it from directions in a closed $60^\circ$ arc and each excludes some labels from its straddle region, at least three labels survive. A 20-colour construction shows that $60^\circ$ cannot be widened for arbitrary finite palettes \st{proved} (Section~4).
-\item \textbf{Refereed local lemmas and counterexamples} \st{proved}: the canonical paired palette is impossible at a centre of a weak measurable six-colouring; the closed-$120^\circ$ form of MC120 is false; and others (Section~5).
+\item \textbf{Refereed local lemmas and counterexamples} \st{proved}: the canonical paired palette is impossible at a centre of a weak measurable six-colouring, and exactly paired interface directions (three directions $120^\circ$ apart, two interfaces on each) would force it, so that configuration cannot occur; the closed-$120^\circ$ form of MC120 is false; and others (Section~5).
 \item \textbf{Finite certificates} \st{computation}, and a \textbf{six-lesson checked reader} of the supplied proof (Sections~5--6).
 \end{enumerate}
 
@@ -822,8 +822,10 @@ contains $P(t)$ for almost every~$t$.
 \emph{Status:} proved (paper argument, independently reviewed), in
 \texttt{ASTRA-\allowbreak{}FOUR-\allowbreak{}LIST-\allowbreak{}REFEREE.\allowbreak{}txt}.
 % SOURCE: Exposition/Sources/2026-11-14-a5/ASTRA-FOUR-LIST-REFEREE.txt:6-25
-\emph{Not shown:} walk coordinates, or that interface data produce~$P$ (the
-producer is an unreviewed candidate).
+\emph{Not shown:} walk coordinates, or that interface data produce~$P$ (the producer is now refereed: A6-PAIRED-PRODUCER, accepted with corrections in \texttt{R1-4-REFEREE.md}, for the exact paired pattern only).
+
+\item \textbf{Strict MC120 (MC120-STRICT).} For a measurable weak $k$-colouring, take finitely many sets $K_i$ through one centre, with approach directions $v_i$ and label sets $H_i$, each label of $H_i$ occupying zero area of $\Delta(K_i)$. If at most one label lies outside every $H_i$, the directions cannot lie in a cone of aperture strictly less than $120^\circ$. Finiteness of the family is essential, and the span is the shortest closed arc containing the directions. \emph{Status:} proved (paper argument, independently reviewed), by an independent adversarial referee (\texttt{R1-3-REFEREE.md}, accepted with corrections of statement only). \emph{Not shown:} the closed-$120^\circ$ case, which is false (MC120-ENDPOINT).
+% LEDGER: MC120-STRICT = PROVED_PAPER_REVIEWED
 
 \item \textbf{Even walks (EVENWALK-R6).}
 % LEDGER: EVENWALK-R6 = LEAN_VERIFIED
@@ -1057,8 +1059,8 @@ lemmas L6 and F6.
 impossible.
 \end{itemize}
 
-Candidates (no independent referee, or incomplete evidence), not claimed: A6-PAIRED-PRODUCER, A6-COROLLARIES,
-MC120-STRICT, CONTINUOUS-SIX, LIST-FIELD-A4, A5-ODD-WALK and the remaining
+Candidates (no independent referee, or incomplete evidence), not claimed: A6-COROLLARIES,
+CONTINUOUS-SIX, LIST-FIELD-A4, A5-ODD-WALK and the remaining
 ledger candidates.
 % LEDGER: CANDIDATE ids (28 in results-ledger.json when last read; the ledger was still growing):
 %   (FIVESUPPORT-SWAP promoted to LEAN_VERIFIED in ledger batch 2; new candidates J-DEPTH R0-CHI4 Q4Q5-PINNING not cited)
@@ -1154,7 +1156,7 @@ CC60 & \st{Lean 4.34.1} & Section 4; cone packet\\
 CC60 cannot be widened above $60^\circ$ for arbitrary finite palettes (SHARPNESS-20; 20 colours) & \st{proved} & Section 4; sharpness referee report\\
 Lean simplification of the supplied proof, 415 lines shorter (ENC-R4, R1, S1); S2 pending & \st{Lean 4.34.1} & Section 5; results ledger\\
 Branch-free step ban (STEPBAN-V3, STEPBAN-SWAP via S1); the earlier v2 route (STEPBAN-V2, -CONSUMER, -CYCLICCORE, FIVESUPPORT-SWAP) is superseded & \st{Lean 4.34.1} & Section 5\\
-Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE) & \st{proved} & Section 5; referee reports\\
+Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE, MC120-STRICT, A6-PAIRED-PRODUCER) & \st{proved} & Section 5; referee reports\\
 Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
 Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\
 Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73, HONEYCOMB-K16, HISTORIC-8, LN1-ORBITS) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
