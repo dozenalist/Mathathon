@@ -1,0 +1,11 @@
+SHADOW: L=0.2500 U=180.0; grid 400x400=160000; 6232 within 1% of boundary skipped; 153768 checked; 0 misclassified; shaded 25192
+  straddling points not within L of the unit circle around x: 0
+  outer points off the facing half, or inner points with cos >= L/2: 0; inner points spilling onto the facing half: 16
+CONE: directions 20.002 and -20.002 deg (gap 40.004); lengths [0.2999839759094962, 0.2999839759094962]
+  grid 400x400=160000; 8824 skipped (1% boundary); 151176 checked; 0 misclassified (blue, green or red)
+  red (both) samples 16358, approx area 0.6911 square units; red samples not within L of the circle: 0
+MODEL: K from (470.0, 390.0) to (470.0, 270.0) (length 0.400)
+  z to K: min 0.9304, max 1.1020 -> straddles True
+  ruler z->q length 1.00000; q on K line: True; q at fraction 0.500 of K (0,1 are ends)
+  thick arc #235f9d: 953 pts, radius 0.99998..1.00002, all inside its strip: True
+  thick arc #2f7a4a: 851 pts, radius 0.99998..1.00002, all inside its strip: True

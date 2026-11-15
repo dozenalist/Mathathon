@@ -45,9 +45,9 @@ Colour the plane so that any two points at distance exactly $1$ get different co
 
 \begin{frame}{3. What we did in 40 hours}
 \begin{itemize}
-\item A six-lesson reader of the second move: refereed, with figures checked by script.
+\item A six-lesson reader of the second move: refereed, with checked figures.
 \item A three-centre proof of the manuscript's strict-state separation (Lemma 6.3) \st{proved; Lean 4.34.1}
-\item CC60, a closed $60^\circ$ cone obstruction \st{Lean 4.34.1}, and its sharpness above $60^\circ$ \st{proved}
+\item CC60, a closed $60^\circ$ cone obstruction \st{Lean 4.34.1}, and its sharpness above $60^\circ$ for arbitrary finite palettes \st{proved}
 \item Finite computations, negative results and corrections.
 \end{itemize}
 \medskip
@@ -135,7 +135,7 @@ Cycles & Props 8.2, 8.5, 8.10 (Moser spindle)
 \end{tabular}
 \smallskip
 
-\normalsize Step 5 has exactly three branches, and each ends in a contradiction.
+\normalsize The interface step (Prop.~7.1) has exactly three branches, cycle lengths 5, 4 and 3, and each ends in a contradiction.
 \column{0.43\textwidth}
 \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{slide-figures/proof-casefan.png}
 \end{columns}
@@ -213,8 +213,8 @@ Sets need not be connected or compact. Equality at $60^\circ$ is included.
 \begin{frame}{14. Honest status}
 \begin{itemize}
 \item \textbf{No global chromatic result.} $6\le\chi(\R^2)\le7$ is unchanged.
-\item Lean checks ran under 4.34.1; the event's Lean track needs 4.35.0, which has not been rebuilt.
-\item AI use: Claude drafted and refereed the exposition and this report. Research workers did the reviews and Lean work. Every claim was checked against the sources, the logs or exact scripts.
+\item Lean checks ran under 4.34.1; the event's Lean track needs 4.35.0, and nothing has been rebuilt under it.
+\item AI use: Claude drafted the exposition and this report, and refereed the exposition. Research workers did the reviews and Lean work [TEAM: confirm roles]. Every claim was checked against the sources, the logs or exact scripts.
 \item Ask us about the definitions, the key step, what is new versus cited, and how sure we are.
 \end{itemize}
 \src{\S7--\S10}

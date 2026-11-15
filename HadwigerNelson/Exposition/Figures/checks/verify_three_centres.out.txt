@@ -1,0 +1,8 @@
+TRIANGLE |xy|=1.000000 |xz|=1.000007 |yz|=1.000007
+  direction of y -0.0000 deg, of z 60.0002 deg
+  support arc -10.00..10.00 deg, radius 0.99998..1.00002
+  support arc 50.00..70.00 deg, radius 0.99998..1.00002
+COUNT J=[0, 1] K=[2, 3]: 0 triples satisfy all conditions
+COUNT J=[0, 1] K=[2]: 8 triples satisfy all conditions; e.g. ([0, 1], [3], [4])
+COUNT J=[0, 1, 2] K=[2, 3]: 0 triples satisfy all conditions
+CASEFAN arrows: {'assume-step5': 1, 'step5-branch': 3, 'branch-contra': 3}

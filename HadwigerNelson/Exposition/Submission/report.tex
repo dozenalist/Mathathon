@@ -26,7 +26,8 @@
 and local results about interfaces at a common centre}
 \author{[TEAM: names and affiliations --- title block only]\\
 Track: [TEAM: Geometry or Combinatorics]\\
-Repository: [TEAM: URL] at commit [PIN: full 40-character hash of the frozen revision]}
+Repository: \url{https://github.com/dozenalist/Mathathon}\\
+Commit: [PIN: full 40-character hash of the frozen revision]}
 \date{15 November 2026}
 
 \begin{document}
@@ -34,14 +35,14 @@ Repository: [TEAM: URL] at commit [PIN: full 40-character hash of the frozen rev
 \maketitle
 
 \begin{abstract}
-The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that is 150 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
+The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that, together with a separate encoding refactor, is 150 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
 \end{abstract}
 
 \paragraph{How to read the status labels.}
 Each main claim is marked with one of the following labels.
 \begin{itemize}
 \item \st{cited}: prior work, chiefly the supplied manuscript.
-\item \st{proved}: a paper argument given here, or one independently reviewed.
+\item \st{proved}: a paper argument that has been independently reviewed (ledger \texttt{PROVED\_\allowbreak{}PAPER\_\allowbreak{}REVIEWED}), or a short argument given in full in this report.
 \item \st{Lean 4.34.1}: checked in Lean~4.34.1 with archived logs, using only the axioms \texttt{propext}, \texttt{Classical.\allowbreak{}choice} and \texttt{Quot.sound}. The event's optional Lean track requires Lean~4.35.0. These files have \emph{not} been rebuilt under 4.35.0, so we do not call them ``Lean-verified'' in the event's sense.
 \item \st{computation}: an exact computation over a stated finite object.
 \item \st{illustration}: a model or picture that explains a statement but is not part of any proof.
@@ -72,7 +73,7 @@ The manuscript is accompanied by a Lean development, pinned to OpenAI commit \te
 \item \textbf{Exposition (Sections~2 and~6).} A canonical reader, \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md}. It teaches the second bridge in six lessons with checked figures, and each lesson was checked by an independent referee against the manuscript and the Lean sources.
 \item \textbf{Three-centre strict-state separation (Section~3).} A short replacement proof of the fixed-centre part of manuscript Lemma~6.3, with the identical Lean statement \st{Lean 4.34.1}.
 \item \textbf{CC60 (Section~4).} Interfaces at one common centre whose approach directions lie in a closed $60^\circ$ arc cannot leave fewer than three labels \st{Lean 4.34.1}. A 20-colour construction shows the arc cannot be widened for arbitrary palettes \st{proved}.
-\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (150 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain, whose glued statement is still open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
+\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (150 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain \st{Lean 4.34.1, conditional}: the latest bridge still assumes \texttt{SignTable} and \texttt{ForcingLemma}, and the glued statement is open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
 \end{enumerate}
 [TEAM: confirm which items began before the event window; prior work ``does not count as event work''. The research records are dated 13--14 November 2026.]
 
@@ -129,8 +130,9 @@ Step & Manuscript & Contribution & Reader\\
 \midrule
 Transfer & Thm 1.3, Prop 4.2 & proper $\Rightarrow$ weak measurable & Lesson 1\\
 Density & Lemma 4.3 & ``almost never'' becomes ``never'' at robust points & Lesson 2\\
-Palettes & Def 5.1, Cor 5.4, Prop 5.6 & limiting angular data; $60^\circ$ disjointness; at most two labels & Lessons 4--5\\
-States & Lemmas 6.2--6.4, Thm 6.5 & avoiding traces; strict separation; isolated cyclic centres & Lesson 5\\
+Palettes & Def 5.1, Remark 5.3, Cor 5.4 & limiting angular data; $60^\circ$ disjointness at one centre; disjointness at unit-separated centres & Lessons 4--5\\
+Two labels & Lemma 5.5, Prop 5.6 & at most two labels per palette, almost everywhere & ---\\
+States & Lemmas 6.2--6.4, Thm 6.5 & avoiding traces; strict separation; cyclic centres closed and locally finite & Lesson 5\\
 Interfaces & Prop 7.1 & connected $K_j$ through $x$ excluding both edge labels on $\Delta(K_j)$ & Lessons 3--4\\
 Strips & Lemma 8.1 & one-sided label restrictions near the unit circle & Lesson 4\\
 Cycles & Props 8.2, 8.5, 8.10 & lengths 5, 4, 3 impossible & Lesson 6 (map only)\\
@@ -141,7 +143,7 @@ Cycles & Props 8.2, 8.5, 8.10 & lengths 5, 4, 3 impossible & Lesson 6 (map only)
 %======================================================================
 \section{A three-centre proof of strict state separation}
 %======================================================================
-\emph{Status:} the counting lemma and the assembly are \st{proved} here. The theorem and its moving-centre extension are \st{Lean 4.34.1}. The two palette facts used are \st{cited}, with supplied Lean proofs. Integration: the replacement is part of the team's local Lean build R1, accepted on 14 November 2026. All 27 affected modules and the root axiom check pass on Lean~4.34.1, and the old strict-state lemmas are removed (\texttt{States.lean} shrinks from 764 to 566 lines). Re-runs of the contract and dependency checks, and one file missing from the build manifest, are follow-ups.
+\emph{Status:} the counting lemma and the assembly are \st{proved} here. The theorem and its moving-centre extension are \st{Lean 4.34.1}. The two palette facts used are \st{cited}, with supplied Lean proofs. Integration: the replacement is part of the team's local Lean build R1, accepted on 14 November 2026. All 27 affected modules and the root axiom check pass on Lean~4.34.1, and the old strict-state lemmas are removed (\texttt{States.lean} shrinks from 764 to 566 lines). Its contract and dependency gates have since passed (R1-GATES, \st{computation}): all 3,116 declarations shared with the encoding-refactor baseline have identical signatures, the 8 removed are the strict-state branch, the 6 added are the three-centre machinery, and the build manifest is complete.
 
 \subsection{Statement}
 At a centre $x$, a \emph{state} $(A,J)$ is a measurable set $A$ of directions and a label set $J$ with $J\subseteq P_x(t)$ for almost every $t\in A$ (Lean: \texttt{RealState}). The \emph{support} of $B$ is the set of directions every neighbourhood of which meets $B$ in positive measure.
@@ -193,7 +195,7 @@ Declaration & Claim supported & Difference from prose\\
 \bottomrule
 \end{tabularx}
 \end{center}
-\noindent Evidence: \texttt{outputs/\allowbreak{}three-\allowbreak{}centre/\allowbreak{}VALIDATION.\allowbreak{}txt} records a pass under Lean~4.34.1 with standard axioms and no admissions. \texttt{MOVING-\allowbreak{}VALIDATION.\allowbreak{}txt} lists the axioms \texttt{[propext, Classical.\allowbreak{}choice, Quot.\allowbreak{}sound]} for all four declarations, statement and binder checks, and a transitive check that no original strict-state lemma is reached (51,271 and 61,231 constants visited). Not done: a rebuild under Lean~4.35.0; independent re-runs of R1's contract and dependency checks. [PIN: R1 artifact path in the repository once imported.]
+\noindent Evidence: \texttt{outputs/\allowbreak{}three-\allowbreak{}centre/\allowbreak{}VALIDATION.\allowbreak{}txt} records a pass under Lean~4.34.1 with standard axioms and no admissions. \texttt{MOVING-\allowbreak{}VALIDATION.\allowbreak{}txt} lists the axioms \texttt{[propext, Classical.\allowbreak{}choice, Quot.\allowbreak{}sound]} for all four declarations, statement and binder checks, and a transitive check that no original strict-state lemma is reached (51,271 and 61,231 constants visited). R1's sources and frozen manifest are in \texttt{Main/\allowbreak{}ResearchSnapshot/\allowbreak{}local/\allowbreak{}work/\allowbreak{}lean-\allowbreak{}queue/\allowbreak{}threecentre-\allowbreak{}r1/}, and its per-module logs in \texttt{Main/\allowbreak{}ResearchSnapshot/\allowbreak{}local/\allowbreak{}work/\allowbreak{}lean-\allowbreak{}queue/\allowbreak{}} (modules 1--12) and \texttt{Main/\allowbreak{}ResearchSnapshot/\allowbreak{}import-\allowbreak{}20261115/\allowbreak{}work/\allowbreak{}lean-\allowbreak{}queue/\allowbreak{}} (modules 13--27 and the root axiom check); its contract and dependency gates pass (R1-GATES). Not done: a rebuild under Lean~4.35.0.
 
 %======================================================================
 % SECTION 4: CC60 --- merged from the CC60 drafting pass (report-cc60.tex) after review.
@@ -609,7 +611,7 @@ established. The bound remains $6\le\chi(\mathbb R^2)\le7$.
 %   TESTED_FINITE          -> checked by computation
 %   CANDIDATE              -> not claimed (listed once, in the candidates sentence)
 %   OPEN / RETRACTED_OR_REFUTED -> Open problems / Retracted or refuted lists
-% Not cited as established: RELAX-1-648 = UNAUDITED_NUMBER.
+% RELAX-1-648: upgraded to TESTED_FINITE by the results desk (~01:30Z, independent exact recomputation); deliberately not cited, because the report does not define the all-phase relaxation it concerns.
 % Plain LaTeX; uses \mathbb (amssymb). No \input, no figures.
 % ======================================================================
 
@@ -673,7 +675,11 @@ not derived; proof-object identity is not claimed.
 $-150$ lines.
 % SOURCE: Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json:1 (netDelta -24; "no compile acceptance implied")
 \emph{Status:} checked in Lean~4.34.1 (archived logs): 27 modules, nine
-roots. \emph{Not shown:} re-run contract and dependency gates (R1-GATES).
+roots. Contract and dependency gates pass (R1-GATES, checked by computation:
+whole-closure signature comparison against the R4 baseline, 3,116 shared
+declarations identical, 2 moved between modules unchanged, 8 removed (the
+strict-state branch), 6 added (the three-centre machinery)).
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/R1-GATES.md ; RESULTS-LEDGER.md R1-GATES = TESTED_FINITE
 
 \item \textbf{Branch-free step ban (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP).}
 % LEDGER: STEPBAN-V2 = LEAN_VERIFIED ; STEPBAN-CONSUMER = LEAN_VERIFIED ; STEPBAN-CYCLICCORE = LEAN_VERIFIED ; FIVESUPPORT-SWAP = LEAN_VERIFIED ; STEPBAN-SWAP = OPEN
@@ -692,10 +698,12 @@ finite core checked by \texttt{decide}. Its consumer
 same statement, and a same-name swap inside \texttt{FiveSupport} compiles on
 R1 with all 31 public statements unchanged. This is a \emph{structural}
 simplification: it removes a case split and one finite lemma. It does
-\emph{not} shorten the code: the port adds 61 lines, and about 23 remain
-added even after the old proof is deleted. \emph{Not shown:} adoption of the
+\emph{not} shorten the code: the port adds 61 lines, and with the old step
+ban deleted the module is still 33 lines longer ($354\to387$ physical lines;
+$+9$ code lines excluding comments). That deletion compiles with the
+remaining 30 public statements unchanged. \emph{Not shown:} adoption of the
 swap into the integrated tree with a downstream rebuild (STEPBAN-SWAP, open).
-% SOURCE: RESULTS-LEDGER.md batch 2 (FIVESUPPORT-SWAP line accounting; STEPBAN-SWAP expected net change about +23)
+% SOURCE: RESULTS-LEDGER.md FIVESUPPORT-SWAP (FiveSupportSwapR1-noV1: exit 0; 30/30 signatures identical; 354 -> 387)
 
 \item \textbf{Joint-pair support theorem (JOINT-SUPPORT).}
 % LEDGER: JOINT-SUPPORT = LEAN_VERIFIED
@@ -821,8 +829,12 @@ palette.
 % SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t231544-0/Candidate.lean:368,417,441,447-451,521,739
 % SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean:219
 % SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/bridge-r2-axioms/axioms.log:1-8
-\emph{Status:} each part is checked in Lean~4.34.1 (archived logs). The
-forcing job printed no axiom list, and G1 compiled only inside the bridge job.
+\emph{Status:} each part is checked in Lean~4.34.1 (archived logs), on the
+standard axioms. For the forcing lemma the axiom list was printed in a later
+spot check (seven declarations). G1 compiled inside the bridge job and also in
+a standalone desk compile.
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log:1-7
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/G1-r2/ (compile.log; G1-Finish-mB-r2, 23:49Z)
 A later version, \texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}unconditional}, glues in the G3 proof and so discharges
 \texttt{ArcCover}; it still assumes \texttt{SignTable} and
 \texttt{ForcingLemma} (A6-BRIDGE-R2-G3, checked in Lean~4.34.1).
@@ -954,8 +966,9 @@ independently reviewed). \emph{Not shown:} a counterexample to L6.
 \item \textbf{Containment reading (A6-CONTAINMENT).} The conditions
 $f_j\in P_j$, $H_j\subseteq P_j$ and $P_j\cap P_{j+1}=\emptyset$ for all~$j$
 are inconsistent, so a containment-form forcing lemma would be vacuous.
-\emph{Status:} checked in Lean~4.34.1 (archived logs); no axiom list was
-printed.
+\emph{Status:} checked in Lean~4.34.1 (archived logs), on the standard
+axioms (printed in a later spot check).
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log:3
 % LEDGER: A6-CONTAINMENT = LEAN_VERIFIED
 % SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean:265
 \end{itemize}
@@ -1000,16 +1013,15 @@ palette''.
 \item A5-M5-TEMPLATE: the $m=5$ template for the $k=6$ producer.
 \item OVERNIGHT-WITHDRAWN: five-cycle shortcut, H2 discharge, 681/720 cell
 family, canonical 3-cycle.
-\item LEAN-FAILED-REVISIONS: eight failed jobs, all superseded.
+\item LEAN-FAILED-REVISIONS: nine failed jobs, all superseded. The ninth, a staging defect (a stray backslash on line~1 of the CyclicCore consumer job), was superseded by the desk compile recorded as STEPBAN-CYCLICCORE.
 \end{itemize}
 
 % ----------------------------------------------------------------------
 \subsection{Open problems}
 % LEDGER: each item below = OPEN
 \begin{itemize}
-\item A6-GLUE: compile the bridge with G1, G3 and the forcing lemma spliced in.
-\item STEPBAN-SWAP: adopt the compiled same-name swap into the integrated tree, delete the old step ban, rebuild downstream and re-run the root axiom check (expected net change about $+23$ lines: structural only).
-\item R1-GATES: re-run R1's contract and dependency gates.
+\item A6-GLUE: discharge \texttt{SignTable} and \texttt{ForcingLemma} inside the glued bridge (G3 is already glued in; see A6-BRIDGE-R2-G3).
+\item STEPBAN-SWAP: adopt the compiled same-name swap into the integrated tree, delete the old step ban, rebuild downstream and re-run the root axiom check (the module alone is $+33$ physical lines with the old step ban deleted: structural only).
 \item PALETTE-RIGIDITY: $|J\cup K|\ge3$ with real states on both sectors.
 \item STAIRCASE-CONVERSE: realise or classify the surviving staircases.
 \item K6-PRODUCER: two missing declarations for the $m=3$ case at $k=6$.
@@ -1019,7 +1031,7 @@ lemmas L6 and F6.
 impossible.
 \end{itemize}
 
-Unreviewed candidates, not claimed: A6-PAIRED-PRODUCER, A6-COROLLARIES,
+Candidates (no independent referee, or incomplete evidence), not claimed: A6-PAIRED-PRODUCER, A6-COROLLARIES,
 MC120-STRICT, CONTINUOUS-SIX, LIST-FIELD-A4, A5-ODD-WALK and the remaining
 ledger candidates.
 % LEDGER: CANDIDATE ids (28 in results-ledger.json when last read; the ledger was still growing):
@@ -1028,7 +1040,7 @@ ledger candidates.
 %   CENSUS-COMPLETE-60Z CLAUDE-LEMMA-A CONTINUOUS-SIX HONEYCOMB-RESTRICTED J-DEPTH K6-M3-DOOR LIST-FIELD-A4
 %   MC120-STRICT Q4Q5-PINNING R0-CHI4 RELAX-CIRCULANT T6-B2 THM-BPRIME TRANSLATION-CRITERION WILD-LAW
 %   A8-PALETTE ALPHA-SHARP FOURWAY-SPLIT GEOM-Q4Q5 GEOM-TWO-STEP Q4Q5-APEX TERNARY-COUNTERMODEL
-% NOTE: RELAX-1-648 = UNAUDITED_NUMBER deliberately omitted from the text.
+% NOTE: RELAX-1-648 (now TESTED_FINITE) deliberately omitted from the text; see the note in the further-results section.
 
 % ----------------------------------------------------------------------
 \begin{table}[ht]
@@ -1047,8 +1059,8 @@ Declaration & File & Supports & Difference from prose \\
 \texttt{three\_\allowbreak{}color\_\allowbreak{}diamond\_\allowbreak{}omega}, \texttt{diamond\_\allowbreak{}tips} & \texttt{Diamond\allowbreak{}Standalone.\allowbreak{}lean}:23, :37 & DIAMOND & A 4.35.0 core-only run printed axioms but has no exit record \\
 \texttt{five\_\allowbreak{}residues\_\allowbreak{}reduce\_\allowbreak{}to\_\allowbreak{}two} and 34 others & \texttt{Five\allowbreak{}Cycle\allowbreak{}Residues\allowbreak{}V4.\allowbreak{}lean}:115 & FIVE-CYCLE-RESIDUES & Finite facts only \\
 \texttt{even\allowbreak{}Walk\_\allowbreak{}reachable}, \texttt{finite\_\allowbreak{}list\_\allowbreak{}obstruction}, \texttt{two\_\allowbreak{}list\_\allowbreak{}obstruction\_\allowbreak{}of\_\allowbreak{}even\_\allowbreak{}walk} & \texttt{Even\allowbreak{}Walk\allowbreak{}Reachability-\allowbreak{}rev6.\allowbreak{}lean}:199, :349, :362 & EVENWALK-R6 & Desk compile, not a queue job \\
-\texttt{a6\_\allowbreak{}canonical\_\allowbreak{}pairs\_\allowbreak{}add\_\allowbreak{}three}; \texttt{a6\_\allowbreak{}containment\_\allowbreak{}unsatisfiable} & A6 forcing \texttt{Candidate.lean}:155, :265 & A6-FORCING, A6-CONTAINMENT & No \texttt{\#print axioms} in the job \\
-\texttt{cos\_\allowbreak{}sign\_\allowbreak{}strict}, \texttt{sign\allowbreak{}Table\_\allowbreak{}of\_\allowbreak{}paired} & bridge \texttt{Candidate.lean}:521, :739 & G1-R2 & Compiled only inside the bridge job \\
+\texttt{a6\_\allowbreak{}canonical\_\allowbreak{}pairs\_\allowbreak{}add\_\allowbreak{}three}; \texttt{a6\_\allowbreak{}containment\_\allowbreak{}unsatisfiable} & A6 forcing \texttt{Candidate.lean}:155, :265 & A6-FORCING, A6-CONTAINMENT & Axioms printed in a later spot check (standard three) \\
+\texttt{cos\_\allowbreak{}sign\_\allowbreak{}strict}, \texttt{sign\allowbreak{}Table\_\allowbreak{}of\_\allowbreak{}paired} & bridge \texttt{Candidate.lean}:521, :739 & G1-R2 & Bridge job, and a standalone desk compile \\
 \texttt{arcCover} & \texttt{G3-\allowbreak{}Arc\allowbreak{}Cover-\allowbreak{}r2.\allowbreak{}lean}:219 & G3-R2 & Desk compile \\
 \texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}global} & bridge \texttt{Candidate.lean}:447 & A6-BRIDGE-R2 & \texttt{SignTable}, \texttt{ForcingLemma}, \texttt{ArcCover} are hypotheses \\
 \texttt{unit\allowbreak{}Free\_\allowbreak{}pairwise\_\allowbreak{}lt}, \texttt{diam\_\allowbreak{}le\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}preconnected\_\allowbreak{}unit\allowbreak{}Free'} & \texttt{Connected\allowbreak{}Set\allowbreak{}Exclusion\allowbreak{}Minimal\allowbreak{}.\allowbreak{}lean}:62, :74 & CONNECTED-SET: connected unit-free sets have diameter $\le1$ & Sharp \\
@@ -1067,7 +1079,8 @@ Declaration & File & Supports & Difference from prose \\
 %======================================================================
 \section{The exposition and its figures (described in words)}
 %======================================================================
-The reader \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md} is the event's main exposition product. It has six lessons, each ending with questions, model answers and a feedback prompt. Each lesson was drafted by a Claude exposition editor and checked by an independent Claude referee against primary sources; the referee's fixes were applied before integration. Each figure below enables one stated inference. Figures for Lessons~3--5 were generated by scripts and checked by point sampling against the exact predicate they depict.
+The reader \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md} is the event's main exposition product. It has six lessons, each ending with questions, model answers and a feedback prompt. Each lesson was drafted by a Claude exposition editor and checked by an independent Claude referee against primary sources; the referee's fixes were applied before integration. Each figure below enables one stated inference. Figures for Lessons~3--6 were generated by scripts and checked against the exact region, distances or structure they depict; the check scripts and their recorded outputs are archived in \texttt{HadwigerNelson/\allowbreak{}Exposition/\allowbreak{}Figures/\allowbreak{}checks/\allowbreak{}}.
+% SOURCE: HadwigerNelson/Exposition/Figures/checks/verify_straddle.out.txt, verify_interfaces.out.txt, verify_three_centres.out.txt
 \begin{itemize}
 \item \textbf{Lesson 1 (weak colourings).} Three figures.
   \begin{itemize}
@@ -1109,7 +1122,7 @@ Every figure is an illustration; none depicts a valid colouring.
 Claim & Status & Evidence\\
 \midrule
 No proper five-colouring of the plane; $6\le\chi(\R^2)\le7$ & \st{cited} & manuscript \cite{OAI}, Thms 1.1, 1.4; seven-colour hexagon tiling\\
-Three-centre proof of Lemma 6.3 (fixed centre); moving-centre four-cycle lemma; integrated build R1 & \st{proved}, \st{Lean 4.34.1} & Section 3; three-centre validation logs; R1 manifest\\
+Three-centre proof of Lemma 6.3 (fixed centre); moving-centre four-cycle lemma; integrated build R1 & \st{proved}, \st{Lean 4.34.1} & Section 3; three-centre validation logs; R1 manifest; R1-GATES \st{computation}\\
 CC60 & \st{Lean 4.34.1} & Section 4; cone packet\\
 CC60 cannot be widened above $60^\circ$ for arbitrary finite palettes (SHARPNESS-20; 20 colours) & \st{proved} & Section 4; sharpness referee report\\
 Lean simplification of the supplied proof, 150 lines shorter (ENC-R4, R1) & \st{Lean 4.34.1} & Section 5; results ledger\\
@@ -1117,10 +1130,10 @@ Branch-free step ban and its consumers (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CY
 Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE) & \st{proved} & Section 5; referee reports\\
 Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
 Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\
-Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
+Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73, HONEYCOMB-K16, HISTORIC-8) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
 Counterexamples and negative results (MC120-ENDPOINT, ANNULUS-3COL, SUPPORT-FLIP, FOUR-STATE-ANGULAR, VARIABLE-TRIANGLE, A7-CONTACT, LOCAL-TRANSITIONS) & \st{proved} & Section 5\\
 A route to $\chi\ge7$ (L6-F6) & open; not claimed & Section 5\\
-Exposition figures match their stated regions & \st{computation} & point-sampling checks, Section 6\\
+Lesson 3--6 figures match their stated regions & \st{computation} & Section 6; archived scripts and outputs in \texttt{HadwigerNelson/\allowbreak{}Exposition/\allowbreak{}Figures/\allowbreak{}checks/\allowbreak{}}\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -1137,7 +1150,7 @@ Checking was layered.
 \begin{itemize}
 \item Every lesson had an independent referee pass by a separate model instance that had not written it. The referee read the primary sources (manuscript text and Lean files).
 \item Every Lean claim rests on archived compiler logs and axiom audits; source hashes match the recorded hashes.
-\item Every figure was checked by an independent sampling script.
+\item Each figure for Lessons~3--6 was checked by script against the exact region, distances or structure it depicts; the scripts and their outputs are archived in \texttt{HadwigerNelson/\allowbreak{}Exposition/\allowbreak{}Figures/\allowbreak{}checks/\allowbreak{}}.
 \end{itemize}
 The team must be able to explain every claim; the reader's question-and-answer blocks are written for that purpose.
 
@@ -1158,7 +1171,7 @@ The team must be able to explain every claim; the reader's question-and-answer b
 \item \textbf{There is no global chromatic result here.} We neither exclude six colours nor construct a six-colouring.
 \item CC60 forbids a kind of local configuration at a common centre. Nothing shows that a hypothetical six-colouring must produce it.
 \item No Lean file of ours has been built under the event's Lean~4.35.0 environment.
-\item The three-centre replacement is integrated only in the team's local build R1 (Lean~4.34.1); its contract and dependency re-checks are follow-ups.
+\item The three-centre replacement is integrated only in the team's local build R1 (Lean~4.34.1), whose contract and dependency gates pass; it has not been rebuilt under Lean~4.35.0.
 \item The exposition's referee passes are bounded checks of the explanation, not an independent verification of the supplied proof.
 \end{itemize}
 

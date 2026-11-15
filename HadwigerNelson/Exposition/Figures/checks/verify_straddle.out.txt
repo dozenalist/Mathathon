@@ -1,0 +1,18 @@
+band path rings: 2 [1442, 1442]
+K endpoints (291.0,340.0)-(429.0,340.0); UNIT=230.0; L measured=0.6000
+Figure A grid 400x400: 160000 samples, 6100 within 1% of boundary (skipped), 153900 checked, 0 misclassified; shaded=57164
+  first misclassified: []
+  with no tolerance at all: 4 of 160000 disagree (polygon approximation only)
+  label 'within 1 of all of K' at (360,223): min=0.509 max=0.591 in Delta=False shaded=False
+
+Figure B: z=(130.0,420.0); K from x=202.0 to 508.0 at y=204.0
+  K end distances: near 0.6325 (<1: True), far 1.2093 (>1: True)
+  ruler to (371.5,204.0): length 0.9000, endpoint on K: True
+  ruler to (418.0,204.0): length 1.0000, endpoint on K: True
+  ruler to (461.9,204.0): length 1.1000, endpoint on K: True
+  dashed arc radius range 0.99999..1.00002; y-range 195.5..315.9
+  label 'dashed: unit circle of z' at (484.6,335.9)
+
+Figure C: z=first point (120.0,250.0); second (600.0,250.0)
+  distance z->z = 0, z->second = 2.0000, z->missing contact = 1.0000
+  dashed arc radius range 0.99998..1.00002; passes through midpoint: 0.20px
