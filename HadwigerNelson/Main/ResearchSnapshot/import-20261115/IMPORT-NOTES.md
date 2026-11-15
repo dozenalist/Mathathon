@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T03:47:22.423Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T04:04:09.516Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -247,8 +247,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-27-transfer.python.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
-| `work/research-desk/BANKED.md` | 6783 | `69c147e0b962a413065dfa6d8d863f139e81ceb3e4de147c9acec6061a685ebd` |
-| `work/research-desk/LOG.md` | 11076 | `05bb8ca8a9729bc8beacd71d709113dfa189f381714f793c7df44443dd83bcb0` |
+| `work/research-desk/BANKED.md` | 7506 | `13473da020099cded9898e4389b6feb6ebe496ef2f228e457b9e7a61084b2f3a` |
+| `work/research-desk/LOG.md` | 11473 | `a9b7468ea7e2ed8915f43c7a30439a1d92aa8b9583988177ce221f55946ba72e` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -282,6 +282,11 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/research-desk/ln-checks/LN2/indep_ln2.out` | 14219 | `7b424bb78c677c2f67606499c44f50db0e0a80c7857131135e45d3a5af2f50c3` |
 | `work/research-desk/ln-checks/LN3/indep_ln3.py` | 22385 | `fdbaf0c04632ea1bab408f144a897e74c934869ae6045f891473e2473d4eb3d6` |
 | `work/research-desk/ln-checks/LN3/indep_ln3.out` | 5921 | `9f478cfc9519b8bd7d572daac0f90f2051c728109ba30692533704ff2bca430b` |
+| `work/research-desk/ln-checks/SIGNCELL/indep_signcell.py` | 30617 | `e556895c0de11ff5ea3fe9b2e092bb90ffcc712d89fcb41cdd90ad7d7b79a90a` |
+| `work/research-desk/ln-checks/SIGNCELL/indep_signcell.out` | 6268 | `b7a5890d91d2fae52198230a3ab42439bd4bea3272c3b3fc41a85d972f848290` |
+| `work/research-desk/ln-checks/SIGNCELL/desk_sat_dump.py` | 876 | `b038995fe7f55263ddd56529ce4e80d1ff4f244290c70b35ae7cd0a3f6ed7ff9` |
+| `work/research-desk/ln-checks/SIGNCELL/desk_sat_dump.out` | 345 | `e158706474bfa1e35b288bf34cddde89a1143b1697bbed2d72c07048b03889b4` |
+| `work/research-desk/ln-checks/SIGNCELL/desk_sat177.txt` | 2301 | `9d5c7686b6064a181da7c2b60386ba48e4834abd99169c5adf2d82ee6317d909` |
 | `work/research-desk/contracts/ConsumerContracts.lean` | 4690 | `a3ea701ab15d29a7941f27ac02566feca014b4ae241d5a1b49abba404055c57f` |
 | `work/research-desk/contracts/compile.log` | 16399 | `6ee4315e14db61b84f3d4b15c05fb2c1bdc0f198ec26844ed104aeb3eef05eb7` |
 | `work/cloud-supervisor/a5-sliver/CERTIFICATE.md` | 4646 | `b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33` |
@@ -338,7 +343,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T031143.json` | 3618 | `a48e073f270b6f30c19c023d70cab95529efb57e8eef59117b244c2439175377` |
 | `work/automation-supervisor/replies/20261115T032647.json` | 4159 | `c6b695dc42397184e77a3f083f17d3778af9747d9c32d189e91874ccacb04113` |
 | `work/automation-supervisor/replies/20261115T034153.json` | 3004 | `813f9a1844c95d6776a10fc74034ded3af23ff0d6b4f52227dab768cd63b7485` |
-| `work/automation-supervisor/research-plan.json` | 1065 | `d577a375b8c38574241cf0deb4447bfc426ffd8f0615d614dde9b40549a2a742` |
+| `work/automation-supervisor/replies/20261115T035658.json` | 2811 | `4a65efafb1ccf686a228ca1c2c551dffd71067778c9fc0fcd73be563cd7a96da` |
+| `work/automation-supervisor/research-plan.json` | 1300 | `64996dd680a54a9aa7d3f652d99b06b5acc09090a36b23e39248da1b72f0ee66` |
 | `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
 | `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
 | `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
@@ -475,6 +481,7 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/Sectors.lean` | 23972 | `8acd47b52ea091d61506b8cbf529be6f59626812e90dddec6c7c1de7430e9e62` |
 | `work/automation-supervisor/inbox/20261115T021643-download-4-R1-1-BASELINE.md` | 8557 | `8501a0a088af9e7fcd122c21561dee55005f0c0adc8fcfaa472edeafb9770aee` |
 | `work/automation-supervisor/inbox/20261115T021643-download-5-r11_baseline.py` | 14250 | `93847c7b6703154a4a57699d88096de135c8e038f303b1ae0a6905c3135a201b` |
+| `work/automation-supervisor/inbox/20261115T034153-download-1-SIGNCEL-COUNT.md` | 6611 | `f6baa6b98c8382896ddf535e96ac7060f1c2bfac38b7f8b43e1199959cc90871` |
 | `work/results-desk/L-R1/L-R1-QUEUE.md` | 2300 | `3ce1e9cb5dbbd5312697a9205763e64117a180a82c31f23d7158d9c5080cae9d` |
 | `work/results-desk/L-R1/R1-1.txt` | 3964 | `8a68f825005a91644cb3363627eb25a41ee0c9d0441279a2222c43ce174a9ac9` |
 | `work/results-desk/L-R1/R1-2.txt` | 3572 | `b3ae2032ed83e40c417222310b770e75a6bfb9ec0303b8ba650bd8226c829ede` |
@@ -488,6 +495,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/results-desk/allphase/allphase_desk.out` | 463 | `81f5c38f9adb36a5774810c442551463ade3ced4fd931564f4a75a62a1735d53` |
 | `work/results-desk/allphase/mc_signcells.py` | 2426 | `1e8b0525aa995d6d4de9ce2ae9234e7456ff9a1b12c95bd9bb0503708d27523c` |
 | `work/results-desk/allphase/mc_signcells.out` | 700 | `1be8f3f562a606b2fa6bfbf828224398fc8c558c30cd20bfe3d0ff4817dac1d5` |
+| `work/results-desk/allphase/lift_labels.py` | 5367 | `94d8b5e888fda075dce6747c296da78016cee9cd47c95fa97f5072bd22fd2972` |
+| `work/results-desk/allphase/lift_labels.out` | 768 | `1f4230df777d6c2978dc0363282f995c08718800b54d323e7a29e73e16370062` |
 | `work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` | 2437 | `5521b496101778f1e400b704160c6e1c61c5e411743a822954c0f99ab1e4012d` |
 | `work/simplification-desk/r1-gates/manifest-complete.json` | 58066 | `4c24ee676e79c450d0167fe326ea2e384bb97d41511ae388b967d6b239fb9d46` |
 | `work/simplification-desk/r1-gates/line-accounting-r1-desk.json` | 2363 | `2233250bae3b9a2b973d3b7c865bad0f6eab738e56a515439126bfeb27f622fd` |
@@ -521,4 +530,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 14200 | `48d5cb5db90b4811fed5fb8cd0cf86b12b787e40ddba08038b051934da36905e` |
+| `work/cloud-supervisor/LOG.md` | 15439 | `de298aa8653c649092560de003e9fa85879ee7a34d45b1b12ce4e19e2e1d19b8` |

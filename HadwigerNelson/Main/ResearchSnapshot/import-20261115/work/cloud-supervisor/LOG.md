@@ -65,3 +65,10 @@
 - 03:42Z heartbeat: research+simplification waiting on background jobs reported <20 min ago (not pinged); results working; services alive; 1 lean.exe; coordinator cycle running.
 - 03:44Z Results batch 8 held (freeze): S2 recount confirmed -717; fixes stale IMPORT-VALIDATION hash cited on GitHub.
 - 03:46Z Jarom approved: batch 8 pushed fb0f10a. Freeze otherwise continues.
+- 03:48Z S1 LEAN_VERIFIED (results batch 9, held). Realised -415. Asked exposition desk for README/report/slides -415 package to push together on Jarom's OK.
+- 03:49Z Jarom approved pushing batch 9 + exposition -415 package when ready (exposition desk now working on it). Watch: referee says sign-cell count is 62 (not 16 of 3840); desk recount pending; GitHub ledger currently says resolved at 16.
+- 03:51Z heartbeat: results+exposition working (-415 package); research+simplification waiting on background jobs reported <20 min (not pinged); services alive; 1 lean.exe (S2 rebuild); cycle 034448 ok.
+- 03:54Z Jarom-approved: S1 LEAN_VERIFIED batch 9 + README/ROADMAP/report/slides/speaker-notes -415 pushed a7fa40b; verify-snapshot passed; PDFs byte-identical. ProofWalkthrough.md local edit not included. Freeze otherwise continues.
+- 03:55Z S1 package completion (ProofWalkthrough s31/s35) pushed 4e4265f under Jarom's S1 approval.
+- 03:56Z Results batch 10 held: sign-cell count contested (referee 62 vs 16; lift test suggests artifact); waiting for recount before asking Jarom.
+- 04:01Z heartbeat: research reported 04:00, simplification S2 rebuild running (reported 03:45) - not pinged; services alive; 1 lean.exe; cycle 035859 ok.

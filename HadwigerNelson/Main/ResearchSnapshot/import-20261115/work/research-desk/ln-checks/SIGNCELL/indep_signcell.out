@@ -1,0 +1,74 @@
+indep_signcell.py sha256 = e556895c0de11ff5ea3fe9b2e092bb90ffcc712d89fcb41cdd90ad7d7b79a90a
+python 3.12.10  flags isolated = 1
+[    0.0s] Part 0: fixed-phase SAT table
+  S1 SAT = 177, UNSAT = 7599; S1 vs S2 mismatches = 0
+  [PASS] fixed-phase SAT count 177 (own solvers) 
+  [PASS] SAT invariant under common shift of tau (sampled 1111 classes x 5 shifts) 
+  [PASS] own 177-set == desk independent_census.py SAT set (class by class) (desk 177, mine 177, sym diff 0)
+[    0.8s] Part A: combinatorial enumeration
+  k=6 staircases surviving: 8640 over 720 linear orders; per-order histogram {12: 720}
+  [PASS] k=6 survivors = 8640 (desk census by_k[6]) and 8640 = 6*1440 
+[   29.8s] Part A done: 933120 cells enumerated
+  [A] resonance cells 933120, distinct gauge-free P labels 933120
+  [A] sign cells (distinct Q) 3840, resonance cells per sign cell {243: 3840}
+  [A] base chambers (distinct mod-180 cyclic orders) 120, resonance cells per chamber {7776: 120}, sign cells per chamber {32: 120}
+  [A] mod-60 cyclic orders 120
+  [A] SAT resonance cells 1440
+  [A] SAT meets 16 base chambers; SAT per met chamber {90: 16}
+  [A] SAT meets 16 sign cells; fills [90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90] (sum 1440)
+  [A] SAT meets 120 mod-60 cyclic orders; SAT per order {12: 120}
+  [A] old mod-60 key (order of frac(alpha/60), floor(alpha/60) mod 2), gauge alpha_0=0: 3840 blocks, met by SAT 720, fills {2: 720}
+  [A] old-key blocks spread over >1 true sign cell: 3840 of 3840; max sign cells per old block 238
+[   32.8s] Part B: geometric enumeration (sign cell -> resonance subcells -> explicit points)
+[  115.2s] Part B done: 3840 enumerated sign cells, 933120 explicit points; arc memo 46656, rotation-canonical CSPs solved 7776
+  [PASS] B: window shortcut == direct cosine signs at actual points (119124 arc matrices compared, 0 mismatches)
+  [PASS] B: 3840 enumerated sign cells carry 3840 distinct gauge-free Q labels 
+  [B] resonance cells 933120, distinct gauge-free P labels 933120
+  [B] sign cells (distinct Q) 3840, resonance cells per sign cell {243: 3840}
+  [B] base chambers (distinct mod-180 cyclic orders) 120, resonance cells per chamber {7776: 120}, sign cells per chamber {32: 120}
+  [B] mod-60 cyclic orders 120
+  [B] SAT resonance cells 1440
+  [B] SAT meets 16 base chambers; SAT per met chamber {90: 16}
+  [B] SAT meets 16 sign cells; fills [90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90] (sum 1440)
+  [B] SAT meets 120 mod-60 cyclic orders; SAT per order {12: 120}
+[  119.8s] Part C: A vs B cell-by-cell, random completeness sample, spot points
+  [PASS] A and B records identical cell-by-cell (P,Q,O180,O60,SAT) over all cells (933120 vs 933120)
+  [PASS] A combinatorial sign key (b, f-order) == B enumeration key for every Q 
+  [PASS] random points: every P label among the 933120 found (no further resonance cell) (149916 generic points, 0 new)
+  [PASS] random points: sign cell (Q) of point == sign cell of its resonance cell (W_180 subset W_60) (0 bad)
+  [PASS] random points: cyclic orders mod 60/180 constant on resonance cells (0 bad)
+  [PASS] random points: SAT (all-arc field) constant on resonance cells (0 bad)
+  spot (0,30,90,150,240,300): NOT in an open resonance cell (some alpha_i = alpha_j mod 60): wall point
+  spot (0,108.75,123.75,142.5,292.5,315): SAT=0; its sign cell has 90 SAT resonance cells; its base chamber has 90
+  spot (0,60/7,540/7,1020/7,1500/7,1980/7): SAT=1; its sign cell has 90 SAT resonance cells; its base chamber has 90
+  spot (0,30.5,90.25,150.75,240.125,300.375) [near hexagon]: SAT=1; its sign cell has 90 SAT resonance cells; its base chamber has 90
+  ungauged chart key (cyclic order mod 180, eps mod diag) for the 1440 SAT cells, distinct keys by global rotation alpha_0 = deg: {0: 16, 15: 50, 30: 53, 45: 56, 60: 48, 90: 79, 120: 48, 150: 53, 179: 30}
+  (rotation 0 is the gauge alpha_0 = 0 and must equal the true sign-cell count 16)
+[  134.0s] Part E: path certificates and the ungauged (naive) label
+  [PASS] every SAT rep is joined to its Q-class first rep by a certified W_180-free path (1424/1424 certificates, 16 Q classes)
+  same-base-chamber SAT pairs 64080; naive label differs on 52930; of these 52930 joined by certified wall-free path, 0 with different normalised Q, 0 unresolved
+  [PASS] decisive check: every naive-label split inside a base chamber is resolved 
+  naive label on the B points as generated (random global rotation per cell): 96 distinct values for the 1440 SAT cells
+  all naive labels reachable by global rotation of the SAT cells: 96
+  [PASS] staircase chart: all 8640 survivor points are geometrically SAT and lie in the met sign cells (8640 SAT, 16 sign cells)
+  naive label in the staircase chart (t = 0): 96 values over all 8640 survivor points, 48 over the 1440 with crossing order starting at interface 0
+[  136.2s] Part D: grid union-find component counts in T^n, n = 3, 4
+  n=3 mod 60: grid steps (20, 10, 5) deg -> components [72, 72, 72]; (n-1)!*(360/m)^(n-1) = 72
+  [PASS] grid union-find n=3 mod 60 finest grid == formula 
+  n=3 mod 180: grid steps (20, 10, 5) deg -> components [8, 8, 8]; (n-1)!*(360/m)^(n-1) = 8
+  [PASS] grid union-find n=3 mod 180 finest grid == formula 
+  n=4 mod 60: grid steps (20, 15, 12) deg -> components [4968, 1296, 1296]; (n-1)!*(360/m)^(n-1) = 1296
+  [PASS] grid union-find n=4 mod 60 finest grid == formula 
+  n=4 mod 180: grid steps (20, 15, 12) deg -> components [48, 48, 48]; (n-1)!*(360/m)^(n-1) = 48
+  [PASS] grid union-find n=4 mod 180 finest grid == formula 
+[  166.2s] Verdicts
+  [PASS] A and B summary counts identical 
+  claim 1 resonance cells = 933120: HOLDS
+  claim 2 sign cells = 3840: HOLDS
+  claim 3 base chambers = 120: HOLDS
+  claim 4 SAT meets 16 base chambers x 90: HOLDS
+  claim 5 SAT meets 62 sign cells, fills sum 1440: DOES NOT HOLD
+  claim 6 720 is not the sign-cell (W_180) or resonance (W_60) met count: HOLDS
+  measured: resonance 933120, sign 3840, base 120, SAT 1440, base met 16 {90: 16}, sign met 16 fills [90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90], mod-60 orders met 120 {12: 120}, old mod-60 key blocks met 720
+internal checks: 20 pass, 0 fail
+[  166.2s] done

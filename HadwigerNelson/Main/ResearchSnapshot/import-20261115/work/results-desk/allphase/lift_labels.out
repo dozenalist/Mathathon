@@ -1,0 +1,9 @@
+command: python -I lift_labels.py   (results desk, 2026-11-15 ~04:15Z; = allphase_desk.py + a lift-label test appended)
+{'cells': 933120, 'field': 1440, 'empty_side': 919512, 'c2_only': 12168} measure = 1/648
+field reps 1440
+correct component labels (alpha_0 = 0): 16
+trial 0 correct labels after rotation: 16  naive (Z/2)^6/<1> labels: 96
+trial 1 correct labels after rotation: 16  naive (Z/2)^6/<1> labels: 96
+trial 2 correct labels after rotation: 16  naive (Z/2)^6/<1> labels: 96
+meaning: rotating each field representative by one global angle keeps it in its W_180 component; the alpha_0-normalised label is invariant (16 components),
+the (Z/2)^6/<1,...,1> lift read off as floor(alpha_i/180) without fixing alpha_0 is not (96 labels for the same 16 components).

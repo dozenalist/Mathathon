@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T03:47Z",
+  "builtAtUtc": "2026-11-15T04:04Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -1454,7 +1454,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "6aa4b8846daaa8dd0ae42c2c4148c57126e8dbfc5bd2676a1127719bde2ae262"
+          "sha256": "590a49ef0f4b2a5a53b0ce87779c456445f52bfa6cf517294da0d4b817b32022"
         }
       ]
     },
@@ -1570,9 +1570,10 @@
       "statement": "For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840): the results desk finds the field set meets 16 sign cells (16 of the 120 mod-180 orders; all 120 mod-60 orders occur), confirmed by the L-R1 judge after it corrected a sign-cell key bug (its first report said 720); each met sign cell holds 90 field cells.",
       "hypotheses": "Relaxation level only (inner/outer hits and 60-degree disjointness; palettes of size <= 2 WLOG). Says nothing directly about colourings.",
       "evidence": "Two independent implementations agree: the discovery m2 scripts (referee6.py, run and reproduced by the all-phase referee, unaudited) and an exact implementation written by the results desk from the model definitions (allphase_desk.py, integer angles in units of 1/14 degree, one interior representative per cell, all six arcs tested).",
-      "checked": "2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. THIRD IMPLEMENTATION (L-R1 judge baseline, delivered 02:16Z; read, script not run by the desk): reproduces 933,120 / 1,440 / 919,512 / 12,168 and 1/648 exactly, but reports that 720 of 3,840 sign cells meet the field set (2 field cells each) and 120 of 120 base chambers. DISPUTE on the sign-cell count, resolved for now in favour of 16: (i) my exact enumeration, with sign cells recomputed directly from the representative angles, gives 16 sign cells holding 90 field cells each; (ii) an independent Monte Carlo (150,000 uniform random exact configurations, no cell enumeration) gave 225 field hits (rate 0.0015 ≈ 1/648) spread over 207 distinct resonance cells but only 16 distinct sign cells, whereas 720 sign cells would give about 190 distinct sign cells for 225 hits. The L-R1 lane was asked to recheck its sign-cell extraction; its corrected run reproduces 16 of 3,840 (cycle 031143).",
+      "checked": "2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. THIRD IMPLEMENTATION (L-R1 judge baseline, delivered 02:16Z; read, script not run by the desk): reproduces 933,120 / 1,440 / 919,512 / 12,168 and 1/648 exactly, but reports that 720 of 3,840 sign cells meet the field set (2 field cells each) and 120 of 120 base chambers. DISPUTE on the sign-cell count, resolved for now in favour of 16: (i) my exact enumeration, with sign cells recomputed directly from the representative angles, gives 16 sign cells holding 90 field cells each; (ii) an independent Monte Carlo (150,000 uniform random exact configurations, no cell enumeration) gave 225 field hits (rate 0.0015 ≈ 1/648) spread over 207 distinct resonance cells but only 16 distinct sign cells, whereas 720 sign cells would give about 190 distinct sign cells for 225 hits. The L-R1 lane was asked to recheck its sign-cell extraction; its corrected run reproduces 16 of 3,840 (cycle 031143). FINAL (~04:30Z): read the research-desk recount output (0 FAIL; A and B identical cell by cell; 1,424/1,424 certified wall-free paths to the 16 class representatives; all 52,930 naive-label splits resolved). Four independent supports for 16: results-desk enumeration, results-desk Monte Carlo, corrected L-R1 judge, research-desk two-method recount. Not re-run by the results desk (166 s).",
       "provenance": "Discovery m2 (smwgui6l9 d1, unsubmitted) via the all-phase referee 20:57Z; adversarial final wording cycle 001250; results desk recount 01:20Z.",
       "corrections": [
+        "~04:10Z a first-pass referee (chat-2345d7f398, swarm smwh90qeq, SIGNCEL-COUNT.md) agrees on 1,440 cells and on 16 of 120 mod-180 base chambers with 90 field cells each, but claims the field set meets 62 of the 3,840 sign cells (from member m4's census, labelling a sign cell by a base chamber plus a lift class in (Z/2)^6/<1,...,1>). Results-desk test (lift_labels.py): that lift, read off as floor(alpha_i/180) without fixing alpha_0, is not constant on W_180 components: one global rotation per field representative keeps each in its component, and the alpha_0-normalised label stays at 16 while the naive lift gives 96 labels. So 62 is consistent with a labelling artifact; the ledger keeps 16. The referee also states that neither of W_60, W_180 contains the other; in fact W_180 is contained in W_60 (a difference in 180Z lies in 60Z), so each resonance cell lies in one sign cell. CLOSED ~04:30Z: the research-desk independent recount (indep_signcell.py, two methods — combinatorial cells with alpha_0 = 0, and one random exact point per cell with gauge-free pairwise labels floor(((alpha_j - alpha_i) mod 360)/180) — agreeing cell by cell on all 933,120 cells) gives 3,840 sign cells of 243 resonance cells each, 16 of 120 base chambers × 90 and 16 sign cells × 90; every one of the 52,930 same-chamber SAT pairs that the naive lift separates is joined by a certified W_180-free path; the naive chart key gives 16, 30, 48, 50, 53, 56, 79 or 96 depending on the global rotation, so 62 is a chart artefact. The referee lane was told to record 62 as FALSE",
         "sign-cell dispute RESOLVED: the L-R1 judge baseline first reported 720 of 3,840 (02:16Z); the coordinator traced this to a sign-cell key bug in that baseline (mod-60 order and n mod 2 used instead of the mod-180 order and floor(alpha/180)) (cycle 025639), and the corrected L-R1 run reproduces 16 of 3,840 with 90 field cells each (cycle 031143); the graph lane is consistent (1440 = 120 x 12 = 16 x 90)",
         "(e) correction from the L-R1 baseline: (0,30,90,150,240,300) lies on walls of the mod-60 arrangement (fractional parts not distinct), so the claim that the two example vectors lie in one sign cell is ill-posed; the example still illustrates that the field property is constant on resonance cells, not on sign cells",
         "RECONCILED (was UNRECONCILED): \"16 of the 3840 sign cells\" (referee addendum) and \"16 of 120 base chambers\" (adversarial lane, cycle 001250) are both true. The 16 met sign cells map to 16 distinct mod-180 orders. Read \"base chamber\" as an order of the parts mod 180; with orders mod 60 the count would be 120 of 120",
@@ -1614,6 +1615,37 @@
           "workspacePath": "I/work/results-desk/allphase/mc_signcells.out",
           "sha256": "1be8f3f562a606b2fa6bfbf828224398fc8c558c30cd20bfe3d0ff4817dac1d5",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/mc_signcells.out"
+        },
+        {
+          "role": "results-desk lift-label test",
+          "workspacePath": "I/work/results-desk/allphase/lift_labels.py",
+          "sha256": "94d8b5e888fda075dce6747c296da78016cee9cd47c95fa97f5072bd22fd2972",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/lift_labels.py"
+        },
+        {
+          "role": "lift-label test output (16 components; naive lift 96 labels)",
+          "workspacePath": "I/work/results-desk/allphase/lift_labels.out",
+          "sha256": "1f4230df777d6c2978dc0363282f995c08718800b54d323e7a29e73e16370062",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/lift_labels.out"
+        },
+        {
+          "role": "first-pass referee (lane chat-2345d7f398, swarm smwh90qeq): claimed 62 sign cells (refuted)",
+          "workspacePath": "I/work/automation-supervisor/inbox/20261115T034153-download-1-SIGNCEL-COUNT.md",
+          "sha256": "f6baa6b98c8382896ddf535e96ac7060f1c2bfac38b7f8b43e1199959cc90871",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T034153-download-1-SIGNCEL-COUNT.md"
+        },
+        {
+          "role": "research-desk two-method sign-cell recount",
+          "workspacePath": "I/work/research-desk/ln-checks/SIGNCELL/indep_signcell.py",
+          "sha256": "e556895c0de11ff5ea3fe9b2e092bb90ffcc712d89fcb41cdd90ad7d7b79a90a",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/SIGNCELL/indep_signcell.py",
+          "hashMatchesExpected": true
+        },
+        {
+          "role": "recount output (166 s; 0 FAIL)",
+          "workspacePath": "I/work/research-desk/ln-checks/SIGNCELL/indep_signcell.out",
+          "sha256": "b7a5890d91d2fae52198230a3ab42439bd4bea3272c3b3fc41a85d972f848290",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/SIGNCELL/indep_signcell.out"
         },
         {
           "role": "L-R1 judge baseline report (R1-1)",
@@ -2803,7 +2835,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "6aa4b8846daaa8dd0ae42c2c4148c57126e8dbfc5bd2676a1127719bde2ae262"
+          "sha256": "590a49ef0f4b2a5a53b0ce87779c456445f52bfa6cf517294da0d4b817b32022"
         }
       ]
     },

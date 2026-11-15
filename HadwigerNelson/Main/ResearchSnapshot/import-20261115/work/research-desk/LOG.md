@@ -59,3 +59,6 @@
 2026-11-15T03:38:39Z successor specs (14/350) for ended lanes: verifier (A5 caveats), graphs (exact lattice search for L-N4 target), formal (discharge bridge hyps)
 2026-11-15T03:45:37Z answered: don't stop running swarms; desk compiles contracts r2; successor specs (16/400) for architecture (pp.explicit flag contracts) and cone (hand proof of => via J-depth<=3; general (m,w) formula)
 2026-11-15T03:46:13Z referee first-pass sign-cell verdict forwarded to results desk (16/120 chambers TRUE, 62/3840 sign cells, 720 FALSE); launched independent sign-cell recount subagent; L-N4 partial: convention fix (4-sign union), no certificate yet
+2026-11-15T03:56:35Z results desk challenges 62 (holds 16, label normalisation); forwarded to recount subagent and referee lane
+2026-11-15T03:59:40Z told coordinator desk lacks A6-Bridge-v4 (download it); L-N4 successor with 4-sign-union convention
+2026-11-15T04:02:56Z BANKED sign-cell recount (indep_signcell.py e556895c): 16 sign cells x 90 (not 62); 16/120 chambers; 933120/3840/120 confirmed
