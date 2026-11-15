@@ -97,11 +97,18 @@ simple pole (`τX_single_pole_transport`); the list-induction assembly is
 **Overstated: parameter type and Gram form.**
 `mu_affine` and `gramMatrix_affine` are stated over `u v : ℚ`. The source writes
 `X` as an indeterminate and works in `ℚ[X]` with a subsequent real evaluation.
-The discrete data (pole values, `Λ`) are `ℚ`-linear in the parameter, so the
-polynomial statement is `mu_affine_poly : ℚ[X]`-affine — proved as
-`mu_affine_polynomial` in `AffineParameter.lean`, using `Polynomial.aeval`-free
-coefficient linearity. Passed to `ℝ` by `Polynomial.eval` at a real point; no
-real-analytic statement is made.
+The discrete data (pole values, `Λ`) are `ℚ`-linear in the parameter, so a
+polynomial-valued statement would be `mu_affine_poly : ℚ[X]`-affine.
+
+**STATUS: OPEN.** No `ℚ[X]`-valued version of this law compiles. An attempt was
+made and removed; there is no declaration `mu_affine_polynomial` anywhere in the
+tree, and this ledger previously claimed one existed — that claim was false and
+is retracted here. The only proved parameter statements remain
+`mu_affine`/`mu_sub_eq` over `u v : ℚ`, and `muP_affine`/`muP_eq_zero_add` over
+`U V : ℚ[X]` in `Restrict.lean`, *if and only if* that module is present and
+builds (check the aggregator before citing it).
+Passing from `ℚ[X]` to `ℝ` by evaluation, and comparing with the frozen
+`Rep.mu`/`XRep.tauX`, is `OBL-parameter`.
 
 Second: `gramMatrix_affine` takes an *arbitrary* `ι → ι → Rep` array. It is not
 the concrete bilinear Gram form of `eq:twoobjects`, `G_K(X)_{ij} = μ_X(W_K p_i p_j / T_K)`,
@@ -219,3 +226,33 @@ delivered it; `M4.H5Z_reflect` is the only consumer. A later integration should
 keep `M3.d_neg_one_sub` (which m3 also uses inside `poleSum_reflect`) and delete
 `M4.d_reflect`. This is cosmetic, not a soundness issue — flagged rather than
 silently tidied, so the record shows the candidates are unedited.
+
+## Supervisor corrections — 2026-11-15 (applied at the start of the block)
+
+1. **Retracted a false claim.** This ledger previously said the `ℚ[X]` affine law
+   was "proved as `mu_affine_polynomial` in `AffineParameter.lean`". No such
+   declaration exists — the attempt was removed and the prose survived it. The
+   `ℚ[X]`/`ℝ` parameter extension is **OPEN** (`OBL-parameter`). Lesson recorded
+   here deliberately: prose in this file must be re-verified against the compiled
+   tree before it is committed, not carried forward from intent.
+2. **Bernoulli convention wording fixed in `Basic.lean`.** `τ(x³) = 1/4` tests
+   `B₀ = 1`; it is `τ(x⁴) = −1/2` that tests `B₁ = −1/2`. Both module headers in
+   `Candm1.lean`/`Candm3.lean` said "prototype only / 4.35.0 not installed"; both
+   now record that they are validated under the pinned v4.35.0 build.
+3. **`.scratch-elan-setup.sh` made reproducible.** It now: `cd`s to its own
+   checkout; searches `ELAN_HOME`, `<checkout>/.scratch/elan`,
+   `<project>/.scratch/elan` and `~/.elan` for a *validated* installation
+   (contains the pinned toolchain) before bootstrapping from the official elan
+   installer into a task-local dir; clears inherited `LEAN_PATH`; verifies
+   `lean --version` is exactly 4.35.0 and that `lean` resolves inside
+   `ELAN_HOME`; asserts `lean-toolchain` still pins v4.35.0; reuses an existing
+   Mathlib cache instead of re-downloading. Tested with a deliberately polluted
+   `LEAN_PATH=/opt/mathlib/...` → exit 0, pinned build.
+4. **Axiom audit coverage corrected.** The first driver covered 22 declarations
+   and this ledger implied completeness; it was 22 of 111 theorem/lemma exports.
+   `ZetaFive/Main/full-axioms-driver.lean` is generated over every
+   theorem/lemma in all eight modules and audits **111/111**:
+   `full-axioms.txt` → 108 × `[propext, Classical.choice, Quot.sound]`,
+   3 × `[propext, Quot.sound]`, **0 outside the allowed set**.
+   Note `M2.L_ne_zero`/`tau_ne_zero`/`mu_poly_ne_zero` prove the functionals are
+   nonzero; that is **not** nondegeneracy of a bilinear form, which is unproved.

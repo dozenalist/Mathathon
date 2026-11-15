@@ -27,8 +27,11 @@ Mathlib's `sum_bernoulli` (`∑_{k<n} C(n,k)B_k = 0` for `n ≠ 1`) — the
 "multiplying the symbol by `e^u-1`" step of the note's proof of `prop:axioms`,
 done at the level of coefficients, with no generating function or infinite sum.
 
-NOTE (toolchain): prototype only. Elaborated with Lean 4.33.1 against the
-`/opt/mathlib` snapshot; the repository pins 4.35.0, which is not installed.
+VALIDATED (toolchain): this file compiles under the repository pin,
+Lean/Mathlib v4.35.0, via `lake build ZetaFive` (the pinned toolchain is
+installed task-locally, see `.scratch-elan-setup.sh`). It was originally
+authored as a prototype on this VM's Lean 4.33.1; that history is superseded and
+all current validation is on v4.35.0.
 -/
 
 namespace ZetaFive.Correspondences.M1

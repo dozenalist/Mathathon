@@ -24,9 +24,9 @@ it speaks about.
 ## Bernoulli convention
 
 `bernoulli` is Mathlib's Bernoulli number, defined by `x/(e^x-1) = Σ B_n x^n/n!`,
-hence `bernoulli 1 = -1/2`. The source note requires exactly this convention
-(`τ(x^3) = 1/4` holds only with `B_1 = -1/2`); `Transport.lean` checks the
-convention explicitly, via `τ(x^4) = -1/2`.
+hence `bernoulli 1 = -1/2`. The source note requires exactly this convention,
+and it is the value `τ(x⁴) = -1/2` in `Transport.lean` that tests it: with
+`B_1 = +1/2` that value would be `+1/2`. (`τ(x³) = 1/4` tests only `B_0 = 1`.)
 -/
 
 namespace ZetaFive.Correspondences

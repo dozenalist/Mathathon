@@ -4,9 +4,10 @@ Released under Apache 2.0 license as described in the file LICENSE.
 
 # The reflection axiom of `zeta5_unified_framework.tex` §2.1 (eq:reflection)
 
-PROTOTYPE: this file was elaborated with `lean` against the VM's Lean 4.33.1 and
-its prebuilt Mathlib snapshot. The repository pins Lean/Mathlib v4.35.0, which is
-not installed here; this is therefore *not* a repository build.
+VALIDATED (toolchain): compiles under the repository pin, Lean/Mathlib v4.35.0,
+via `lake build ZetaFive`. Originally authored as a prototype on this VM's Lean
+4.33.1; that history is superseded and all current validation is on v4.35.0.
+This is still a statement about the `XRep` representation, not about `RatFunc`.
 
 Source statements:
 
