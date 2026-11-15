@@ -1,5 +1,19 @@
 # Rogers--Ramanujan / SAIR problem 127: progress
 
+## November 15, 2026 PST — supervision deadline reached
+
+The watcher records `deadline_reached` and its process has exited. The latest
+saved completion remains 35622, the previously verified GitHub synchronization.
+A fresh read of the assigned SAIR session at 2:06 p.m. PST succeeded and returned
+no later records. GitHub has no later RogersRamanujan research changes; subsequent
+branch changes before this closeout were response logs only. The verified
+formal bridges, finite baseline checks and local lemmas stand, while the
+all-input phi proof and the requested more natural bijection remain open.
+
+The supervision cycle is closed at its configured deadline. See the
+[deadline evidence report](Main/DEADLINE_REPORT_2026-11-15.md) for exact state,
+provenance, verification bounds and remaining gaps. No new research was launched.
+
 ## November 13, 2026 PST — publication and synchronization review
 
 The current synthesis is [Main/RESULTS.md](Main/RESULTS.md); older entries below
